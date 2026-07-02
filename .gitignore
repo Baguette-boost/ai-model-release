@@ -1,0 +1,13 @@
+*
+
+!README.md
+!MODEL_CARD.md
+!requirements.txt
+!.gitignore
+
+!scripts/
+!scripts/realtime_sensor_lstm.py
+
+!models/
+!models/iccas_sensor_lstm_fall.pt
+!models/iccas_sensor_lstm_fall.json
