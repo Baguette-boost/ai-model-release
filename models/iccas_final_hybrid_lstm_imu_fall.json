@@ -1,0 +1,255 @@
+{
+  "model_type": "iccas_hybrid_binary_imu_fall_lstm",
+  "task": "imu_fall",
+  "positive_label": "fall",
+  "feature_columns": [
+    "roll",
+    "pitch",
+    "yaw",
+    "ax",
+    "ay",
+    "az",
+    "wx",
+    "wy",
+    "wz",
+    "accel_norm",
+    "gyro_norm",
+    "dt_s"
+  ],
+  "sequence_length": 50,
+  "sequence_stride": 4,
+  "sample_ms": 40,
+  "sample_rate_hz": 25.0,
+  "threshold": 0.3499999999999999,
+  "lstm_threshold": 0.3499999999999999,
+  "algorithm_threshold": 0.08,
+  "hybrid_lstm_weight": 1.0,
+  "hybrid_algorithm_weight": 0.0,
+  "fall_algorithm": {
+    "impact_g": 2.5,
+    "freefall_g": 0.6,
+    "gyro_dps": 250.0,
+    "tilt_deg": 45.0,
+    "still_accel_std": 0.35,
+    "still_gyro_dps": 80.0,
+    "post_samples": 25,
+    "cooldown_ms": 5000
+  },
+  "hidden_size": 64,
+  "num_layers": 2,
+  "dropout": 0.25,
+  "bidirectional": true,
+  "pooling": "attention",
+  "scaler_center": [
+    0.0,
+    0.0,
+    0.0,
+    0.01953125,
+    -0.8671875,
+    -0.06640625,
+    -1.9478260278701782,
+    1.1130434274673462,
+    -0.417391300201416,
+    1.0052580833435059,
+    14.515645980834961,
+    0.019999999552965164
+  ],
+  "scaler_scale": [
+    4.944529056549072,
+    4.459987640380859,
+    28.37843132019043,
+    0.1953125,
+    0.91015625,
+    0.55078125,
+    10.57391357421875,
+    8.486956596374512,
+    4.730434417724609,
+    0.11982309818267822,
+    44.94013977050781,
+    0.032525718212127686
+  ],
+  "source": "../data/iccas_sensor_lstm/final_iccas_sisfall_imu_merged.csv",
+  "device": "cpu",
+  "dataset_change_points": [
+    "직접 취득 데이터는 ICCAS_final_data.xlsx에서 data/iccas_sensor_lstm/iccas_final_labeled.csv로 전처리됨",
+    "IMU 낙상 재학습은 data/iccas_sensor_lstm/final_iccas_sisfall_imu_merged.csv를 사용",
+    "SisFall은 GPS가 없으므로 IMU/Gyro 낙상 학습에만 사용",
+    "새 직접 취득 데이터는 final_iccas_sisfall_imu_merged.csv에 같은 컬럼으로 병합하면 학습셋 변경 가능"
+  ],
+  "split_method": "SisFall source-file/group hash split; ICCAS chronological split inside each scenario",
+  "split_sizes": {
+    "train": 60073,
+    "validation": 12045,
+    "test": 10532
+  },
+  "label_counts": {
+    "train_positive": 26341,
+    "train_negative": 33732,
+    "validation_positive": 4856,
+    "validation_negative": 7189,
+    "test_positive": 4679,
+    "test_negative": 5853
+  },
+  "validation_metrics": {
+    "lstm_only": {
+      "accuracy": 0.8792029887920298,
+      "precision": 0.7990152980481801,
+      "recall": 0.9357495881383855,
+      "f1": 0.8619937399222233,
+      "tp": 4544,
+      "fp": 1143,
+      "tn": 6046,
+      "fn": 312,
+      "threshold": 0.3499999999999999
+    },
+    "algorithm_only": {
+      "accuracy": 0.4049813200498132,
+      "precision": 0.40379651985679793,
+      "recall": 0.9987644151565074,
+      "f1": 0.5750874488646469,
+      "tp": 4850,
+      "fp": 7161,
+      "tn": 28,
+      "fn": 6,
+      "threshold": 0.08
+    },
+    "hybrid": {
+      "accuracy": 0.8792029887920298,
+      "precision": 0.7990152980481801,
+      "recall": 0.9357495881383855,
+      "f1": 0.8619937399222233,
+      "tp": 4544,
+      "fp": 1143,
+      "tn": 6046,
+      "fn": 312,
+      "threshold": 0.3499999999999999
+    }
+  },
+  "test_metrics": {
+    "lstm_only": {
+      "accuracy": 0.879889859475883,
+      "precision": 0.8497950819672131,
+      "recall": 0.8863004915580253,
+      "f1": 0.8676639815880323,
+      "tp": 4147,
+      "fp": 733,
+      "tn": 5120,
+      "fn": 532,
+      "threshold": 0.3499999999999999
+    },
+    "algorithm_only": {
+      "accuracy": 0.44445499430307633,
+      "precision": 0.4442541856925419,
+      "recall": 0.9980765120752297,
+      "f1": 0.6148377328681456,
+      "tp": 4670,
+      "fp": 5842,
+      "tn": 11,
+      "fn": 9,
+      "threshold": 0.08
+    },
+    "hybrid": {
+      "accuracy": 0.879889859475883,
+      "precision": 0.8497950819672131,
+      "recall": 0.8863004915580253,
+      "f1": 0.8676639815880323,
+      "tp": 4147,
+      "fp": 733,
+      "tn": 5120,
+      "fn": 532,
+      "threshold": 0.3499999999999999
+    }
+  },
+  "test_metrics_by_dataset": {
+    "ICCAS": {
+      "accuracy": 0.9881465517241379,
+      "precision": 0.9259259259259259,
+      "recall": 0.970873786407767,
+      "f1": 0.9478672985781991,
+      "tp": 100,
+      "fp": 8,
+      "tn": 817,
+      "fn": 3,
+      "threshold": 0.3499999999999999
+    },
+    "SisFall": {
+      "accuracy": 0.8694294044148272,
+      "precision": 0.8480720871751886,
+      "recall": 0.8843968531468531,
+      "f1": 0.8658536585365854,
+      "tp": 4047,
+      "fp": 725,
+      "tn": 4303,
+      "fn": 529,
+      "threshold": 0.3499999999999999
+    }
+  },
+  "diagnostics": {
+    "validation_algorithm": {
+      "impact_peak_mean": 1.6769624948501587,
+      "impact_peak_p95": 3.3662402629852295,
+      "gyro_peak_p95": 266.3338623046875,
+      "tilt_change_p95": 11.97227668762207,
+      "inactivity_rate": 0.7926110625267029
+    },
+    "test_algorithm": {
+      "impact_peak_mean": 1.6444370746612549,
+      "impact_peak_p95": 4.097343444824219,
+      "gyro_peak_p95": 313.012451171875,
+      "tilt_change_p95": 14.3780517578125,
+      "inactivity_rate": 0.8222559690475464
+    }
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.41116559394732727,
+      "validation_f1": 0.8092900302114804
+    },
+    {
+      "epoch": 2,
+      "loss": 0.22878113366492178,
+      "validation_f1": 0.8277498339185726
+    },
+    {
+      "epoch": 3,
+      "loss": 0.17134300344114115,
+      "validation_f1": 0.8228011825572801
+    },
+    {
+      "epoch": 4,
+      "loss": 0.1345139295530004,
+      "validation_f1": 0.8149300155520997
+    },
+    {
+      "epoch": 5,
+      "loss": 0.10775151448116425,
+      "validation_f1": 0.8075117370892019
+    },
+    {
+      "epoch": 6,
+      "loss": 0.09436879604853934,
+      "validation_f1": 0.8186850538991939
+    },
+    {
+      "epoch": 7,
+      "loss": 0.08062763563381867,
+      "validation_f1": 0.8419351772645186
+    },
+    {
+      "epoch": 8,
+      "loss": 0.07024057707590323,
+      "validation_f1": 0.8502377948170435
+    },
+    {
+      "epoch": 9,
+      "loss": 0.06414443264355653,
+      "validation_f1": 0.8063006300630062
+    },
+    {
+      "epoch": 10,
+      "loss": 0.06005733924117494,
+      "validation_f1": 0.8619937399222233
+    }
+  ]
+}

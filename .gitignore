@@ -10,6 +10,13 @@
 
 !docs/
 !docs/FINAL_DATA_TRAINING_REPORT.md
+!docs/PRESENTATION_MATERIAL.md
+!docs/MODEL_COMPARISON_ANALYSIS.md
+!docs/MODEL_ARCHITECTURE_COMPARISON_RESULTS.md
+!docs/FALL_DETECTION_ALGORITHM_CORRECTION.md
+!docs/HYBRID_IMU_FALL_RETRAINING_REPORT.md
+!docs/FALL_THRESHOLD_SEARCH_REPORT.md
+!docs/FINAL_GPS_RNN_IMU_LSTM_SYSTEM.md
 
 !assets/
 !assets/final_model_performance_dashboard.png
@@ -28,6 +35,12 @@
 !scripts/train_mac_mps_max.sh
 !scripts/generate_performance_visualization.py
 !scripts/generate_performance_png.py
+!scripts/trajectory_pattern_demo.py
+!scripts/compare_sequence_models.py
+!scripts/train_hybrid_imu_fall.py
+!scripts/search_fall_thresholds.py
+!scripts/export_imu_preprocessed_csv.py
+!scripts/train_gps_rnn_wandering.py
 
 !models/
 !models/iccas_sensor_lstm_fall.pt
@@ -54,3 +67,7 @@
 !models/iccas_final_lstm_imu_fall.json
 !models/iccas_final_sisfall_lstm_imu_fall.pt
 !models/iccas_final_sisfall_lstm_imu_fall.json
+!models/iccas_final_hybrid_lstm_imu_fall.pt
+!models/iccas_final_hybrid_lstm_imu_fall.json
+!models/iccas_final_rnn_gps_wandering.pt
+!models/iccas_final_rnn_gps_wandering.json

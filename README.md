@@ -193,6 +193,33 @@ python scripts/realtime_sensor_lstm.py live \
 {"server_time":"2026-07-01 11:35:56.764000","device":"esp32-1","lat":36.621853,"lng":127.426337,"roll":-12.1,"pitch":9.7,"yaw":8.8,"ax":3.2,"ay":-2.6,"az":4.1,"wx":320.0,"wy":-280.0,"wz":220.0}
 ```
 
+## LSTM 전 초기 궤적 알고리즘 데모
+
+LSTM은 일정 길이의 시퀀스가 쌓인 뒤 추론할 수 있습니다. 그 전에는 Martino-Saltzman 기반 규칙 알고리즘으로 Direct, Pacing, Lapping, Random을 먼저 분류할 수 있습니다.
+
+```bash
+python scripts/trajectory_pattern_demo.py \
+  --sample pacing \
+  --model models/iccas_final_lstm_gps_wandering.pt \
+  --output ../data/iccas_sensor_lstm/trajectory_pattern_demo_pacing.json \
+  --device cpu
+```
+
+데모 흐름:
+
+```text
+index 8  -> LSTM ready=false, algorithm=Pacing, final=early_pattern_warning
+index 16 -> LSTM ready=true,  algorithm=Pacing, final=wandering
+```
+
+사용자 GPS JSON 파일을 넣을 수도 있습니다.
+
+```bash
+python scripts/trajectory_pattern_demo.py \
+  --input user_gps_sequence.json \
+  --output trajectory_pattern_demo.json
+```
+
 ## 재학습 방법
 
 새로운 학습 데이터가 생기면 원본 데이터는 Git에 올리지 않고 로컬 경로에서만 사용합니다. 아래 명령어는 기존 모델 파일을 새로 학습한 결과로 덮어씁니다.
@@ -392,6 +419,7 @@ IMU 낙상 감지:
   models/iccas_final_sisfall_lstm_imu_fall.pt
   models/iccas_final_sisfall_lstm_imu_fall.json
   docs/FINAL_DATA_TRAINING_REPORT.md
+  docs/PRESENTATION_MATERIAL.md
   assets/final_model_performance_dashboard.png
   assets/final_model_performance_dashboard.svg
   assets/final_model_performance_summary.csv
@@ -414,6 +442,55 @@ Accuracy 0.8814, Precision 0.8879, Recall 0.8392, F1 0.8629
 
 ```text
 data/iccas_sensor_lstm/FINAL_DATA_TRAINING_REPORT.md
+```
+
+발표 자료:
+
+```text
+docs/PRESENTATION_MATERIAL.md
+```
+
+RNN, GRU, LSTM, Transformer 비교 분석 자료:
+
+```text
+docs/MODEL_COMPARISON_ANALYSIS.md
+```
+
+RNN, GRU, LSTM, Transformer 실제 학습 비교 결과:
+
+```text
+docs/MODEL_ARCHITECTURE_COMPARISON_RESULTS.md
+```
+
+IMU 낙상 감지 F1-score 보정 방안:
+
+```text
+docs/FALL_DETECTION_ALGORITHM_CORRECTION.md
+```
+
+최종 구조, GPS RNN + IMU Fall LSTM 및 전처리 설명:
+
+```text
+docs/FINAL_GPS_RNN_IMU_LSTM_SYSTEM.md
+```
+
+IMU 전처리 CSV 생성:
+
+```bash
+../.venv/bin/python scripts/export_imu_preprocessed_csv.py \
+  --source ../data/iccas_sensor_lstm/final_iccas_sisfall_imu_merged.csv \
+  --output ../data/iccas_sensor_lstm/imu_fall_preprocessed.csv \
+  --summary ../data/iccas_sensor_lstm/imu_fall_preprocessed_summary.json
+```
+
+GPS RNN 재학습:
+
+```bash
+../.venv/bin/python scripts/train_gps_rnn_wandering.py \
+  --source ../ICCAS_final_data.xlsx \
+  --epochs 15 \
+  --batch-size 256 \
+  --device auto
 ```
 
 성능 시각화:
