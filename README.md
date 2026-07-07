@@ -220,6 +220,37 @@ python scripts/trajectory_pattern_demo.py \
   --output trajectory_pattern_demo.json
 ```
 
+## GPS Kalman + RTDM 하이브리드 탐지
+
+ GPS 좌표 튐을 줄이기 위해 Kalman filter를 먼저 적용하고, NicklasXYZ/rtdm의 경로 토큰 시퀀스 기반 support score 아이디어를 RNN 배회 점수와 결합할 수 있습니다.
+
+주의: 현재 코드는 NicklasXYZ/rtdm 원본 패키지를 그대로 이식한 것이 아니라, 원본의 token sequence support 개념을 참고해 `x_m`, `y_m` 기반 meter-grid token으로 재구현한 lightweight 버전입니다.
+
+```bash
+python scripts/compare_gps_kalman_rnn.py \
+  --source ../ICCAS_final_data.xlsx \
+  --epochs 15 \
+  --batch-size 256 \
+  --device auto
+```
+
+RTDM 하이브리드까지 포함해 학습/평가하려면 아래 명령어를 사용합니다.
+
+```bash
+python scripts/train_rtdm_gps_hybrid.py \
+  --source ../ICCAS_final_data.xlsx \
+  --epochs 15 \
+  --batch-size 256 \
+  --device auto
+```
+
+결과 보고서는 아래 파일에서 확인합니다.
+
+```text
+docs/GPS_KALMAN_RNN_COMPARISON.md
+docs/GPS_RTDM_HYBRID_REPORT.md
+```
+
 ## 재학습 방법
 
 새로운 학습 데이터가 생기면 원본 데이터는 Git에 올리지 않고 로컬 경로에서만 사용합니다. 아래 명령어는 기존 모델 파일을 새로 학습한 결과로 덮어씁니다.
