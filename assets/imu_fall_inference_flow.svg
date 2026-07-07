@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1050" viewBox="0 0 1600 1050">
+<defs>
+<marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+<path d="M2,2 L10,6 L2,10 Z" fill="#98a2b3"/>
+</marker>
+</defs>
+<rect x="0" y="0" width="1600" height="1050" rx="0" fill="#f7f8fb" stroke="none"/>
+<text x="70" y="82" font-size="44" fill="#111827" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">IMU Fall Detection Inference Flow</text>
+<text x="70" y="122" font-size="22" fill="#667085" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">2-second IMU window -&gt; BiLSTM + Attention -&gt; fall probability -&gt; backend result</text>
+<text x="1530" y="82" font-size="18" fill="#667085" font-weight="700" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Device: CPU</text>
+<text x="1530" y="112" font-size="18" fill="#667085" font-weight="700" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Threshold: 0.35</text>
+<rect x="70" y="190" width="330" height="150" rx="8" fill="#eff6ff" stroke="#d9dee8"/>
+<text x="94" y="232" font-size="23" fill="#172033" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">1. Sensor Stream</text>
+<text x="94" y="274" font-size="20" fill="#344054" font-weight="650" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">25 Hz IMU samples</text>
+<text x="94" y="308" font-size="17" fill="#667085" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">roll/pitch/yaw + accel + gyro</text>
+<line x1="400" y1="265" x2="442" y2="265" stroke="#98a2b3" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="450" y="190" width="330" height="150" rx="8" fill="#ecfdf3" stroke="#d9dee8"/>
+<text x="474" y="232" font-size="23" fill="#172033" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">2. Window Buffer</text>
+<text x="474" y="274" font-size="20" fill="#344054" font-weight="650" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">50 steps x 12 features</text>
+<text x="474" y="308" font-size="17" fill="#667085" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">2.0s window, stride 4</text>
+<line x1="780" y1="265" x2="822" y2="265" stroke="#98a2b3" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="830" y="190" width="330" height="150" rx="8" fill="#fff7ed" stroke="#d9dee8"/>
+<text x="854" y="232" font-size="23" fill="#172033" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">3. Preprocessing</text>
+<text x="854" y="274" font-size="20" fill="#344054" font-weight="650" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Robust scaling</text>
+<text x="854" y="308" font-size="17" fill="#667085" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">accel_norm, gyro_norm, dt_s</text>
+<line x1="1160" y1="265" x2="1202" y2="265" stroke="#98a2b3" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="1210" y="190" width="330" height="150" rx="8" fill="#f5f3ff" stroke="#d9dee8"/>
+<text x="1234" y="232" font-size="23" fill="#172033" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">4. BiLSTM Inference</text>
+<text x="1234" y="274" font-size="20" fill="#344054" font-weight="650" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Bidirectional LSTM + Attention</text>
+<text x="1234" y="308" font-size="17" fill="#667085" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">hidden 64, layers 2</text>
+<rect x="70" y="390" width="700" height="255" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="100" y="440" font-size="28" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Input Features</text>
+<text x="100" y="486" font-size="19" fill="#344054" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">roll, pitch, yaw, ax, ay, az, wx, wy, wz, accel_norm, gyro_norm, dt_s</text>
+<text x="100" y="536" font-size="25" fill="#172033" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Inference Output</text>
+<text x="100" y="580" font-size="20" fill="#2563eb" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">fall_score = sigmoid(BiLSTM(window))</text>
+<text x="100" y="616" font-size="20" fill="#dc2626" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">fall_detected = fall_score &gt;= 0.35</text>
+<rect x="830" y="390" width="700" height="255" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="860" y="440" font-size="28" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Rule-based Safety Checks</text>
+<text x="860" y="486" font-size="20" fill="#344054" font-weight="650" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Impact gate: accel_norm &gt;= 2.5g</text>
+<text x="860" y="524" font-size="20" fill="#344054" font-weight="650" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Free-fall hint: accel_norm &lt;= 0.6g</text>
+<text x="860" y="562" font-size="20" fill="#344054" font-weight="650" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Rotation gate: gyro_norm &gt;= 250.0 dps</text>
+<text x="860" y="600" font-size="20" fill="#344054" font-weight="650" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Inactivity gate: still gyro &lt;= 80.0 dps</text>
+<rect x="70" y="680" width="455" height="245" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="100" y="730" font-size="27" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Final Test Metrics</text>
+<text x="100" y="780" font-size="23" fill="#2563eb" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Accuracy  88.0%</text>
+<text x="100" y="820" font-size="23" fill="#059669" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Precision 85.0%</text>
+<text x="100" y="860" font-size="23" fill="#d97706" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Recall    88.6%</text>
+<text x="100" y="900" font-size="23" fill="#dc2626" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">F1-score  86.8%</text>
+<rect x="575" y="680" width="455" height="245" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="605" y="730" font-size="27" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Hybrid Weighting</text>
+<text x="605" y="780" font-size="23" fill="#344054" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">LSTM 1.0 / Algorithm 0.0</text>
+<text x="605" y="825" font-size="19" fill="#667085" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Current tuned hybrid equals LSTM-only</text>
+<text x="605" y="863" font-size="19" fill="#667085" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Algorithm-only has high recall but many false positives</text>
+<rect x="1080" y="680" width="450" height="245" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="1110" y="730" font-size="27" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Method Comparison</text>
+<text x="1110" y="780" font-size="21" fill="#172033" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">LSTM only      F1 86.8%</text>
+<text x="1110" y="820" font-size="21" fill="#172033" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Algorithm only F1 61.5%</text>
+<text x="1110" y="860" font-size="21" fill="#172033" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Hybrid tuned   F1 86.8%</text>
+<text x="70" y="988" font-size="18" fill="#667085" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Model file: models/iccas_final_hybrid_lstm_imu_fall.pt</text>
+<text x="1530" y="988" font-size="18" fill="#667085" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Source: ICCAS IMU + SisFall IMU merged dataset</text>
+</svg>

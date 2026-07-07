@@ -25,6 +25,8 @@
 !assets/final_model_performance_dashboard.png
 !assets/final_model_performance_dashboard.svg
 !assets/final_model_performance_summary.csv
+!assets/imu_fall_inference_flow.png
+!assets/imu_fall_inference_flow.svg
 
 !scripts/
 !scripts/realtime_sensor_lstm.py
@@ -43,6 +45,7 @@
 !scripts/train_hybrid_imu_fall.py
 !scripts/search_fall_thresholds.py
 !scripts/export_imu_preprocessed_csv.py
+!scripts/generate_imu_inference_visual.py
 !scripts/train_gps_rnn_wandering.py
 !scripts/compare_gps_kalman_rnn.py
 !scripts/train_rtdm_gps_hybrid.py
