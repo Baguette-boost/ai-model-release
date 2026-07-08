@@ -31,6 +31,7 @@
 !assets/imu_fall_clean_architecture.svg
 !assets/imu_fall_preprocessing_formulas.svg
 !assets/imu_fall_preprocessing_math_formulas.svg
+!assets/imu_dataset_distribution.svg
 !assets/imu_preprocessing_before_after_metrics.svg
 !assets/imu_lstm_speed_preprocessing_metrics.svg
 
@@ -56,6 +57,7 @@
 !scripts/generate_imu_clean_architecture_svg.py
 !scripts/generate_imu_preprocessing_formula_svg.py
 !scripts/generate_imu_math_formula_svg.py
+!scripts/generate_imu_dataset_distribution_svg.py
 !scripts/generate_imu_preprocessing_metrics_svg.py
 !scripts/generate_imu_lstm_speed_preprocessing_metrics.py
 !scripts/train_gps_rnn_wandering.py

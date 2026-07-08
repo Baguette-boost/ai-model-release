@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1320" viewBox="0 0 1800 1320">
+<rect x="0" y="0" width="1800" height="1320" rx="0" fill="#f8fafc" stroke="none"/>
+<text x="80" y="82" font-size="44" fill="#111827" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">IMU Fall Dataset Distribution</text>
+<text x="80" y="122" font-size="22" fill="#667085" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">ICCAS direct IMU data + SisFall IMU fall dataset</text>
+<text x="1720" y="82" font-size="24" fill="#2563eb" font-weight="850" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">349,560 samples</text>
+<text x="1720" y="116" font-size="18" fill="#667085" font-weight="700" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">for IMU/Gyro fall detection</text>
+<rect x="80" y="175" width="370" height="145" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="104" y="218" font-size="21" fill="#667085" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Total samples</text>
+<text x="104" y="274" font-size="38" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">349,560</text>
+<text x="104" y="306" font-size="16" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">raw IMU rows</text>
+<rect x="495" y="175" width="370" height="145" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="519" y="218" font-size="21" fill="#667085" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Columns</text>
+<text x="519" y="274" font-size="38" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">20</text>
+<text x="519" y="306" font-size="16" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">merged source columns</text>
+<rect x="910" y="175" width="370" height="145" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="934" y="218" font-size="21" fill="#667085" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Fall samples</text>
+<text x="934" y="274" font-size="38" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">152,752</text>
+<text x="934" y="306" font-size="16" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">43.7%</text>
+<rect x="1325" y="175" width="370" height="145" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="1349" y="218" font-size="21" fill="#667085" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Non-fall samples</text>
+<text x="1349" y="274" font-size="38" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">196,808</text>
+<text x="1349" y="306" font-size="16" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">56.3%</text>
+<rect x="80" y="370" width="800" height="390" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="108" y="418" font-size="28" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Label Distribution</text>
+<text x="112" y="482.0" font-size="17" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">normal</text>
+<rect x="270" y="462.0" width="510" height="24" rx="10" fill="#eef2f7" stroke="none"/>
+<rect x="270" y="462.0" width="510.0" height="24" rx="10" fill="#2563eb" stroke="none"/>
+<text x="842" y="482.0" font-size="16" fill="#667085" font-weight="650" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">174,800 (50.0%)</text>
+<text x="112" y="527.0" font-size="17" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">fall</text>
+<rect x="270" y="507.0" width="510" height="24" rx="10" fill="#eef2f7" stroke="none"/>
+<rect x="270" y="507.0" width="445.67231121281463" height="24" rx="10" fill="#dc2626" stroke="none"/>
+<text x="842" y="527.0" font-size="16" fill="#667085" font-weight="650" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">152,752 (43.7%)</text>
+<text x="112" y="572.0" font-size="17" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">wandering</text>
+<rect x="270" y="552.0" width="510" height="24" rx="10" fill="#eef2f7" stroke="none"/>
+<rect x="270" y="552.0" width="36.041361556064075" height="24" rx="10" fill="#059669" stroke="none"/>
+<text x="842" y="572.0" font-size="16" fill="#667085" font-weight="650" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">12,353 (3.5%)</text>
+<text x="112" y="617.0" font-size="17" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">walk</text>
+<rect x="270" y="597.0" width="510" height="24" rx="10" fill="#eef2f7" stroke="none"/>
+<rect x="270" y="597.0" width="23.349713958810067" height="24" rx="10" fill="#d97706" stroke="none"/>
+<text x="842" y="617.0" font-size="16" fill="#667085" font-weight="650" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">8,003 (2.3%)</text>
+<text x="112" y="662.0" font-size="17" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">idle</text>
+<rect x="270" y="642.0" width="510" height="24" rx="10" fill="#eef2f7" stroke="none"/>
+<rect x="270" y="642.0" width="2.920537757437071" height="24" rx="10" fill="#7c3aed" stroke="none"/>
+<text x="842" y="662.0" font-size="16" fill="#667085" font-weight="650" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">1,001 (0.3%)</text>
+<text x="112" y="707.0" font-size="17" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">sit</text>
+<rect x="270" y="687.0" width="510" height="24" rx="10" fill="#eef2f7" stroke="none"/>
+<rect x="270" y="687.0" width="1.899370709382151" height="24" rx="10" fill="#0891b2" stroke="none"/>
+<text x="842" y="707.0" font-size="16" fill="#667085" font-weight="650" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">651 (0.2%)</text>
+<rect x="920" y="370" width="800" height="270" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="948" y="418" font-size="28" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Source Dataset Distribution</text>
+<text x="952" y="482" font-size="17" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">SisFall</text>
+<rect x="1110" y="462" width="510" height="24" rx="10" fill="#eef2f7" stroke="none"/>
+<rect x="1110" y="462" width="510.0" height="24" rx="10" fill="#2563eb" stroke="none"/>
+<text x="1682" y="482" font-size="16" fill="#667085" font-weight="650" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">324,801 (92.9%)</text>
+<text x="952" y="530" font-size="17" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">ICCAS</text>
+<rect x="1110" y="510" width="510" height="24" rx="10" fill="#eef2f7" stroke="none"/>
+<rect x="1110" y="510" width="38.876388927373995" height="24" rx="10" fill="#dc2626" stroke="none"/>
+<text x="1682" y="530" font-size="16" fill="#667085" font-weight="650" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">24,759 (7.1%)</text>
+<rect x="920" y="680" width="800" height="330" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="948" y="728" font-size="28" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Train / Validation / Test Sequence Labels</text>
+<rect x="956" y="755" width="18" height="18" rx="4" fill="#dc2626" stroke="none"/>
+<text x="982" y="770" font-size="16" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">fall / positive</text>
+<rect x="1140" y="755" width="18" height="18" rx="4" fill="#2563eb" stroke="none"/>
+<text x="1166" y="770" font-size="16" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">non-fall / negative</text>
+<text x="956" y="830" font-size="20" fill="#172033" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Train</text>
+<rect x="1080" y="810" width="560" height="28" rx="10" fill="#eef2f7" stroke="none"/>
+<rect x="1080" y="810" width="245.55058012751152" height="28" rx="10" fill="#dc2626" stroke="none"/>
+<rect x="1325.5505801275115" y="810" width="314.4494198724885" height="28" rx="10" fill="#2563eb" stroke="none"/>
+<text x="1684" y="831" font-size="17" fill="#667085" font-weight="700" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">26,341 / 33,732</text>
+<text x="1080" y="865" font-size="15" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">positive 43.8%, total 60,073</text>
+<text x="956" y="916" font-size="20" fill="#172033" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Validation</text>
+<rect x="1080" y="896" width="560" height="28" rx="10" fill="#eef2f7" stroke="none"/>
+<rect x="1080" y="896" width="225.76670817766708" height="28" rx="10" fill="#dc2626" stroke="none"/>
+<rect x="1305.7667081776672" y="896" width="334.23329182233294" height="28" rx="10" fill="#2563eb" stroke="none"/>
+<text x="1684" y="917" font-size="17" fill="#667085" font-weight="700" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">4,856 / 7,189</text>
+<text x="1080" y="951" font-size="15" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">positive 40.3%, total 12,045</text>
+<text x="956" y="1002" font-size="20" fill="#172033" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Test</text>
+<rect x="1080" y="982" width="560" height="28" rx="10" fill="#eef2f7" stroke="none"/>
+<rect x="1080" y="982" width="248.78845423471324" height="28" rx="10" fill="#dc2626" stroke="none"/>
+<rect x="1328.7884542347133" y="982" width="311.21154576528676" height="28" rx="10" fill="#2563eb" stroke="none"/>
+<text x="1684" y="1003" font-size="17" fill="#667085" font-weight="700" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">4,679 / 5,853</text>
+<text x="1080" y="1037" font-size="15" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">positive 44.4%, total 10,532</text>
+<rect x="80" y="800" width="800" height="330" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="108" y="848" font-size="28" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Top Source Activities</text>
+<text x="112" y="912.0" font-size="17" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">D05</text>
+<rect x="270" y="892.0" width="510" height="24" rx="10" fill="#eef2f7" stroke="none"/>
+<rect x="270" y="892.0" width="510.0" height="24" rx="10" fill="#2563eb" stroke="none"/>
+<text x="842" y="912.0" font-size="16" fill="#667085" font-weight="650" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">18,750 (17.5%)</text>
+<text x="112" y="938.25" font-size="17" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">D06</text>
+<rect x="270" y="918.25" width="510" height="24" rx="10" fill="#eef2f7" stroke="none"/>
+<rect x="270" y="918.25" width="510.0" height="24" rx="10" fill="#dc2626" stroke="none"/>
+<text x="842" y="938.25" font-size="16" fill="#667085" font-weight="650" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">18,750 (17.5%)</text>
+<text x="112" y="964.5" font-size="17" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">D17</text>
+<rect x="270" y="944.5" width="510" height="24" rx="10" fill="#eef2f7" stroke="none"/>
+<rect x="270" y="944.5" width="340.0" height="24" rx="10" fill="#059669" stroke="none"/>
+<text x="842" y="964.5" font-size="16" fill="#667085" font-weight="650" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">12,500 (11.6%)</text>
+<text x="112" y="990.75" font-size="17" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">wandering</text>
+<rect x="270" y="970.75" width="510" height="24" rx="10" fill="#eef2f7" stroke="none"/>
+<rect x="270" y="970.75" width="336.0016" height="24" rx="10" fill="#d97706" stroke="none"/>
+<text x="842" y="990.75" font-size="16" fill="#667085" font-weight="650" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">12,353 (11.5%)</text>
+<text x="112" y="1017.0" font-size="17" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">F03</text>
+<rect x="270" y="997.0" width="510" height="24" rx="10" fill="#eef2f7" stroke="none"/>
+<rect x="270" y="997.0" width="306.0272" height="24" rx="10" fill="#7c3aed" stroke="none"/>
+<text x="842" y="1017.0" font-size="16" fill="#667085" font-weight="650" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">11,251 (10.5%)</text>
+<text x="112" y="1043.25" font-size="17" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">F01</text>
+<rect x="270" y="1023.25" width="510" height="24" rx="10" fill="#eef2f7" stroke="none"/>
+<rect x="270" y="1023.25" width="306.0" height="24" rx="10" fill="#0891b2" stroke="none"/>
+<text x="842" y="1043.25" font-size="16" fill="#667085" font-weight="650" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">11,250 (10.5%)</text>
+<text x="112" y="1069.5" font-size="17" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">F02</text>
+<rect x="270" y="1049.5" width="510" height="24" rx="10" fill="#eef2f7" stroke="none"/>
+<rect x="270" y="1049.5" width="306.0" height="24" rx="10" fill="#be123c" stroke="none"/>
+<text x="842" y="1069.5" font-size="16" fill="#667085" font-weight="650" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">11,250 (10.5%)</text>
+<text x="112" y="1095.75" font-size="17" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">F04</text>
+<rect x="270" y="1075.75" width="510" height="24" rx="10" fill="#eef2f7" stroke="none"/>
+<rect x="270" y="1075.75" width="306.0" height="24" rx="10" fill="#4b5563" stroke="none"/>
+<text x="842" y="1095.75" font-size="16" fill="#667085" font-weight="650" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">11,250 (10.5%)</text>
+<rect x="80" y="1170" width="1640" height="90" rx="8" fill="#111827" stroke="#111827"/>
+<text x="120" y="1225" font-size="24" fill="#ffffff" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Dataset-level test F1</text>
+<text x="430" y="1225" font-size="24" fill="#e5e7eb" font-weight="750" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">ICCAS 94.8%  |  SisFall 86.6%</text>
+<text x="1720" y="1225" font-size="16" fill="#cbd5e1" font-weight="550" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Source: ../data/iccas_sensor_lstm/final_iccas_sisfall_imu_merged.csv</text>
+</svg>
