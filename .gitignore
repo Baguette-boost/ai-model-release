@@ -26,6 +26,7 @@
 !docs/ALL_DATASET_DISTRIBUTION.md
 !docs/HYBRID_IMU_FALL_DOCKER.md
 !docs/IMU_PREPROCESSED_MODEL_COMPARISON.md
+!docs/IMU_PREPROCESSING_EFFECT_COMPARISON.md
 
 !assets/
 !assets/final_model_performance_dashboard.png
@@ -45,6 +46,7 @@
 !assets/imu_preprocessing_performance_comparison.svg
 !assets/imu_preprocessing_before_after_metrics.svg
 !assets/imu_lstm_speed_preprocessing_metrics.svg
+!assets/imu_preprocessing_effect_comparison.svg
 
 !scripts/
 !scripts/realtime_sensor_lstm.py
@@ -78,6 +80,7 @@
 !scripts/generate_imu_lstm_speed_preprocessing_metrics.py
 !scripts/hybrid_imu_fall_api.py
 !scripts/compare_preprocessed_imu_models.py
+!scripts/compare_imu_preprocessing_effect.py
 !scripts/train_gps_rnn_wandering.py
 !scripts/compare_gps_kalman_rnn.py
 !scripts/train_rtdm_gps_hybrid.py
