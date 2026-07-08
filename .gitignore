@@ -33,6 +33,7 @@
 !assets/imu_fall_preprocessing_formulas.svg
 !assets/imu_fall_preprocessing_math_formulas.svg
 !assets/imu_dataset_distribution.svg
+!assets/imu_inference_speed_model_comparison.svg
 !assets/imu_model_performance_comparison.svg
 !assets/imu_preprocessing_performance_comparison.svg
 !assets/imu_preprocessing_before_after_metrics.svg
@@ -61,6 +62,7 @@
 !scripts/generate_imu_preprocessing_formula_svg.py
 !scripts/generate_imu_math_formula_svg.py
 !scripts/generate_imu_dataset_distribution_svg.py
+!scripts/generate_imu_inference_speed_comparison_svg.py
 !scripts/generate_imu_model_performance_comparison_svg.py
 !scripts/generate_imu_preprocessing_performance_comparison_svg.py
 !scripts/generate_imu_preprocessing_metrics_svg.py
