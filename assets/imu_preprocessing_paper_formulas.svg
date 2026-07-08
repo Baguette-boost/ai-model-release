@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1320" viewBox="0 0 1800 1320">
+<rect x="0" y="0" width="1800" height="1320" rx="0" fill="#f8fafc" stroke="none"/>
+<text x="80" y="76" font-size="42" fill="#111827" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">IMU Fall Detection Preprocessing Equations</text>
+<text x="80" y="118" font-size="21" fill="#667085" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Paper-style mathematical notation for 25 Hz IMU/Gyro fall detection</text>
+<text x="1720" y="76" font-size="20" fill="#475467" font-weight="750" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">L = 50 samples</text>
+<text x="1720" y="108" font-size="20" fill="#2563eb" font-weight="850" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">T ≈ 2.0 s</text>
+<rect x="80" y="165" width="520" height="190" rx="6" fill="#ffffff" stroke="#d9dee8"/>
+<text x="108" y="207" font-size="22" fill="#111827" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Sample Vectors</text>
+<text x="116" y="253" font-size="26" fill="#111827" font-weight="520" text-anchor="start" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">r_t = [φ_t, θ_t, ψ_t]^T</text>
+<text x="116" y="296" font-size="26" fill="#111827" font-weight="520" text-anchor="start" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">a_t = [a_{x,t}, a_{y,t}, a_{z,t}]^T</text>
+<text x="116" y="339" font-size="26" fill="#111827" font-weight="520" text-anchor="start" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">ω_t = [ω_{x,t}, ω_{y,t}, ω_{z,t}]^T</text>
+<text x="554" y="320" font-size="25" fill="#374151" font-weight="520" text-anchor="end" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">(1)</text>
+<text x="108" y="333" font-size="14" fill="#6b7280" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">r: attitude, a: acceleration, ω: angular velocity</text>
+<rect x="640" y="165" width="520" height="190" rx="6" fill="#ffffff" stroke="#d9dee8"/>
+<text x="668" y="207" font-size="22" fill="#111827" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Magnitude Features</text>
+<text x="676" y="253" font-size="26" fill="#111827" font-weight="520" text-anchor="start" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">s_t = ||a_t||_2 = √(a_x,t² + a_y,t² + a_z,t²)</text>
+<text x="676" y="296" font-size="26" fill="#111827" font-weight="520" text-anchor="start" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">g_t = ||ω_t||_2 = √(ω_x,t² + ω_y,t² + ω_z,t²)</text>
+<text x="1114" y="320" font-size="25" fill="#374151" font-weight="520" text-anchor="end" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">(2)</text>
+<text x="668" y="333" font-size="14" fill="#6b7280" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">s_t is SVM / accel_norm, g_t is gyro_norm</text>
+<rect x="1200" y="165" width="520" height="190" rx="6" fill="#ffffff" stroke="#d9dee8"/>
+<text x="1228" y="207" font-size="22" fill="#111827" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Temporal Feature</text>
+<text x="1236" y="253" font-size="26" fill="#111827" font-weight="520" text-anchor="start" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">Δt_t = clip(m_t − m_{t−1}, 0, 1000) / 1000</text>
+<text x="1236" y="296" font-size="26" fill="#111827" font-weight="520" text-anchor="start" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">Δt_0 = 0,     Δt_t ≈ 0.04 s</text>
+<text x="1674" y="320" font-size="25" fill="#374151" font-weight="520" text-anchor="end" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">(3)</text>
+<text x="1228" y="333" font-size="14" fill="#6b7280" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">m_t is timestamp in milliseconds</text>
+<rect x="80" y="400" width="800" height="220" rx="6" fill="#ffffff" stroke="#d9dee8"/>
+<text x="108" y="442" font-size="22" fill="#111827" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">LSTM Feature Vector</text>
+<text x="116" y="488" font-size="26" fill="#111827" font-weight="520" text-anchor="start" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">x_t = [ r_t, a_t, ω_t, s_t, g_t, Δt_t ]^T ∈ R^{12}</text>
+<text x="116" y="531" font-size="26" fill="#111827" font-weight="520" text-anchor="start" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">X_k = [x_{k−L+1}, ..., x_k]^T ∈ R^{50×12}</text>
+<text x="834" y="585" font-size="25" fill="#374151" font-weight="520" text-anchor="end" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">(4)</text>
+<text x="108" y="598" font-size="14" fill="#6b7280" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">The sequence window contains 50 consecutive IMU samples.</text>
+<rect x="920" y="400" width="800" height="220" rx="6" fill="#ffffff" stroke="#d9dee8"/>
+<text x="948" y="442" font-size="22" fill="#111827" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Sequence Label</text>
+<text x="956" y="488" font-size="26" fill="#111827" font-weight="520" text-anchor="start" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">y_t = 1{label_t = fall}</text>
+<text x="956" y="531" font-size="26" fill="#111827" font-weight="520" text-anchor="start" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">Y_k = max_{i∈{k−L+1,...,k}} y_i</text>
+<text x="1674" y="585" font-size="25" fill="#374151" font-weight="520" text-anchor="end" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">(5)</text>
+<text x="948" y="598" font-size="14" fill="#6b7280" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">A window is positive if any time step in the window is fall.</text>
+<rect x="80" y="665" width="800" height="260" rx="6" fill="#ffffff" stroke="#d9dee8"/>
+<text x="108" y="707" font-size="22" fill="#111827" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Robust Scaling</text>
+<text x="116" y="753" font-size="26" fill="#111827" font-weight="520" text-anchor="start" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">c_j = median(x_:,j)</text>
+<text x="116" y="796" font-size="26" fill="#111827" font-weight="520" text-anchor="start" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">q_j = Q_0.75(x_:,j) − Q_0.25(x_:,j)</text>
+<text x="116" y="839" font-size="26" fill="#111827" font-weight="520" text-anchor="start" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">σ_j = q_j if q_j&gt;ε, else std(x_:,j), else 1</text>
+<text x="116" y="882" font-size="26" fill="#111827" font-weight="520" text-anchor="start" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">z_t,j = clip((x_t,j − c_j) / σ_j, −12, 12)</text>
+<text x="834" y="890" font-size="25" fill="#374151" font-weight="520" text-anchor="end" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">(6)</text>
+<text x="108" y="903" font-size="14" fill="#6b7280" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">c_j and σ_j are estimated only from the training split.</text>
+<rect x="920" y="665" width="800" height="260" rx="6" fill="#ffffff" stroke="#d9dee8"/>
+<text x="948" y="707" font-size="22" fill="#111827" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Physical Context Features</text>
+<text x="956" y="753" font-size="26" fill="#111827" font-weight="520" text-anchor="start" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">I_k = max_{t∈W_k} s_t,     F_k = min_{t∈W_k} s_t</text>
+<text x="956" y="796" font-size="26" fill="#111827" font-weight="520" text-anchor="start" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">R_k = max_{t∈W_k} g_t</text>
+<text x="956" y="839" font-size="26" fill="#111827" font-weight="520" text-anchor="start" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">Θ_k = max √((φ_t−φ_0)² + (θ_t−θ_0)²)</text>
+<text x="956" y="882" font-size="26" fill="#111827" font-weight="520" text-anchor="start" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">t* = argmax_{t∈W_k} s_t</text>
+<text x="1674" y="890" font-size="25" fill="#374151" font-weight="520" text-anchor="end" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">(7)</text>
+<text x="948" y="903" font-size="14" fill="#6b7280" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Impact, free-fall, rotation, posture change, and impact index.</text>
+<rect x="80" y="970" width="800" height="190" rx="6" fill="#ffffff" stroke="#d9dee8"/>
+<text x="108" y="1012" font-size="22" fill="#111827" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Post-impact Inactivity</text>
+<text x="116" y="1058" font-size="26" fill="#111827" font-weight="520" text-anchor="start" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">P_k = {t | t* &lt; t ≤ t* + 25}</text>
+<text x="116" y="1101" font-size="26" fill="#111827" font-weight="520" text-anchor="start" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">A_k^std = std(s_t | t∈P_k)</text>
+<text x="116" y="1144" font-size="26" fill="#111827" font-weight="520" text-anchor="start" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">G_k^mean = mean(g_t | t∈P_k)</text>
+<text x="834" y="1125" font-size="25" fill="#374151" font-weight="520" text-anchor="end" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">(8)</text>
+<text x="108" y="1138" font-size="14" fill="#6b7280" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Used to distinguish fall impact from ordinary motion.</text>
+<rect x="920" y="970" width="800" height="190" rx="6" fill="#ffffff" stroke="#d9dee8"/>
+<text x="948" y="1012" font-size="22" fill="#111827" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Model Input and Decision</text>
+<text x="956" y="1058" font-size="26" fill="#111827" font-weight="520" text-anchor="start" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">Z_k ∈ R^{50×12}  →  BiLSTM + Attention</text>
+<text x="956" y="1101" font-size="26" fill="#111827" font-weight="520" text-anchor="start" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">p_k = σ(W_o h_k + b_o)</text>
+<text x="956" y="1144" font-size="26" fill="#111827" font-weight="520" text-anchor="start" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">fall_k = 1{p_k ≥ τ},     τ = 0.35</text>
+<text x="1674" y="1125" font-size="25" fill="#374151" font-weight="520" text-anchor="end" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">(9)</text>
+<text x="948" y="1138" font-size="14" fill="#6b7280" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">The tuned final checkpoint uses the LSTM probability as primary score.</text>
+<rect x="80" y="1210" width="1640" height="56" rx="4" fill="#111827" stroke="#111827"/>
+<text x="120" y="1246" font-size="20" fill="#ffffff" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Summary</text>
+<text x="260" y="1247" font-size="24" fill="#e5e7eb" font-weight="520" text-anchor="start" font-family="Times New Roman, STIX Two Text, Cambria Math, serif">raw IMU → {s_t, g_t, Δt_t} → X_k ∈ R^{50×12} → robust scaling → Z_k → BiLSTM fall probability</text>
+</svg>

@@ -22,6 +22,7 @@
 !docs/VERIFICATION_AUDIT.md
 !docs/IMU_FALL_PREPROCESSING_FORMULAS.md
 !docs/SISFALL_DATA_DISTRIBUTION.md
+!docs/IMU_PREPROCESSING_PAPER_FORMULAS.md
 
 !assets/
 !assets/final_model_performance_dashboard.png
@@ -32,6 +33,7 @@
 !assets/imu_fall_clean_architecture.svg
 !assets/imu_fall_preprocessing_formulas.svg
 !assets/imu_fall_preprocessing_math_formulas.svg
+!assets/imu_preprocessing_paper_formulas.svg
 !assets/imu_dataset_distribution.svg
 !assets/imu_inference_speed_model_comparison.svg
 !assets/imu_model_performance_comparison.svg
@@ -61,6 +63,7 @@
 !scripts/generate_imu_clean_architecture_svg.py
 !scripts/generate_imu_preprocessing_formula_svg.py
 !scripts/generate_imu_math_formula_svg.py
+!scripts/generate_imu_paper_formula_svg.py
 !scripts/generate_imu_dataset_distribution_svg.py
 !scripts/generate_imu_inference_speed_comparison_svg.py
 !scripts/generate_imu_model_performance_comparison_svg.py
