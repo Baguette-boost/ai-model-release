@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1150" viewBox="0 0 1600 1150">
+<rect x="0" y="0" width="1600" height="1150" rx="0" fill="#f7f8fb" stroke="none"/>
+<text x="70" y="82" font-size="44" fill="#111827" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">IMU Preprocessing Metrics</text>
+<text x="70" y="122" font-size="22" fill="#667085" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Before preprocessing vs After preprocessing for fall detection training data</text>
+<text x="1530" y="82" font-size="18" fill="#667085" font-weight="700" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">SVM = sqrt(ax² + ay² + az²)</text>
+<rect x="70" y="175" width="340" height="165" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="94" y="220" font-size="22" fill="#667085" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Rows</text>
+<text x="94" y="270" font-size="34" fill="#d97706" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">349,560</text>
+<text x="250" y="270" font-size="16" fill="#9a3412" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">before</text>
+<text x="94" y="315" font-size="34" fill="#2563eb" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">349,560</text>
+<text x="250" y="315" font-size="16" fill="#1d4ed8" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">after</text>
+<text x="94" y="350" font-size="15" fill="#667085" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">same sample count</text>
+<rect x="440" y="175" width="340" height="165" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="464" y="220" font-size="22" fill="#667085" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Columns</text>
+<text x="464" y="270" font-size="34" fill="#d97706" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">20</text>
+<text x="620" y="270" font-size="16" fill="#9a3412" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">before</text>
+<text x="464" y="315" font-size="34" fill="#2563eb" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">22</text>
+<text x="620" y="315" font-size="16" fill="#1d4ed8" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">after</text>
+<text x="464" y="350" font-size="15" fill="#667085" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">derived features added</text>
+<rect x="810" y="175" width="340" height="165" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="834" y="220" font-size="22" fill="#667085" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Model-ready features</text>
+<text x="834" y="270" font-size="34" fill="#d97706" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">9</text>
+<text x="990" y="270" font-size="16" fill="#9a3412" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">before</text>
+<text x="834" y="315" font-size="34" fill="#2563eb" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">12</text>
+<text x="990" y="315" font-size="16" fill="#1d4ed8" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">after</text>
+<text x="834" y="350" font-size="15" fill="#667085" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">12 features required</text>
+<rect x="1180" y="175" width="340" height="165" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="1204" y="220" font-size="22" fill="#667085" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Numeric missing rate</text>
+<text x="1204" y="270" font-size="34" fill="#d97706" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">0.0%</text>
+<text x="1360" y="270" font-size="16" fill="#9a3412" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">before</text>
+<text x="1204" y="315" font-size="34" fill="#2563eb" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">0.0%</text>
+<text x="1360" y="315" font-size="16" fill="#1d4ed8" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">after</text>
+<text x="1204" y="350" font-size="15" fill="#667085" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">lower is better</text>
+<rect x="70" y="395" width="700" height="315" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="100" y="445" font-size="28" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Feature Readiness</text>
+<text x="110" y="495" font-size="20" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">accel_norm / SVM</text>
+<text x="420" y="495" font-size="20" fill="#dc2626" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">missing</text>
+<text x="590" y="495" font-size="20" fill="#059669" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">ready</text>
+<text x="110" y="543" font-size="20" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">gyro_norm</text>
+<text x="420" y="543" font-size="20" fill="#dc2626" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">missing</text>
+<text x="590" y="543" font-size="20" fill="#059669" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">ready</text>
+<text x="110" y="591" font-size="20" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">dt_s</text>
+<text x="420" y="591" font-size="20" fill="#dc2626" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">missing</text>
+<text x="590" y="591" font-size="20" fill="#059669" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">ready</text>
+<text x="110" y="639" font-size="20" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">fall_target</text>
+<text x="420" y="639" font-size="20" fill="#dc2626" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">missing</text>
+<text x="590" y="639" font-size="20" fill="#059669" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">ready</text>
+<text x="420" y="472" font-size="17" fill="#667085" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Before</text>
+<text x="590" y="472" font-size="17" fill="#667085" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">After</text>
+<rect x="830" y="395" width="700" height="315" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="860" y="445" font-size="28" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Signal Statistics</text>
+<text x="860" y="500" font-size="22" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">SVM mean: 1.050g -&gt; 1.050g</text>
+<text x="860" y="548" font-size="22" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">SVM p95:  1.531g -&gt; 1.531g</text>
+<text x="860" y="596" font-size="22" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">SVM p99:  2.565g -&gt; 2.565g</text>
+<text x="860" y="644" font-size="22" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Gyro mean: 34.2 -&gt; 34.2 dps</text>
+<text x="860" y="686" font-size="16" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Signal values are preserved; preprocessing adds explicit model features.</text>
+<rect x="70" y="760" width="1460" height="270" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="100" y="812" font-size="30" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Training Readiness Score</text>
+<text x="120" y="865" font-size="17" fill="#344054" font-weight="650" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Before: 9/12 model features</text>
+<rect x="120" y="875" width="580" height="28" rx="10" fill="#eef2f7" stroke="none"/>
+<rect x="120" y="875" width="435.0" height="28" rx="10" fill="#d97706" stroke="none"/>
+<text x="720" y="900" font-size="24" fill="#9a3412" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">75.0%</text>
+<text x="120" y="945" font-size="17" fill="#344054" font-weight="650" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">After: 12/12 model features</text>
+<rect x="120" y="955" width="580" height="28" rx="10" fill="#eef2f7" stroke="none"/>
+<rect x="120" y="955" width="580.0" height="28" rx="10" fill="#2563eb" stroke="none"/>
+<text x="720" y="980" font-size="24" fill="#1d4ed8" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">100.0%</text>
+<text x="860" y="870" font-size="24" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Preprocessing result</text>
+<text x="860" y="912" font-size="19" fill="#344054" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">The after file contains a binary fall target and derived temporal features.</text>
+<text x="860" y="952" font-size="19" fill="#344054" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">It is directly usable for the IMU Fall LSTM input pipeline.</text>
+<text x="70" y="1092" font-size="16" fill="#667085" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Before: ../data/iccas_sensor_lstm/final_iccas_sisfall_imu_merged.csv</text>
+<text x="1530" y="1092" font-size="16" fill="#667085" font-weight="500" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">After: ../data/iccas_sensor_lstm/imu_fall_preprocessed.csv</text>
+</svg>
