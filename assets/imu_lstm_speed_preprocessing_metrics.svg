@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1250" viewBox="0 0 1700 1250">
+<rect x="0" y="0" width="1700" height="1250" rx="0" fill="#f7f8fb" stroke="none"/>
+<text x="70" y="82" font-size="42" fill="#111827" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">IMU Fall LSTM: Inference Speed &amp; Preprocessing Metrics</text>
+<text x="70" y="122" font-size="22" fill="#667085" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Measured CPU inference speed with before/after preprocessing readiness</text>
+<text x="1630" y="82" font-size="18" fill="#667085" font-weight="700" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Window: 50 steps / 2.0s</text>
+<text x="1630" y="112" font-size="18" fill="#667085" font-weight="700" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Features: 12 / Threshold: 0.35</text>
+<rect x="70" y="175" width="360" height="165" rx="8" fill="#eff6ff" stroke="#d9dee8"/>
+<text x="94" y="220" font-size="22" fill="#667085" font-weight="750" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Realtime LSTM</text>
+<text x="94" y="278" font-size="38" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">1.1362 ms</text>
+<text x="94" y="318" font-size="17" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">avg, tensor + forward</text>
+<rect x="470" y="175" width="360" height="165" rx="8" fill="#fef3c7" stroke="#d9dee8"/>
+<text x="494" y="220" font-size="22" fill="#667085" font-weight="750" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Realtime p95</text>
+<text x="494" y="278" font-size="38" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">1.2074 ms</text>
+<text x="494" y="318" font-size="17" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">window 1-by-1</text>
+<rect x="870" y="175" width="360" height="165" rx="8" fill="#ecfdf3" stroke="#d9dee8"/>
+<text x="894" y="220" font-size="22" fill="#667085" font-weight="750" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Batch LSTM</text>
+<text x="894" y="278" font-size="38" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">0.1445 ms</text>
+<text x="894" y="318" font-size="17" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">batch size 256</text>
+<rect x="1270" y="175" width="360" height="165" rx="8" fill="#f5f3ff" stroke="#d9dee8"/>
+<text x="1294" y="220" font-size="22" fill="#667085" font-weight="750" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Throughput</text>
+<text x="1294" y="278" font-size="38" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">6,921/s</text>
+<text x="1294" y="318" font-size="17" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">batch sequences/sec</text>
+<rect x="70" y="390" width="760" height="330" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="100" y="442" font-size="29" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Actual LSTM Speed Measurement</text>
+<text x="100" y="498" font-size="22" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Device: CPU</text>
+<text x="100" y="542" font-size="22" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Test sequences: 10,532</text>
+<text x="100" y="586" font-size="22" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Batch total: 1521.813 ms</text>
+<text x="100" y="630" font-size="22" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Realtime median: 1.1226 ms</text>
+<text x="100" y="674" font-size="18" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Speed excludes server POST and map rendering.</text>
+<rect x="870" y="390" width="760" height="330" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="900" y="442" font-size="29" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Before vs After Preprocessing</text>
+<text x="900" y="498" font-size="22" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Rows: 349,560 -&gt; 349,560</text>
+<text x="900" y="542" font-size="22" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Columns: 20 -&gt; 22</text>
+<text x="900" y="586" font-size="22" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Model-ready features: 9/12 -&gt; 12/12</text>
+<text x="900" y="630" font-size="22" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Missing numeric rate: 0.0% -&gt; 0.0%</text>
+<text x="900" y="674" font-size="18" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">After adds accel_norm, gyro_norm, dt_s, and fall_target.</text>
+<rect x="70" y="770" width="760" height="285" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="100" y="822" font-size="29" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Training Readiness Score</text>
+<text x="120" y="880" font-size="19" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Before: 9/12 features</text>
+<rect x="120" y="900" width="560" height="30" rx="10" fill="#eef2f7" stroke="none"/>
+<rect x="120" y="900" width="420.0" height="30" rx="10" fill="#d97706" stroke="none"/>
+<text x="700" y="925" font-size="24" fill="#9a3412" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">75.0%</text>
+<text x="120" y="980" font-size="19" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">After: 12/12 features</text>
+<rect x="120" y="1000" width="560" height="30" rx="10" fill="#eef2f7" stroke="none"/>
+<rect x="120" y="1000" width="560.0" height="30" rx="10" fill="#2563eb" stroke="none"/>
+<text x="700" y="1025" font-size="24" fill="#1d4ed8" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">100.0%</text>
+<rect x="870" y="770" width="760" height="285" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="900" y="822" font-size="29" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Signal Preservation</text>
+<text x="900" y="880" font-size="22" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">SVM mean: 1.050g -&gt; 1.050g</text>
+<text x="900" y="930" font-size="22" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">SVM p99: 2.565g -&gt; 2.565g</text>
+<text x="900" y="980" font-size="22" fill="#344054" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Gyro p95: 125.2 -&gt; 125.2 dps</text>
+<text x="900" y="1025" font-size="17" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Preprocessing preserves raw signal magnitude while adding model-ready fields.</text>
+<text x="70" y="1145" font-size="17" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Data preparation timing: load 498.1 ms, build sequences 251.9 ms, scale test 6.7 ms</text>
+<text x="70" y="1185" font-size="17" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Inference speed is measured after the 50-step ready window has already been prepared.</text>
+<text x="1630" y="1185" font-size="17" fill="#667085" font-weight="550" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Model: iccas_final_hybrid_lstm_imu_fall.pt</text>
+</svg>
