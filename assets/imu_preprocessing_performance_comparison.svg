@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<rect x="0" y="0" width="1600" height="900" rx="0" fill="#fbfaff" stroke="none"/>
+<text x="105" y="72" font-size="36" fill="#272145" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">IMU 낙상 감지 - 전처리 전/후 성능 비교</text>
+<text x="105" y="113" font-size="18" fill="#6f6791" font-weight="650" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Accuracy · Precision · Recall · F1-score (0-1)</text>
+<rect x="930" y="47" width="20" height="20" rx="5" fill="#d97706" stroke="none"/>
+<text x="960" y="64" font-size="18" fill="#514872" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Before</text>
+<text x="960" y="91" font-size="13" fill="#8a82a6" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">ICCAS final IMU Fall binary LSTM</text>
+<rect x="1205" y="47" width="20" height="20" rx="5" fill="#5b55d9" stroke="none"/>
+<text x="1235" y="64" font-size="18" fill="#514872" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">After</text>
+<text x="1235" y="91" font-size="13" fill="#8a82a6" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">ICCAS + SisFall Hybrid IMU Fall LSTM</text>
+<line x1="145" y1="665.0" x2="1455" y2="665.0" stroke="#e7e2f5" stroke-width="1"/>
+<text x="117" y="671.0" font-size="16" fill="#796f9c" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.0</text>
+<line x1="145" y1="565.0" x2="1455" y2="565.0" stroke="#e7e2f5" stroke-width="1"/>
+<text x="117" y="571.0" font-size="16" fill="#796f9c" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.2</text>
+<line x1="145" y1="465.0" x2="1455" y2="465.0" stroke="#e7e2f5" stroke-width="1"/>
+<text x="117" y="471.0" font-size="16" fill="#796f9c" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.4</text>
+<line x1="145" y1="365.0" x2="1455" y2="365.0" stroke="#e7e2f5" stroke-width="1"/>
+<text x="117" y="371.0" font-size="16" fill="#796f9c" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.6</text>
+<line x1="145" y1="265.0" x2="1455" y2="265.0" stroke="#e7e2f5" stroke-width="1"/>
+<text x="117" y="271.0" font-size="16" fill="#796f9c" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.8</text>
+<line x1="145" y1="165.0" x2="1455" y2="165.0" stroke="#e7e2f5" stroke-width="1"/>
+<text x="117" y="171.0" font-size="16" fill="#796f9c" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">1.0</text>
+<line x1="145" y1="165" x2="145" y2="665" stroke="#d6cfea" stroke-width="1.4"/>
+<line x1="145" y1="665" x2="1455" y2="665" stroke="#d6cfea" stroke-width="1.4"/>
+<rect x="208.75" y="183.95000000000005" width="82" height="481.04999999999995" rx="5" fill="#d97706" stroke="none"/>
+<text x="249.75" y="173.95000000000005" font-size="16" fill="#514872" font-weight="750" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.962</text>
+<rect x="326.75" y="225.05" width="82" height="439.95" rx="5" fill="#5b55d9" stroke="none"/>
+<text x="367.75" y="215.05" font-size="16" fill="#514872" font-weight="750" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.880</text>
+<text x="308.75" y="713" font-size="19" fill="#514872" font-weight="780" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Accuracy</text>
+<rect x="536.25" y="257.5" width="82" height="407.5" rx="5" fill="#d97706" stroke="none"/>
+<text x="577.25" y="247.5" font-size="16" fill="#514872" font-weight="750" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.815</text>
+<rect x="654.25" y="240.10000000000002" width="82" height="424.9" rx="5" fill="#5b55d9" stroke="none"/>
+<text x="695.25" y="230.10000000000002" font-size="16" fill="#514872" font-weight="750" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.850</text>
+<text x="636.25" y="713" font-size="19" fill="#514872" font-weight="780" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Precision</text>
+<rect x="863.75" y="239.55" width="82" height="425.45" rx="5" fill="#d97706" stroke="none"/>
+<text x="904.75" y="229.55" font-size="16" fill="#514872" font-weight="750" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.851</text>
+<rect x="981.75" y="221.85000000000002" width="82" height="443.15" rx="5" fill="#5b55d9" stroke="none"/>
+<text x="1022.75" y="211.85000000000002" font-size="16" fill="#514872" font-weight="750" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.886</text>
+<text x="963.75" y="713" font-size="19" fill="#514872" font-weight="780" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Recall</text>
+<rect x="1191.25" y="248.75" width="82" height="416.25" rx="5" fill="#d97706" stroke="none"/>
+<text x="1232.25" y="238.75" font-size="16" fill="#514872" font-weight="750" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.833</text>
+<rect x="1309.25" y="231.14999999999998" width="82" height="433.85" rx="5" fill="#5b55d9" stroke="none"/>
+<text x="1350.25" y="221.14999999999998" font-size="16" fill="#514872" font-weight="750" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.868</text>
+<text x="1291.25" y="713" font-size="19" fill="#514872" font-weight="780" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">F1-score</text>
+<rect x="90" y="735" width="1420" height="100" rx="10" fill="#ffffff" stroke="#eee9fb"/>
+<text x="125" y="780" font-size="19" fill="#514872" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">전처리 효과</text>
+<text x="125" y="820" font-size="19" fill="#514872" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">성능 변화</text>
+<rect x="350" y="760" width="14" height="14" rx="7" fill="#d97706" stroke="none"/>
+<text x="372" y="775" font-size="16" fill="#514872" font-weight="720" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Before features 9/12 · columns 20 · threshold 0.82</text>
+<rect x="350" y="800" width="14" height="14" rx="7" fill="#5b55d9" stroke="none"/>
+<text x="372" y="815" font-size="16" fill="#514872" font-weight="720" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">After features 12/12 · columns 22 · threshold 0.35</text>
+<text x="910" y="775" font-size="18" fill="#5b55d9" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Recall +0.0354</text>
+<text x="1110" y="775" font-size="18" fill="#5b55d9" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">F1-score +0.0352</text>
+<text x="910" y="815" font-size="15" fill="#8a82a6" font-weight="650" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Accuracy is lower because the after set includes harder ICCAS+SisFall evaluation.</text>
+<text x="90" y="870" font-size="15" fill="#8a82a6" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Note: before/after values come from saved project reports and are not a strict same-split ablation.</text>
+<text x="1510" y="870" font-size="17" fill="#5b55d9" font-weight="850" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">After F1: 0.8677</text>
+</svg>
