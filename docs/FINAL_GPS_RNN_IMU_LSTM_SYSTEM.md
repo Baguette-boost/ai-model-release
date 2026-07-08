@@ -69,6 +69,8 @@ label == wandering -> 1
 
 ## 4. IMU 낙상 전처리
 
+자세한 전처리 수식은 `docs/IMU_FALL_PREPROCESSING_FORMULAS.md`에 정리했습니다.
+
 IMU 원본 컬럼:
 
 ```text
@@ -90,10 +92,11 @@ accel_norm, gyro_norm, dt_s
 전처리 계산:
 
 ```text
-accel_norm = sqrt(ax^2 + ay^2 + az^2)
-gyro_norm  = sqrt(wx^2 + wy^2 + wz^2)
-dt_s       = 이전 t_ms와의 차이 / 1000
-fall_target = 1 if label == fall else 0
+accel_norm_t = sqrt(ax_t^2 + ay_t^2 + az_t^2)
+gyro_norm_t  = sqrt(wx_t^2 + wy_t^2 + wz_t^2)
+dt_s_t       = clip(t_ms_t - t_ms_(t-1), 0, 1000) / 1000
+fall_target_t = 1 if label_t == fall else 0
+X_window     = [50 timesteps, 12 features]
 ```
 
 IMU LSTM 입력 shape:

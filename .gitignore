@@ -20,6 +20,7 @@
 !docs/GPS_KALMAN_RNN_COMPARISON.md
 !docs/GPS_RTDM_HYBRID_REPORT.md
 !docs/VERIFICATION_AUDIT.md
+!docs/IMU_FALL_PREPROCESSING_FORMULAS.md
 
 !assets/
 !assets/final_model_performance_dashboard.png
