@@ -36,6 +36,8 @@ ai-model-release/
   models/iccas_lstm_v1_imu_fall.json
   models/iccas_sisfall_lstm_imu_fall.pt
   models/iccas_sisfall_lstm_imu_fall.json
+  models/iccas_final_hybrid_lstm_imu_fall.pt
+  models/iccas_final_hybrid_lstm_imu_fall.json
 ```
 
 Git에 올리지 않는 파일은 원본 학습 데이터, 테스트 결과, 캐시 파일입니다.
@@ -96,13 +98,29 @@ python scripts/realtime_sensor_lstm.py inspect \
 
 ## 이미 학습된 모델로 시뮬레이션
 
+IMU 낙상 감지의 최종 권장 모델은 아래 파일입니다.
+
+```text
+models/iccas_final_hybrid_lstm_imu_fall.pt
+models/iccas_final_hybrid_lstm_imu_fall.json
+```
+
+이름에는 과거 실험명으로 `hybrid`가 남아 있지만, 최종 선택된 가중치는 LSTM 중심입니다. 실제 서비스/데모에서는 Accuracy만 높은 모델보다 Recall과 F1-score가 높은 이 모델을 사용합니다.
+
+```text
+Accuracy  : 0.8799
+Precision : 0.8498
+Recall    : 0.8863
+F1-score  : 0.8677
+```
+
 백엔드 없이 로컬에서 추론 결과 CSV만 만들려면 아래처럼 실행합니다.
 
 ```bash
 python scripts/realtime_sensor_lstm.py replay \
   --source ../ICCAS_total_data_with_fall.xlsx \
   --sheet data \
-  --model models/iccas_sensor_lstm_fall.pt \
+  --model models/iccas_final_hybrid_lstm_imu_fall.pt \
   --output outputs/replay_results.csv \
   --device cpu \
   --print-events
@@ -158,7 +176,7 @@ source .venv/bin/activate
 python scripts/realtime_sensor_lstm.py replay \
   --source ../ICCAS_total_data_with_fall.xlsx \
   --sheet data \
-  --model models/iccas_sensor_lstm_fall.pt \
+  --model models/iccas_final_hybrid_lstm_imu_fall.pt \
   --backend-url http://127.0.0.1:8000/api/sensor-result \
   --output outputs/backend_replay_results.csv \
   --sleep 0.05 \
@@ -182,7 +200,7 @@ http://127.0.0.1:8000/api/sensor-result/history?limit=5000
 
 ```bash
 python scripts/realtime_sensor_lstm.py live \
-  --model models/iccas_sensor_lstm_fall.pt \
+  --model models/iccas_final_hybrid_lstm_imu_fall.pt \
   --backend-url http://127.0.0.1:8000/api/sensor-result \
   --device cpu
 ```
