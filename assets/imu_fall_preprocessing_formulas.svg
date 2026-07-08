@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1320" viewBox="0 0 1800 1320">
+<rect x="0" y="0" width="1800" height="1320" rx="0" fill="#f8fafc" stroke="none"/>
+<text x="80" y="82" font-size="44" fill="#111827" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">IMU Fall Detection Preprocessing Formulas</text>
+<text x="80" y="122" font-size="22" fill="#667085" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Formula summary for 25 Hz IMU data, 2-second windows, and BiLSTM inference</text>
+<text x="1720" y="82" font-size="22" fill="#2563eb" font-weight="850" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">X_window = [50, 12]</text>
+<text x="1720" y="116" font-size="18" fill="#667085" font-weight="700" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">50 samples x 40 ms = 2.0 s</text>
+<rect x="80" y="180" width="520" height="230" rx="8" fill="#eff6ff" stroke="#d9dee8"/>
+<text x="106" y="224" font-size="25" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">1. Acceleration Magnitude / SVM</text>
+<text x="106" y="266" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">accel_norm_t = sqrt(ax_t^2 + ay_t^2 + az_t^2)</text>
+<text x="106" y="302" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">svm_t        = sqrt(ax_t^2 + ay_t^2 + az_t^2)</text>
+<text x="106" y="338" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">svm_g == accel_norm</text>
+<text x="106" y="384" font-size="16" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Used to detect impact intensity.</text>
+<rect x="640" y="180" width="520" height="230" rx="8" fill="#ecfdf3" stroke="#d9dee8"/>
+<text x="666" y="224" font-size="25" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">2. Gyroscope Magnitude</text>
+<text x="666" y="266" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">gyro_norm_t = sqrt(wx_t^2 + wy_t^2 + wz_t^2)</text>
+<text x="666" y="302" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">unit: deg/s</text>
+<text x="666" y="338" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">gyro_peak = max(gyro_norm_t)</text>
+<text x="666" y="384" font-size="16" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Used to detect fast body rotation.</text>
+<rect x="1200" y="180" width="520" height="230" rx="8" fill="#fff7ed" stroke="#d9dee8"/>
+<text x="1226" y="224" font-size="25" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">3. Time Delta</text>
+<text x="1226" y="266" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">dt_ms_t = t_ms_t - t_ms_(t-1)</text>
+<text x="1226" y="302" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">dt_ms_t = clip(dt_ms_t, 0, 1000)</text>
+<text x="1226" y="338" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">dt_s_t  = dt_ms_t / 1000</text>
+<text x="1226" y="384" font-size="16" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Normal 25 Hz sampling gives dt_s ~= 0.04.</text>
+<rect x="80" y="460" width="520" height="280" rx="8" fill="#fef2f2" stroke="#d9dee8"/>
+<text x="106" y="504" font-size="25" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">4. Binary Fall Target</text>
+<text x="106" y="546" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">fall_target_t = 1, if label_t == &quot;fall&quot;</text>
+<text x="106" y="582" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">fall_target_t = 0, otherwise</text>
+<text x="106" y="618" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">y_window = max(fall_target_start ... end)</text>
+<text x="106" y="714" font-size="16" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">A window is positive if any sample inside it is fall.</text>
+<rect x="640" y="460" width="520" height="280" rx="8" fill="#f5f3ff" stroke="#d9dee8"/>
+<text x="666" y="504" font-size="25" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">5. LSTM Feature Vector</text>
+<text x="666" y="546" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">x_t = [roll, pitch, yaw,</text>
+<text x="666" y="582" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">       ax, ay, az, wx, wy, wz,</text>
+<text x="666" y="618" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">       accel_norm, gyro_norm, dt_s]</text>
+<text x="666" y="654" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">X_window = [50 timesteps, 12 features]</text>
+<text x="666" y="714" font-size="16" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">This tensor is the direct BiLSTM input.</text>
+<rect x="1200" y="460" width="520" height="280" rx="8" fill="#eef2ff" stroke="#d9dee8"/>
+<text x="1226" y="504" font-size="25" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">6. Robust Scaling</text>
+<text x="1226" y="546" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">center_j = median(feature_j)</text>
+<text x="1226" y="582" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">scale_j  = Q3(feature_j) - Q1(feature_j)</text>
+<text x="1226" y="618" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">z_(t,j) = (x_(t,j) - center_j) / scale_j</text>
+<text x="1226" y="654" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">z_(t,j) = clip(z_(t,j), -12, 12)</text>
+<text x="1226" y="714" font-size="16" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Scaler statistics come from the training split.</text>
+<rect x="80" y="790" width="800" height="330" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="106" y="834" font-size="25" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">7. Physical Fall Context Features</text>
+<text x="106" y="876" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">impact_peak  = max(accel_norm_t)</text>
+<text x="106" y="912" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">freefall_min = min(accel_norm_t)</text>
+<text x="106" y="948" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">tilt_change_t = sqrt((roll_t-roll_0)^2 + (pitch_t-pitch_0)^2)</text>
+<text x="106" y="984" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">tilt_change = max(tilt_change_t)</text>
+<text x="106" y="1020" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">post_accel_std = std(accel_norm after impact)</text>
+<text x="106" y="1056" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">post_gyro_mean = mean(gyro_norm after impact)</text>
+<text x="106" y="1094" font-size="16" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">These are auxiliary context features; current final checkpoint uses LSTM-only decision.</text>
+<rect x="920" y="790" width="800" height="330" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="946" y="834" font-size="25" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">8. Algorithm Score &amp; Final Decision</text>
+<text x="946" y="876" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">impact_score = clip((impact_peak - 2.5) / 2.5, 0, 1)</text>
+<text x="946" y="912" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">rotation_score = max(clip(gyro_peak/250,0,1),</text>
+<text x="946" y="948" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">                     clip(tilt_change/45,0,1))</text>
+<text x="946" y="984" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">algorithm_score = 0.40*impact + 0.20*rotation</text>
+<text x="946" y="1020" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">                + 0.25*inactivity + 0.15*freefall_or_tilt</text>
+<text x="946" y="1056" font-size="20" fill="#111827" font-weight="700" text-anchor="start" font-family="SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace">fall_detected = LSTM(X_window) &gt;= 0.35</text>
+<text x="946" y="1094" font-size="16" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Tuned hybrid weight: LSTM 1.0 / Algorithm 0.0.</text>
+<rect x="80" y="1170" width="1640" height="70" rx="8" fill="#111827" stroke="#111827"/>
+<text x="120" y="1213" font-size="22" fill="#ffffff" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Code references</text>
+<text x="350" y="1213" font-size="19" fill="#e5e7eb" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">export_imu_preprocessed_csv.py  |  train_sisfall_merged_imu_lstm.py  |  train_hybrid_imu_fall.py</text>
+</svg>
