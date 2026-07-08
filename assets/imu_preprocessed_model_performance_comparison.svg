@@ -26,55 +26,55 @@
 <line x1="145" y1="670" x2="1455" y2="670" stroke="#d6cfea" stroke-width="1.4"/>
 <rect x="173.75" y="306.9566111453835" width="54" height="363.0433888546165" rx="5" fill="#5b55d9" stroke="none"/>
 <text x="200.75" y="296.9566111453835" font-size="15" fill="#514872" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.719</text>
-<rect x="245.75" y="279.78374117485777" width="54" height="390.21625882514223" rx="5" fill="#8177ee" stroke="none"/>
-<text x="272.75" y="269.78374117485777" font-size="15" fill="#514872" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.773</text>
+<rect x="245.75" y="280.0952772636918" width="54" height="389.9047227363082" rx="5" fill="#8177ee" stroke="none"/>
+<text x="272.75" y="270.0952772636918" font-size="15" fill="#514872" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.772</text>
 <rect x="317.75" y="284.2837069024608" width="54" height="385.7162930975392" rx="5" fill="#a496ee" stroke="none"/>
 <text x="344.75" y="274.2837069024608" font-size="15" fill="#514872" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.764</text>
-<rect x="389.75" y="275.110699842347" width="54" height="394.889300157653" rx="5" fill="#d9cff8" stroke="none"/>
-<text x="416.75" y="265.110699842347" font-size="15" fill="#514872" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.782</text>
+<rect x="389.75" y="275.42223593118104" width="54" height="394.57776406881896" rx="5" fill="#d9cff8" stroke="none"/>
+<text x="416.75" y="265.42223593118104" font-size="15" fill="#514872" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.781</text>
 <text x="308.75" y="718" font-size="19" fill="#514872" font-weight="780" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Accuracy</text>
 <rect x="501.25" y="377.74131548974947" width="54" height="292.25868451025053" rx="5" fill="#5b55d9" stroke="none"/>
 <text x="528.25" y="367.74131548974947" font-size="15" fill="#514872" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.579</text>
-<rect x="573.25" y="346.3727096678087" width="54" height="323.6272903321913" rx="5" fill="#8177ee" stroke="none"/>
-<text x="600.25" y="336.3727096678087" font-size="15" fill="#514872" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.641</text>
+<rect x="573.25" y="346.78497023809524" width="54" height="323.21502976190476" rx="5" fill="#8177ee" stroke="none"/>
+<text x="600.25" y="336.78497023809524" font-size="15" fill="#514872" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.640</text>
 <rect x="645.25" y="358.0306272569212" width="54" height="311.9693727430788" rx="5" fill="#a496ee" stroke="none"/>
 <text x="672.25" y="348.0306272569212" font-size="15" fill="#514872" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.618</text>
-<rect x="717.25" y="346.90035881865856" width="54" height="323.09964118134144" rx="5" fill="#d9cff8" stroke="none"/>
-<text x="744.25" y="336.90035881865856" font-size="15" fill="#514872" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.640</text>
+<rect x="717.25" y="346.93155050575035" width="54" height="323.06844949424965" rx="5" fill="#d9cff8" stroke="none"/>
+<text x="744.25" y="336.93155050575035" font-size="15" fill="#514872" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.640</text>
 <text x="636.25" y="718" font-size="19" fill="#514872" font-weight="780" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Precision</text>
 <rect x="828.75" y="275.75667370846935" width="54" height="394.24332629153065" rx="5" fill="#5b55d9" stroke="none"/>
 <text x="855.75" y="265.75667370846935" font-size="15" fill="#514872" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.781</text>
-<rect x="900.75" y="252.77126944497792" width="54" height="417.2287305550221" rx="5" fill="#8177ee" stroke="none"/>
-<text x="927.75" y="242.77126944497792" font-size="15" fill="#514872" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.826</text>
+<rect x="900.75" y="252.8682542730939" width="54" height="417.1317457269061" rx="5" fill="#8177ee" stroke="none"/>
+<text x="927.75" y="242.8682542730939" font-size="15" fill="#514872" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.826</text>
 <rect x="972.75" y="222.02707893220668" width="54" height="447.9729210677933" rx="5" fill="#a496ee" stroke="none"/>
 <text x="999.75" y="212.02707893220668" font-size="15" fill="#514872" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.887</text>
-<rect x="1044.75" y="220.37833685423465" width="54" height="449.62166314576535" rx="5" fill="#d9cff8" stroke="none"/>
-<text x="1071.75" y="210.37833685423465" font-size="15" fill="#514872" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.890</text>
+<rect x="1044.75" y="222.22104858843863" width="54" height="447.77895141156137" rx="5" fill="#d9cff8" stroke="none"/>
+<text x="1071.75" y="212.22104858843863" font-size="15" fill="#514872" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.887</text>
 <text x="963.75" y="718" font-size="19" fill="#514872" font-weight="780" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Recall</text>
 <rect x="1156.25" y="334.3242580328673" width="54" height="335.6757419671327" rx="5" fill="#5b55d9" stroke="none"/>
 <text x="1183.25" y="324.3242580328673" font-size="15" fill="#514872" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.665</text>
-<rect x="1228.25" y="305.484899328859" width="54" height="364.515100671141" rx="5" fill="#8177ee" stroke="none"/>
-<text x="1255.25" y="295.484899328859" font-size="15" fill="#514872" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.722</text>
+<rect x="1228.25" y="305.7835163913809" width="54" height="364.2164836086191" rx="5" fill="#8177ee" stroke="none"/>
+<text x="1255.25" y="295.7835163913809" font-size="15" fill="#514872" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.721</text>
 <rect x="1300.25" y="302.19883317565433" width="54" height="367.80116682434567" rx="5" fill="#a496ee" stroke="none"/>
 <text x="1327.25" y="292.19883317565433" font-size="15" fill="#514872" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.728</text>
-<rect x="1372.25" y="293.99743033807107" width="54" height="376.00256966192893" rx="5" fill="#d9cff8" stroke="none"/>
-<text x="1399.25" y="283.99743033807107" font-size="15" fill="#514872" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.745</text>
+<rect x="1372.25" y="294.6643593045718" width="54" height="375.3356406954282" rx="5" fill="#d9cff8" stroke="none"/>
+<text x="1399.25" y="284.6643593045718" font-size="15" fill="#514872" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">0.743</text>
 <text x="1291.25" y="718" font-size="19" fill="#514872" font-weight="780" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">F1-score</text>
 <rect x="90" y="735" width="1420" height="98" rx="10" fill="#ffffff" stroke="#eee9fb"/>
 <text x="125" y="780" font-size="19" fill="#514872" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">단건 추론 (ms)</text>
 <text x="125" y="820" font-size="19" fill="#514872" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">학습 시간 (s)</text>
 <rect x="355" y="763" width="16" height="16" rx="8" fill="#5b55d9" stroke="none"/>
-<text x="379" y="778" font-size="16" fill="#514872" font-weight="720" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">RNN 0.230</text>
-<text x="379" y="819" font-size="16" fill="#514872" font-weight="720" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">32.4</text>
+<text x="379" y="778" font-size="16" fill="#514872" font-weight="720" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">RNN 0.236</text>
+<text x="379" y="819" font-size="16" fill="#514872" font-weight="720" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">36.6</text>
 <rect x="640" y="763" width="16" height="16" rx="8" fill="#8177ee" stroke="none"/>
-<text x="664" y="778" font-size="16" fill="#514872" font-weight="720" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">GRU 0.572</text>
-<text x="664" y="819" font-size="16" fill="#514872" font-weight="720" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">96.1</text>
+<text x="664" y="778" font-size="16" fill="#514872" font-weight="720" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">GRU 0.564</text>
+<text x="664" y="819" font-size="16" fill="#514872" font-weight="720" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">100.0</text>
 <rect x="925" y="763" width="16" height="16" rx="8" fill="#a496ee" stroke="none"/>
-<text x="949" y="778" font-size="16" fill="#514872" font-weight="720" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">LSTM 0.563</text>
-<text x="949" y="819" font-size="16" fill="#514872" font-weight="720" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">122.7</text>
+<text x="949" y="778" font-size="16" fill="#514872" font-weight="720" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">LSTM 0.565</text>
+<text x="949" y="819" font-size="16" fill="#514872" font-weight="720" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">124.7</text>
 <rect x="1210" y="763" width="16" height="16" rx="8" fill="#d9cff8" stroke="none"/>
-<text x="1234" y="778" font-size="16" fill="#514872" font-weight="720" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">TRANSFORMER 0.305</text>
-<text x="1234" y="819" font-size="16" fill="#514872" font-weight="720" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">171.1</text>
+<text x="1234" y="778" font-size="16" fill="#514872" font-weight="720" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">TRANSFORMER 0.301</text>
+<text x="1234" y="819" font-size="16" fill="#514872" font-weight="720" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">169.8</text>
 <text x="90" y="870" font-size="15" fill="#8a82a6" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Source: ../data/iccas_sensor_lstm/imu_fall_preprocessed.csv · seq_len 50 · stride 4 · epoch 15</text>
-<text x="1510" y="870" font-size="17" fill="#5b55d9" font-weight="850" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Best F1: TRANSFORMER 0.7446</text>
+<text x="1510" y="870" font-size="17" fill="#5b55d9" font-weight="850" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans KR,sans-serif">Best Hybrid F1: TRANSFORMER 0.7432</text>
 </svg>

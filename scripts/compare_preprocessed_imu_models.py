@@ -195,6 +195,76 @@ def best_threshold(y_true: np.ndarray, scores: np.ndarray) -> tuple[float, dict[
     return best_t, best_m
 
 
+def algorithm_scores(
+    x_raw: np.ndarray,
+    impact_g: float,
+    freefall_g: float,
+    gyro_dps: float,
+    tilt_deg: float,
+    still_accel_std: float,
+    still_gyro_dps: float,
+    post_samples: int,
+) -> np.ndarray:
+    index = {name: FEATURE_COLUMNS.index(name) for name in FEATURE_COLUMNS}
+    accel = x_raw[:, :, index["accel_norm"]]
+    gyro = x_raw[:, :, index["gyro_norm"]]
+    roll = x_raw[:, :, index["roll"]]
+    pitch = x_raw[:, :, index["pitch"]]
+
+    impact_peak = np.nanmax(accel, axis=1)
+    freefall_min = np.nanmin(accel, axis=1)
+    gyro_peak = np.nanmax(gyro, axis=1)
+    tilt_change = np.nanmax(np.sqrt((roll - roll[:, :1]) ** 2 + (pitch - pitch[:, :1]) ** 2), axis=1)
+    impact_index = np.nanargmax(accel, axis=1)
+
+    post_accel_std = np.zeros(len(x_raw), dtype=np.float32)
+    post_gyro_mean = np.zeros(len(x_raw), dtype=np.float32)
+    inactivity = np.zeros(len(x_raw), dtype=np.float32)
+    for i, idx in enumerate(impact_index):
+        start = int(idx) + 1
+        end = min(x_raw.shape[1], start + post_samples)
+        if start >= x_raw.shape[1]:
+            segment_accel = accel[i, -max(2, post_samples) :]
+            segment_gyro = gyro[i, -max(2, post_samples) :]
+        else:
+            segment_accel = accel[i, start:end]
+            segment_gyro = gyro[i, start:end]
+        post_accel_std[i] = float(np.nanstd(segment_accel)) if len(segment_accel) else 0.0
+        post_gyro_mean[i] = float(np.nanmean(segment_gyro)) if len(segment_gyro) else 0.0
+        inactivity[i] = float(post_accel_std[i] <= still_accel_std and post_gyro_mean[i] <= still_gyro_dps)
+
+    impact_score = np.clip((impact_peak - impact_g) / max(impact_g, 1e-6), 0.0, 1.0)
+    freefall_score = (freefall_min <= freefall_g).astype(np.float32)
+    rotation_score = np.maximum(
+        np.clip(gyro_peak / max(gyro_dps, 1e-6), 0.0, 1.0),
+        np.clip(tilt_change / max(tilt_deg, 1e-6), 0.0, 1.0),
+    )
+    score = (
+        0.40 * impact_score
+        + 0.20 * rotation_score
+        + 0.25 * inactivity
+        + 0.15 * np.maximum(freefall_score, np.clip(tilt_change / max(tilt_deg, 1e-6), 0.0, 1.0))
+    )
+    return np.clip(score, 0.0, 1.0).astype(np.float32)
+
+
+def tune_hybrid(y_true: np.ndarray, model_scores: np.ndarray, algo_scores: np.ndarray) -> tuple[float, float, dict[str, Any]]:
+    best_weight = 1.0
+    best_threshold_value, best_metrics = best_threshold(y_true, model_scores)
+    for model_weight in np.linspace(0.0, 1.0, 21):
+        hybrid_scores = model_weight * model_scores + (1.0 - model_weight) * algo_scores
+        threshold, current = best_threshold(y_true, hybrid_scores)
+        if (current["f1"], current["recall"], current["accuracy"]) > (
+            best_metrics["f1"],
+            best_metrics["recall"],
+            best_metrics["accuracy"],
+        ):
+            best_weight = float(model_weight)
+            best_threshold_value = float(threshold)
+            best_metrics = current
+    return best_weight, best_threshold_value, best_metrics
+
+
 def load_preprocessed_csv(path: Path) -> pd.DataFrame:
     frame = pd.read_csv(path, low_memory=False)
     frame = frame.copy()
@@ -340,7 +410,13 @@ def measure_latency(model: nn.Module, x: np.ndarray, batch_size: int, device: to
     }
 
 
-def train_one(architecture: str, split: dict[str, Any], args: argparse.Namespace, device: torch.device) -> dict[str, Any]:
+def train_one(
+    architecture: str,
+    split: dict[str, Any],
+    raw_split: dict[str, Any],
+    args: argparse.Namespace,
+    device: torch.device,
+) -> dict[str, Any]:
     set_seed(args.seed)
     model = BinarySequenceModel(
         architecture,
@@ -393,6 +469,35 @@ def train_one(architecture: str, split: dict[str, Any], args: argparse.Namespace
     threshold, validation_metrics = best_threshold(split["y_validation"], validation_scores)
     test_scores = predict_scores(model, split["x_test"], args.batch_size, device)
     test_metrics = metrics(split["y_test"], test_scores, threshold)
+    validation_algo = algorithm_scores(
+        raw_split["x_validation"],
+        args.impact_g,
+        args.freefall_g,
+        args.gyro_dps,
+        args.tilt_deg,
+        args.still_accel_std,
+        args.still_gyro_dps,
+        args.post_samples,
+    )
+    test_algo = algorithm_scores(
+        raw_split["x_test"],
+        args.impact_g,
+        args.freefall_g,
+        args.gyro_dps,
+        args.tilt_deg,
+        args.still_accel_std,
+        args.still_gyro_dps,
+        args.post_samples,
+    )
+    algo_threshold, validation_algo_metrics = best_threshold(split["y_validation"], validation_algo)
+    test_algo_metrics = metrics(split["y_test"], test_algo, algo_threshold)
+    hybrid_weight, hybrid_threshold, validation_hybrid_metrics = tune_hybrid(
+        split["y_validation"],
+        validation_scores,
+        validation_algo,
+    )
+    test_hybrid_scores = hybrid_weight * test_scores + (1.0 - hybrid_weight) * test_algo
+    test_hybrid_metrics = metrics(split["y_test"], test_hybrid_scores, hybrid_threshold)
     latency = measure_latency(model, split["x_test"], args.batch_size, device, args.latency_repeats)
     return {
         "task": "imu_fall_preprocessed",
@@ -401,9 +506,21 @@ def train_one(architecture: str, split: dict[str, Any], args: argparse.Namespace
         "sequence_length": args.sequence_length,
         "parameter_count": int(sum(parameter.numel() for parameter in model.parameters())),
         "train_seconds": train_seconds,
-        "threshold": threshold,
-        "validation_metrics": validation_metrics,
-        "test_metrics": test_metrics,
+        "threshold": hybrid_threshold,
+        "model_threshold": threshold,
+        "algorithm_threshold": algo_threshold,
+        "hybrid_model_weight": hybrid_weight,
+        "hybrid_algorithm_weight": 1.0 - hybrid_weight,
+        "validation_metrics": {
+            "model_only": validation_metrics,
+            "algorithm_only": validation_algo_metrics,
+            "hybrid": validation_hybrid_metrics,
+        },
+        "test_metrics": {
+            "model_only": test_metrics,
+            "algorithm_only": test_algo_metrics,
+            "hybrid": test_hybrid_metrics,
+        },
         "latency": latency,
         "history": history,
     }
@@ -411,28 +528,43 @@ def train_one(architecture: str, split: dict[str, Any], args: argparse.Namespace
 
 def write_csv(report: dict[str, Any], path: Path) -> None:
     lines = [
-        "task,architecture,accuracy,precision,recall,f1,threshold,train_seconds,single_sequence_ms,batch_per_sequence_ms,parameter_count"
+        "task,architecture,method,accuracy,precision,recall,f1,threshold,model_weight,algorithm_weight,"
+        "train_seconds,single_sequence_ms,batch_per_sequence_ms,parameter_count"
     ]
     for result in report["results"]:
-        test = result["test_metrics"]
         latency = result["latency"]
-        lines.append(
-            ",".join(
-                [
-                    result["task"],
-                    result["architecture"],
-                    f"{test['accuracy']:.6f}",
-                    f"{test['precision']:.6f}",
-                    f"{test['recall']:.6f}",
-                    f"{test['f1']:.6f}",
-                    f"{result['threshold']:.4f}",
-                    f"{result['train_seconds']:.3f}",
-                    f"{latency['single_sequence_ms']:.6f}",
-                    f"{latency['batch_per_sequence_ms']:.6f}",
-                    str(result["parameter_count"]),
-                ]
+        method_thresholds = {
+            "model_only": result["model_threshold"],
+            "algorithm_only": result["algorithm_threshold"],
+            "hybrid": result["threshold"],
+        }
+        method_weights = {
+            "model_only": (1.0, 0.0),
+            "algorithm_only": (0.0, 1.0),
+            "hybrid": (result["hybrid_model_weight"], result["hybrid_algorithm_weight"]),
+        }
+        for method, test in result["test_metrics"].items():
+            model_weight, algorithm_weight = method_weights[method]
+            lines.append(
+                ",".join(
+                    [
+                        result["task"],
+                        result["architecture"],
+                        method,
+                        f"{test['accuracy']:.6f}",
+                        f"{test['precision']:.6f}",
+                        f"{test['recall']:.6f}",
+                        f"{test['f1']:.6f}",
+                        f"{method_thresholds[method]:.4f}",
+                        f"{model_weight:.2f}",
+                        f"{algorithm_weight:.2f}",
+                        f"{result['train_seconds']:.3f}",
+                        f"{latency['single_sequence_ms']:.6f}",
+                        f"{latency['batch_per_sequence_ms']:.6f}",
+                        str(result["parameter_count"]),
+                    ]
+                )
             )
-        )
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
@@ -452,28 +584,48 @@ def write_markdown(report: dict[str, Any], path: Path) -> None:
         "- Feature: 전처리 완료 12 features, roll/pitch/yaw + accel + gyro + accel_norm + gyro_norm + dt_s",
         "- Split: SisFall group split, ICCAS chronological split",
         "",
-        "## 성능 비교",
+        "## Hybrid 성능 비교",
         "",
-        "| Task | Model | Accuracy | Precision | Recall | F1-score | Single inference ms | Batch per sequence ms | Train sec | Params | Threshold |",
+        "| Task | Model | Accuracy | Precision | Recall | F1-score | Model weight | Algorithm weight | Threshold | Single inference ms | Train sec |",
         "| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
     ]
     for result in report["results"]:
-        test = result["test_metrics"]
+        test = result["test_metrics"]["hybrid"]
         latency = result["latency"]
         lines.append(
             f"| IMU 낙상 전처리 후 | {result['architecture'].upper()} | "
             f"{test['accuracy']:.4f} | {test['precision']:.4f} | {test['recall']:.4f} | {test['f1']:.4f} | "
-            f"{latency['single_sequence_ms']:.3f} | {latency['batch_per_sequence_ms']:.4f} | "
-            f"{result['train_seconds']:.1f} | {result['parameter_count']} | {result['threshold']:.2f} |"
+            f"{result['hybrid_model_weight']:.2f} | {result['hybrid_algorithm_weight']:.2f} | {result['threshold']:.2f} | "
+            f"{latency['single_sequence_ms']:.3f} | {result['train_seconds']:.1f} |"
         )
-    best = max(report["results"], key=lambda item: item["test_metrics"]["f1"])
+    lines += [
+        "",
+        "## Model Only vs Hybrid",
+        "",
+        "| Model | Method | Accuracy | Precision | Recall | F1-score | Threshold |",
+        "| --- | --- | ---: | ---: | ---: | ---: | ---: |",
+    ]
+    for result in report["results"]:
+        thresholds = {
+            "model_only": result["model_threshold"],
+            "algorithm_only": result["algorithm_threshold"],
+            "hybrid": result["threshold"],
+        }
+        for method in ["model_only", "algorithm_only", "hybrid"]:
+            test = result["test_metrics"][method]
+            lines.append(
+                f"| {result['architecture'].upper()} | {method} | {test['accuracy']:.4f} | {test['precision']:.4f} | "
+                f"{test['recall']:.4f} | {test['f1']:.4f} | {thresholds[method]:.2f} |"
+            )
+    best = max(report["results"], key=lambda item: item["test_metrics"]["hybrid"]["f1"])
     lines += [
         "",
         "## 결론",
         "",
-        f"- 전처리 후 기준 최고 F1 모델: `{best['architecture'].upper()}`",
-        f"- 최고 F1-score: `{best['test_metrics']['f1']:.4f}`",
-        f"- 해당 모델 Accuracy: `{best['test_metrics']['accuracy']:.4f}`",
+        f"- 전처리 후 Hybrid 기준 최고 F1 모델: `{best['architecture'].upper()}`",
+        f"- 최고 Hybrid F1-score: `{best['test_metrics']['hybrid']['f1']:.4f}`",
+        f"- 해당 모델 Accuracy: `{best['test_metrics']['hybrid']['accuracy']:.4f}`",
+        f"- 선택된 결합 가중치: model `{best['hybrid_model_weight']:.2f}`, algorithm `{best['hybrid_algorithm_weight']:.2f}`",
         "- 낙상 감지는 Accuracy 단독보다 Precision, Recall, F1-score를 함께 보는 것이 맞습니다.",
         "",
     ]
@@ -534,7 +686,7 @@ def render_svg(report: dict[str, Any]) -> str:
         start_x = group_center - group_bar_w / 2
         for model_index, result in enumerate(results):
             arch = result["architecture"]
-            value = result["test_metrics"][metric]
+            value = result["test_metrics"]["hybrid"][metric]
             x = start_x + model_index * (bar_w + bar_gap)
             bar_h = chart_h * value
             y = base_y - bar_h
@@ -557,10 +709,10 @@ def render_svg(report: dict[str, Any]) -> str:
             svg_text(x + 24, 778, f"{arch.upper()} {result['latency']['single_sequence_ms']:.3f}", 16, "#514872", 720),
             svg_text(x + 24, 819, f"{result['train_seconds']:.1f}", 16, "#514872", 720),
         ]
-    best = max(results, key=lambda item: item["test_metrics"]["f1"])
+    best = max(results, key=lambda item: item["test_metrics"]["hybrid"]["f1"])
     parts += [
         svg_text(90, 870, f"Source: {report['source']} · seq_len {report['sequence_length']} · stride {report['sequence_stride']} · epoch {report['epochs']}", 15, "#8a82a6", 600),
-        svg_text(1510, 870, f"Best F1: {best['architecture'].upper()} {best['test_metrics']['f1']:.4f}", 17, "#5b55d9", 850, "end"),
+        svg_text(1510, 870, f"Best Hybrid F1: {best['architecture'].upper()} {best['test_metrics']['hybrid']['f1']:.4f}", 17, "#5b55d9", 850, "end"),
         "</svg>",
     ]
     return "\n".join(parts)
@@ -594,6 +746,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--architectures", nargs="+", default=["rnn", "gru", "lstm", "transformer"])
     parser.add_argument("--transformer-heads", type=int, default=4)
     parser.add_argument("--latency-repeats", type=int, default=100)
+    parser.add_argument("--impact-g", type=float, default=2.5)
+    parser.add_argument("--freefall-g", type=float, default=0.6)
+    parser.add_argument("--gyro-dps", type=float, default=250.0)
+    parser.add_argument("--tilt-deg", type=float, default=45.0)
+    parser.add_argument("--still-accel-std", type=float, default=0.35)
+    parser.add_argument("--still-gyro-dps", type=float, default=80.0)
+    parser.add_argument("--post-samples", type=int, default=25)
     return parser.parse_args()
 
 
@@ -609,7 +768,7 @@ def main() -> None:
         f"preprocessed split: train={len(split['y_train'])}, validation={len(split['y_validation'])}, "
         f"test={len(split['y_test'])}, test_positive={int(split['y_test'].sum())}, device={device}"
     )
-    results = [train_one(architecture, split, args, device) for architecture in args.architectures]
+    results = [train_one(architecture, split, raw_split, args, device) for architecture in args.architectures]
     report = {
         "source": str(args.source),
         "device": str(device),
@@ -633,6 +792,15 @@ def main() -> None:
             "validation_negative": int(len(split["y_validation"]) - split["y_validation"].sum()),
             "test_positive": int(split["y_test"].sum()),
             "test_negative": int(len(split["y_test"]) - split["y_test"].sum()),
+        },
+        "fall_algorithm": {
+            "impact_g": args.impact_g,
+            "freefall_g": args.freefall_g,
+            "gyro_dps": args.gyro_dps,
+            "tilt_deg": args.tilt_deg,
+            "still_accel_std": args.still_accel_std,
+            "still_gyro_dps": args.still_gyro_dps,
+            "post_samples": args.post_samples,
         },
         "results": results,
     }
