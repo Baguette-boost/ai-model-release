@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="980" viewBox="0 0 1800 980">
+<defs>
+<marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+<path d="M2,2 L10,6 L2,10 Z" fill="#98a2b3"/>
+</marker>
+</defs>
+<rect x="0" y="0" width="1800" height="980" rx="0" fill="#f8fafc" stroke="none"/>
+<text x="80" y="86" font-size="46" fill="#111827" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">IMU Fall Detection Architecture</text>
+<text x="80" y="126" font-size="22" fill="#667085" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Clean inference pipeline for the BiLSTM fall detector</text>
+<text x="1720" y="86" font-size="24" fill="#dc2626" font-weight="850" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">F1 86.8%</text>
+<text x="1720" y="120" font-size="18" fill="#667085" font-weight="700" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Realtime 1.14 ms/window</text>
+<rect x="80" y="230" width="300" height="170" rx="8" fill="#eff6ff" stroke="#d9dee8"/>
+<text x="104" y="276" font-size="23" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">1. IMU Stream</text>
+<text x="104" y="326" font-size="26" fill="#344054" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">25 Hz sensor input</text>
+<text x="104" y="365" font-size="18" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">accel + gyro + posture</text>
+<line x1="380" y1="315.0" x2="418" y2="315.0" stroke="#98a2b3" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="428" y="230" width="300" height="170" rx="8" fill="#ecfdf3" stroke="#d9dee8"/>
+<text x="452" y="276" font-size="23" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">2. Window Buffer</text>
+<text x="452" y="326" font-size="26" fill="#344054" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">50 steps</text>
+<text x="452" y="365" font-size="18" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">2.0s rolling window</text>
+<line x1="728" y1="315.0" x2="766" y2="315.0" stroke="#98a2b3" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="776" y="230" width="300" height="170" rx="8" fill="#fff7ed" stroke="#d9dee8"/>
+<text x="800" y="276" font-size="23" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">3. Feature Layer</text>
+<text x="800" y="326" font-size="26" fill="#344054" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">12 model features</text>
+<text x="800" y="365" font-size="18" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">SVM, gyro_norm, dt_s</text>
+<line x1="1076" y1="315.0" x2="1114" y2="315.0" stroke="#98a2b3" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="1124" y="230" width="300" height="170" rx="8" fill="#f5f3ff" stroke="#d9dee8"/>
+<text x="1148" y="276" font-size="23" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">4. BiLSTM + Attention</text>
+<text x="1148" y="326" font-size="26" fill="#344054" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">sequence classifier</text>
+<text x="1148" y="365" font-size="18" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">hidden 64, 2 layers</text>
+<line x1="1424" y1="315.0" x2="1462" y2="315.0" stroke="#98a2b3" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="1472" y="230" width="300" height="170" rx="8" fill="#fef2f2" stroke="#d9dee8"/>
+<text x="1496" y="276" font-size="23" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">5. Fall Decision</text>
+<text x="1496" y="326" font-size="26" fill="#344054" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">score &gt;= 0.35</text>
+<text x="1496" y="365" font-size="18" fill="#667085" font-weight="550" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">POST result to backend</text>
+<rect x="80" y="480" width="520" height="260" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="115" y="535" font-size="30" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Input Tensor</text>
+<text x="115" y="590" font-size="25" fill="#2563eb" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">shape = (50, 12)</text>
+<text x="115" y="638" font-size="19" fill="#344054" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">roll, pitch, yaw</text>
+<text x="115" y="674" font-size="19" fill="#344054" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">ax, ay, az, wx, wy, wz</text>
+<text x="115" y="710" font-size="19" fill="#344054" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">accel_norm, gyro_norm, dt_s</text>
+<rect x="640" y="480" width="520" height="260" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="675" y="535" font-size="30" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Model Block</text>
+<text x="675" y="590" font-size="25" fill="#344054" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Bidirectional LSTM</text>
+<text x="675" y="638" font-size="21" fill="#344054" font-weight="650" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Attention pooling</text>
+<text x="675" y="674" font-size="21" fill="#344054" font-weight="650" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">LayerNorm + Dropout + Linear</text>
+<text x="675" y="710" font-size="21" fill="#2563eb" font-weight="800" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Output: fall probability</text>
+<rect x="1200" y="480" width="520" height="260" rx="8" fill="#ffffff" stroke="#d9dee8"/>
+<text x="1235" y="535" font-size="30" fill="#172033" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Safety Context</text>
+<text x="1235" y="590" font-size="22" fill="#344054" font-weight="750" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Impact / rotation / inactivity</text>
+<text x="1235" y="638" font-size="20" fill="#667085" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Used as an auxiliary explanation</text>
+<text x="1235" y="674" font-size="20" fill="#667085" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Current tuned weight:</text>
+<text x="1235" y="710" font-size="22" fill="#dc2626" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">LSTM 1.0, Algorithm 0.0</text>
+<rect x="80" y="810" width="1640" height="90" rx="8" fill="#111827" stroke="#111827"/>
+<text x="120" y="865" font-size="24" fill="#ffffff" font-weight="850" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">Runtime summary</text>
+<text x="370" y="865" font-size="22" fill="#e5e7eb" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">50-step ready window -&gt; BiLSTM inference -&gt; fall_score -&gt; backend event</text>
+<text x="1680" y="865" font-size="18" fill="#cbd5e1" font-weight="700" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">CPU measured</text>
+</svg>

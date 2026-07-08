@@ -27,6 +27,7 @@
 !assets/final_model_performance_summary.csv
 !assets/imu_fall_inference_flow.png
 !assets/imu_fall_inference_flow.svg
+!assets/imu_fall_clean_architecture.svg
 !assets/imu_preprocessing_before_after_metrics.svg
 !assets/imu_lstm_speed_preprocessing_metrics.svg
 
@@ -49,6 +50,7 @@
 !scripts/export_imu_preprocessed_csv.py
 !scripts/export_imu_svm_csv.py
 !scripts/generate_imu_inference_visual.py
+!scripts/generate_imu_clean_architecture_svg.py
 !scripts/generate_imu_preprocessing_metrics_svg.py
 !scripts/generate_imu_lstm_speed_preprocessing_metrics.py
 !scripts/train_gps_rnn_wandering.py
