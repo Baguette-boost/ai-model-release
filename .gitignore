@@ -24,6 +24,7 @@
 !docs/SISFALL_DATA_DISTRIBUTION.md
 !docs/IMU_PREPROCESSING_PAPER_FORMULAS.md
 !docs/ALL_DATASET_DISTRIBUTION.md
+!docs/HYBRID_IMU_FALL_DOCKER.md
 
 !assets/
 !assets/final_model_performance_dashboard.png
@@ -73,6 +74,7 @@
 !scripts/generate_imu_preprocessing_performance_comparison_svg.py
 !scripts/generate_imu_preprocessing_metrics_svg.py
 !scripts/generate_imu_lstm_speed_preprocessing_metrics.py
+!scripts/hybrid_imu_fall_api.py
 !scripts/train_gps_rnn_wandering.py
 !scripts/compare_gps_kalman_rnn.py
 !scripts/train_rtdm_gps_hybrid.py
@@ -104,5 +106,9 @@
 !models/iccas_final_sisfall_lstm_imu_fall.json
 !models/iccas_final_hybrid_lstm_imu_fall.pt
 !models/iccas_final_hybrid_lstm_imu_fall.json
+
+!Dockerfile
+!docker-compose.yml
+!.dockerignore
 !models/iccas_final_rnn_gps_wandering.pt
 !models/iccas_final_rnn_gps_wandering.json

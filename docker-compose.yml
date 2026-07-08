@@ -1,0 +1,12 @@
+services:
+  hybrid-imu-fall:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: iccas-hybrid-imu-fall:latest
+    container_name: iccas-hybrid-imu-fall
+    environment:
+      MODEL_PATH: models/iccas_final_hybrid_lstm_imu_fall.pt
+    ports:
+      - "8001:8001"
+    restart: unless-stopped

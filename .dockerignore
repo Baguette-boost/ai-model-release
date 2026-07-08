@@ -1,0 +1,17 @@
+.git
+.venv
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.DS_Store
+data
+assets
+docs
+*.xlsx
+*.csv
+*.zip
+models/*.pt
+models/*.json
+!models/iccas_final_hybrid_lstm_imu_fall.pt
+!models/iccas_final_hybrid_lstm_imu_fall.json
