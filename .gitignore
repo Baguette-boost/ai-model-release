@@ -55,6 +55,7 @@
 !assets/imu_lstm_speed_preprocessing_metrics.svg
 !assets/imu_preprocessing_effect_comparison.svg
 !assets/imu_acceleration_distribution_analysis.svg
+!assets/imu_performance_improvement_cause.svg
 
 !scripts/
 !scripts/realtime_sensor_lstm.py
@@ -96,6 +97,7 @@
 !scripts/generate_conference_sector_svgs.py
 !scripts/train_imu_1d_cnn_experiment.py
 !scripts/train_imu_cnn_lstm_experiment.py
+!scripts/generate_imu_improvement_cause_svg.py
 
 !models/
 !models/iccas_sensor_lstm_fall.pt
