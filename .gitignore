@@ -93,6 +93,7 @@
 !scripts/compare_gps_kalman_rnn.py
 !scripts/train_rtdm_gps_hybrid.py
 !scripts/generate_conference_sector_svgs.py
+!scripts/train_imu_1d_cnn_experiment.py
 
 !models/
 !models/iccas_sensor_lstm_fall.pt
@@ -123,6 +124,15 @@
 !models/iccas_final_hybrid_lstm_imu_fall.json
 
 assets/conference_sectors/._*
+
+!experiments/
+!experiments/imu_fall_1d_cnn/
+!experiments/imu_fall_1d_cnn/README.md
+!experiments/imu_fall_1d_cnn/metrics.csv
+!experiments/imu_fall_1d_cnn/metrics.json
+!experiments/imu_fall_1d_cnn/imu_fall_1d_cnn.json
+!experiments/imu_fall_1d_cnn/imu_fall_1d_cnn.pt
+experiments/imu_fall_1d_cnn/._*
 
 !Dockerfile
 !docker-compose.yml
