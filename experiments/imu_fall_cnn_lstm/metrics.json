@@ -1,0 +1,154 @@
+{
+  "model_type": "imu_fall_cnn_lstm",
+  "task": "imu_fall",
+  "source": "../data/iccas_sensor_lstm/imu_fall_preprocessed.csv",
+  "experiment_dir": "experiments/imu_fall_cnn_lstm",
+  "device": "cpu",
+  "feature_columns": [
+    "roll",
+    "pitch",
+    "yaw",
+    "ax",
+    "ay",
+    "az",
+    "wx",
+    "wy",
+    "wz",
+    "accel_norm",
+    "gyro_norm",
+    "dt_s"
+  ],
+  "sequence_length": 50,
+  "sequence_stride": 4,
+  "channels": 48,
+  "hidden_size": 64,
+  "dropout": 0.2,
+  "epochs": 15,
+  "batch_size": 256,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "split_method": "SisFall group split, ICCAS chronological split",
+  "split_sizes": {
+    "train": 55433,
+    "validation": 12628,
+    "test": 14589
+  },
+  "label_counts": {
+    "train_positive": 25813,
+    "train_negative": 29620,
+    "validation_positive": 4856,
+    "validation_negative": 7772,
+    "test_positive": 5207,
+    "test_negative": 9382
+  },
+  "threshold": 0.4099999999999999,
+  "validation_metrics": {
+    "accuracy": 0.8938074121000951,
+    "precision": 0.8350810295519543,
+    "recall": 0.9019769357495881,
+    "f1": 0.8672408672408674,
+    "tp": 4380,
+    "fp": 865,
+    "tn": 6907,
+    "fn": 476,
+    "threshold": 0.4099999999999999
+  },
+  "test_metrics": {
+    "accuracy": 0.8276783878264445,
+    "precision": 0.7051028179741051,
+    "recall": 0.8889955828692145,
+    "f1": 0.7864424057084608,
+    "tp": 4629,
+    "fp": 1936,
+    "tn": 7446,
+    "fn": 578,
+    "threshold": 0.4099999999999999
+  },
+  "latency": {
+    "single_sequence_ms": 0.7047937501920387,
+    "batch_size": 1024.0,
+    "batch_ms": 88.89002042007633,
+    "batch_per_sequence_ms": 0.08680666056648079
+  },
+  "train_seconds": 221.6066847089678,
+  "parameter_count": 77025,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.472714835036322,
+      "validation_f1": 0.7398174501913829
+    },
+    {
+      "epoch": 2,
+      "loss": 0.33127136236586957,
+      "validation_f1": 0.8173812058453499
+    },
+    {
+      "epoch": 3,
+      "loss": 0.28177638161032514,
+      "validation_f1": 0.8121695760598504
+    },
+    {
+      "epoch": 4,
+      "loss": 0.2483560478945563,
+      "validation_f1": 0.8460361187633915
+    },
+    {
+      "epoch": 5,
+      "loss": 0.22677725853723943,
+      "validation_f1": 0.8122854561878953
+    },
+    {
+      "epoch": 6,
+      "loss": 0.20609665415695744,
+      "validation_f1": 0.8521221432686769
+    },
+    {
+      "epoch": 7,
+      "loss": 0.1942723637711442,
+      "validation_f1": 0.8411991688928466
+    },
+    {
+      "epoch": 8,
+      "loss": 0.1799182211808351,
+      "validation_f1": 0.8672408672408674
+    },
+    {
+      "epoch": 9,
+      "loss": 0.16905539999559482,
+      "validation_f1": 0.8478787878787878
+    },
+    {
+      "epoch": 10,
+      "loss": 0.15843344713170063,
+      "validation_f1": 0.8533789219629928
+    },
+    {
+      "epoch": 11,
+      "loss": 0.1486175179596021,
+      "validation_f1": 0.8396674584323041
+    },
+    {
+      "epoch": 12,
+      "loss": 0.1385997180509543,
+      "validation_f1": 0.8528849828047383
+    },
+    {
+      "epoch": 13,
+      "loss": 0.13138154057524346,
+      "validation_f1": 0.8570610140360928
+    },
+    {
+      "epoch": 14,
+      "loss": 0.122452916183478,
+      "validation_f1": 0.8582577309530778
+    },
+    {
+      "epoch": 15,
+      "loss": 0.11531998230223985,
+      "validation_f1": 0.8580520732883317
+    }
+  ],
+  "model_path": "experiments/imu_fall_cnn_lstm/imu_fall_cnn_lstm.pt",
+  "metadata_path": "experiments/imu_fall_cnn_lstm/imu_fall_cnn_lstm.json"
+}
