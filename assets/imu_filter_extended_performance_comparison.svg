@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="940" viewBox="0 0 1600 940">
+<rect x="0.0" y="0.0" width="1600.0" height="940.0" rx="0.0" fill="#fbfaff" stroke="none"/>
+<text x="105.0" y="74.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="38" font-weight="850" fill="#272145">IMU Fall Detection - Extended Model Performance</text>
+<text x="105.0" y="114.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="18" font-weight="650" fill="#6f6791">Best result per model after 30 max epochs, min 15 epochs, F1-based early stopping</text>
+<rect x="720.0" y="50.0" width="16.0" height="16.0" rx="4.0" fill="#5b5bd6" stroke="none"/>
+<text x="744.0" y="64.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="700" fill="#514872">RNN</text>
+<rect x="855.0" y="50.0" width="16.0" height="16.0" rx="4.0" fill="#7e73ea" stroke="none"/>
+<text x="879.0" y="64.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="700" fill="#514872">GRU</text>
+<rect x="990.0" y="50.0" width="16.0" height="16.0" rx="4.0" fill="#a08df4" stroke="none"/>
+<text x="1014.0" y="64.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="700" fill="#514872">LSTM</text>
+<rect x="1125.0" y="50.0" width="16.0" height="16.0" rx="4.0" fill="#c7b8f7" stroke="none"/>
+<text x="1149.0" y="64.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="700" fill="#514872">Transformer</text>
+<rect x="1260.0" y="50.0" width="16.0" height="16.0" rx="4.0" fill="#55b7a8" stroke="none"/>
+<text x="1284.0" y="64.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="700" fill="#514872">1D-CNN</text>
+<rect x="1395.0" y="50.0" width="16.0" height="16.0" rx="4.0" fill="#f28c6b" stroke="none"/>
+<text x="1419.0" y="64.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="700" fill="#514872">CNN-LSTM</text>
+<line x1="105.0" y1="615.0" x2="1495.0" y2="615.0" stroke="#e7e2f5" stroke-width="1.0"/>
+<text x="77.0" y="621.0" text-anchor="end" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="600" fill="#796f9c">0.0</text>
+<line x1="105.0" y1="522.0" x2="1495.0" y2="522.0" stroke="#e7e2f5" stroke-width="1.0"/>
+<text x="77.0" y="528.0" text-anchor="end" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="600" fill="#796f9c">0.2</text>
+<line x1="105.0" y1="429.0" x2="1495.0" y2="429.0" stroke="#e7e2f5" stroke-width="1.0"/>
+<text x="77.0" y="435.0" text-anchor="end" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="600" fill="#796f9c">0.4</text>
+<line x1="105.0" y1="336.0" x2="1495.0" y2="336.0" stroke="#e7e2f5" stroke-width="1.0"/>
+<text x="77.0" y="342.0" text-anchor="end" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="600" fill="#796f9c">0.6</text>
+<line x1="105.0" y1="243.0" x2="1495.0" y2="243.0" stroke="#e7e2f5" stroke-width="1.0"/>
+<text x="77.0" y="249.0" text-anchor="end" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="600" fill="#796f9c">0.8</text>
+<line x1="105.0" y1="150.0" x2="1495.0" y2="150.0" stroke="#e7e2f5" stroke-width="1.0"/>
+<text x="77.0" y="156.0" text-anchor="end" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="600" fill="#796f9c">1.0</text>
+<line x1="105.0" y1="615.0" x2="1495.0" y2="615.0" stroke="#d8d0ee" stroke-width="1.4"/>
+<rect x="105.0" y="274.3" width="44.1" height="340.7" rx="5.0" fill="#5b5bd6" stroke="none"/>
+<text x="127.0" y="264.3" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="14" font-weight="700" fill="#514872">0.733</text>
+<rect x="159.1" y="245.3" width="44.1" height="369.7" rx="5.0" fill="#7e73ea" stroke="none"/>
+<text x="181.1" y="235.3" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="14" font-weight="700" fill="#514872">0.795</text>
+<rect x="213.2" y="257.6" width="44.1" height="357.4" rx="5.0" fill="#a08df4" stroke="none"/>
+<text x="235.2" y="247.6" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="14" font-weight="700" fill="#514872">0.769</text>
+<rect x="267.2" y="236.9" width="44.1" height="378.1" rx="5.0" fill="#c7b8f7" stroke="none"/>
+<text x="289.3" y="226.9" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="14" font-weight="700" fill="#514872">0.813</text>
+<rect x="321.3" y="227.0" width="44.1" height="388.0" rx="5.0" fill="#55b7a8" stroke="none"/>
+<text x="343.4" y="217.0" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="14" font-weight="700" fill="#514872">0.834</text>
+<rect x="375.4" y="224.3" width="44.1" height="390.7" rx="5.0" fill="#f28c6b" stroke="none"/>
+<text x="397.5" y="214.3" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="14" font-weight="700" fill="#514872">0.840</text>
+<text x="262.2" y="659.0" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="19" font-weight="800" fill="#514872">Accuracy</text>
+<rect x="463.5" y="338.9" width="44.1" height="276.1" rx="5.0" fill="#5b5bd6" stroke="none"/>
+<text x="485.5" y="328.9" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="14" font-weight="700" fill="#514872">0.594</text>
+<rect x="517.6" y="306.7" width="44.1" height="308.3" rx="5.0" fill="#7e73ea" stroke="none"/>
+<text x="539.6" y="296.7" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="14" font-weight="700" fill="#514872">0.663</text>
+<rect x="571.7" y="321.2" width="44.1" height="293.8" rx="5.0" fill="#a08df4" stroke="none"/>
+<text x="593.7" y="311.2" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="14" font-weight="700" fill="#514872">0.632</text>
+<rect x="625.8" y="294.4" width="44.1" height="320.6" rx="5.0" fill="#c7b8f7" stroke="none"/>
+<text x="647.8" y="284.4" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="14" font-weight="700" fill="#514872">0.690</text>
+<rect x="679.8" y="281.9" width="44.1" height="333.1" rx="5.0" fill="#55b7a8" stroke="none"/>
+<text x="701.9" y="271.9" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="14" font-weight="700" fill="#514872">0.716</text>
+<rect x="733.9" y="276.8" width="44.1" height="338.2" rx="5.0" fill="#f28c6b" stroke="none"/>
+<text x="756.0" y="266.8" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="14" font-weight="700" fill="#514872">0.727</text>
+<text x="620.8" y="659.0" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="19" font-weight="800" fill="#514872">Precision</text>
+<rect x="822.0" y="245.6" width="44.1" height="369.4" rx="5.0" fill="#5b5bd6" stroke="none"/>
+<text x="844.0" y="235.6" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="14" font-weight="700" fill="#514872">0.794</text>
+<rect x="876.1" y="212.4" width="44.1" height="402.6" rx="5.0" fill="#7e73ea" stroke="none"/>
+<text x="898.1" y="202.4" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="14" font-weight="700" fill="#514872">0.866</text>
+<rect x="930.2" y="223.0" width="44.1" height="392.0" rx="5.0" fill="#a08df4" stroke="none"/>
+<text x="952.2" y="213.0" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="14" font-weight="700" fill="#514872">0.843</text>
+<rect x="984.2" y="212.0" width="44.1" height="403.0" rx="5.0" fill="#c7b8f7" stroke="none"/>
+<text x="1006.3" y="202.0" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="14" font-weight="700" fill="#514872">0.867</text>
+<rect x="1038.3" y="202.3" width="44.1" height="412.7" rx="5.0" fill="#55b7a8" stroke="none"/>
+<text x="1060.4" y="192.3" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="14" font-weight="700" fill="#514872">0.887</text>
+<rect x="1092.4" y="204.4" width="44.1" height="410.6" rx="5.0" fill="#f28c6b" stroke="none"/>
+<text x="1114.5" y="194.4" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="14" font-weight="700" fill="#514872">0.883</text>
+<text x="979.2" y="659.0" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="19" font-weight="800" fill="#514872">Recall</text>
+<rect x="1180.5" y="299.0" width="44.1" height="316.0" rx="5.0" fill="#5b5bd6" stroke="none"/>
+<text x="1202.5" y="289.0" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="14" font-weight="700" fill="#514872">0.680</text>
+<rect x="1234.6" y="265.8" width="44.1" height="349.2" rx="5.0" fill="#7e73ea" stroke="none"/>
+<text x="1256.6" y="255.8" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="14" font-weight="700" fill="#514872">0.751</text>
+<rect x="1288.7" y="279.1" width="44.1" height="335.9" rx="5.0" fill="#a08df4" stroke="none"/>
+<text x="1310.7" y="269.1" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="14" font-weight="700" fill="#514872">0.722</text>
+<rect x="1342.8" y="257.9" width="44.1" height="357.1" rx="5.0" fill="#c7b8f7" stroke="none"/>
+<text x="1364.8" y="247.9" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="14" font-weight="700" fill="#514872">0.768</text>
+<rect x="1396.8" y="246.3" width="44.1" height="368.7" rx="5.0" fill="#55b7a8" stroke="none"/>
+<text x="1418.9" y="236.3" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="14" font-weight="700" fill="#514872">0.793</text>
+<rect x="1450.9" y="244.1" width="44.1" height="370.9" rx="5.0" fill="#f28c6b" stroke="none"/>
+<text x="1473.0" y="234.1" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="14" font-weight="700" fill="#514872">0.798</text>
+<text x="1337.8" y="659.0" text-anchor="middle" font-family="Inter, Pretendard, Arial, sans-serif" font-size="19" font-weight="800" fill="#514872">F1-score</text>
+<rect x="90.0" y="700.0" width="1420.0" height="128.0" rx="10.0" fill="#ffffff" stroke="#eee9fb"/>
+<text x="125.0" y="742.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="18" font-weight="850" fill="#514872">Best filter</text>
+<text x="125.0" y="784.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="18" font-weight="850" fill="#514872">Inference ms</text>
+<text x="125.0" y="816.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="18" font-weight="850" fill="#514872">Train sec</text>
+<rect x="315.0" y="725.0" width="14.0" height="14.0" rx="7.0" fill="#5b5bd6" stroke="none"/>
+<text x="337.0" y="739.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="16" font-weight="800" fill="#514872">RNN</text>
+<text x="337.0" y="772.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="650" fill="#6f6791">baseline</text>
+<text x="337.0" y="803.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="650" fill="#6f6791">0.227</text>
+<text x="337.0" y="835.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="650" fill="#6f6791">43.2</text>
+<rect x="505.0" y="725.0" width="14.0" height="14.0" rx="7.0" fill="#7e73ea" stroke="none"/>
+<text x="527.0" y="739.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="16" font-weight="800" fill="#514872">GRU</text>
+<text x="527.0" y="772.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="650" fill="#6f6791">baseline</text>
+<text x="527.0" y="803.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="650" fill="#6f6791">0.568</text>
+<text x="527.0" y="835.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="650" fill="#6f6791">137.7</text>
+<rect x="695.0" y="725.0" width="14.0" height="14.0" rx="7.0" fill="#a08df4" stroke="none"/>
+<text x="717.0" y="739.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="16" font-weight="800" fill="#514872">LSTM</text>
+<text x="717.0" y="772.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="650" fill="#6f6791">ema030</text>
+<text x="717.0" y="803.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="650" fill="#6f6791">0.559</text>
+<text x="717.0" y="835.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="650" fill="#6f6791">89.6</text>
+<rect x="885.0" y="725.0" width="14.0" height="14.0" rx="7.0" fill="#c7b8f7" stroke="none"/>
+<text x="907.0" y="739.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="16" font-weight="800" fill="#514872">Transformer</text>
+<text x="907.0" y="772.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="650" fill="#6f6791">baseline</text>
+<text x="907.0" y="803.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="650" fill="#6f6791">0.293</text>
+<text x="907.0" y="835.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="650" fill="#6f6791">271.5</text>
+<rect x="1075.0" y="725.0" width="14.0" height="14.0" rx="7.0" fill="#55b7a8" stroke="none"/>
+<text x="1097.0" y="739.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="16" font-weight="800" fill="#514872">1D-CNN</text>
+<text x="1097.0" y="772.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="650" fill="#6f6791">baseline</text>
+<text x="1097.0" y="803.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="650" fill="#6f6791">0.347</text>
+<text x="1097.0" y="835.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="650" fill="#6f6791">387.3</text>
+<rect x="1265.0" y="725.0" width="14.0" height="14.0" rx="7.0" fill="#f28c6b" stroke="none"/>
+<text x="1287.0" y="739.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="16" font-weight="800" fill="#514872">CNN-LSTM</text>
+<text x="1287.0" y="772.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="650" fill="#6f6791">median3_ema030</text>
+<text x="1287.0" y="803.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="650" fill="#6f6791">0.703</text>
+<text x="1287.0" y="835.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="650" fill="#6f6791">350.5</text>
+<text x="105.0" y="878.0" text-anchor="start" font-family="Inter, Pretendard, Arial, sans-serif" font-size="19" font-weight="850" fill="#272145">Overall best: CNN-LSTM + median3_ema030 | F1 0.7977 | Accuracy 0.8402 | Recall 0.8830</text>
+<text x="1495.0" y="878.0" text-anchor="end" font-family="Inter, Pretendard, Arial, sans-serif" font-size="15" font-weight="600" fill="#8a82a6">Source: experiments/imu_filter_engineering_extended/metrics.csv</text>
+</svg>
