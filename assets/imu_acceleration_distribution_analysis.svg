@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="720" viewBox="0 0 1180 720">
+<rect width="1180" height="720" rx="18" fill="#f8f7fb"/>
+<text x="48" y="48" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#242033">IMU Acceleration Distribution Suitability</text>
+<text x="48" y="76" font-family="Arial, sans-serif" font-size="13" fill="#645f78">Existing fall data vs ICCAS data / p95 acceleration magnitude and sample-to-sample change</text>
+<line x1="92" y1="520.0" x2="1072" y2="520.0" stroke="#ded9ec"/>
+<text x="48" y="524.0" font-family="Arial, sans-serif" font-size="11" fill="#6c667b">0.00</text>
+<line x1="92" y1="438.0" x2="1072" y2="438.0" stroke="#ded9ec"/>
+<text x="48" y="442.0" font-family="Arial, sans-serif" font-size="11" fill="#6c667b">0.39</text>
+<line x1="92" y1="356.0" x2="1072" y2="356.0" stroke="#ded9ec"/>
+<text x="48" y="360.0" font-family="Arial, sans-serif" font-size="11" fill="#6c667b">0.79</text>
+<line x1="92" y1="274.0" x2="1072" y2="274.0" stroke="#ded9ec"/>
+<text x="48" y="278.0" font-family="Arial, sans-serif" font-size="11" fill="#6c667b">1.18</text>
+<line x1="92" y1="192.0" x2="1072" y2="192.0" stroke="#ded9ec"/>
+<text x="48" y="196.0" font-family="Arial, sans-serif" font-size="11" fill="#6c667b">1.57</text>
+<line x1="92" y1="110.0" x2="1072" y2="110.0" stroke="#ded9ec"/>
+<text x="48" y="114.0" font-family="Arial, sans-serif" font-size="11" fill="#6c667b">1.96</text>
+<rect x="92" y="110" width="980" height="410" fill="none" stroke="#ded9ec"/>
+<rect x="740" y="40" width="13" height="13" fill="#5a67d8"/>
+<text x="760" y="51" font-family="Arial, sans-serif" font-size="13" fill="#39344d">accel_norm p95</text>
+<rect x="890" y="40" width="13" height="13" fill="#e56b6f"/>
+<text x="910" y="51" font-family="Arial, sans-serif" font-size="13" fill="#39344d">accel_delta p95</text>
+<rect x="176.5" y="252.0" width="32" height="268.0" rx="5" fill="#5a67d8"/>
+<text x="192.5" y="245.0" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2d293d">1.28</text>
+<rect x="218.5" y="475.7" width="32" height="44.3" rx="5" fill="#e56b6f"/>
+<text x="234.5" y="468.7" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2d293d">0.21</text>
+<text x="214.5" y="552" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#2d293d">ICCAS</text>
+<text x="214.5" y="571" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#69627a">fall</text>
+<rect x="421.5" y="213.5" width="32" height="306.5" rx="5" fill="#5a67d8"/>
+<text x="437.5" y="206.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2d293d">1.47</text>
+<rect x="463.5" y="452.3" width="32" height="67.7" rx="5" fill="#e56b6f"/>
+<text x="479.5" y="445.3" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2d293d">0.32</text>
+<text x="459.5" y="552" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#2d293d">ICCAS</text>
+<text x="459.5" y="571" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#69627a">normal</text>
+<rect x="666.5" y="234.6" width="32" height="285.4" rx="5" fill="#5a67d8"/>
+<text x="682.5" y="227.6" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2d293d">1.37</text>
+<rect x="708.5" y="459.7" width="32" height="60.3" rx="5" fill="#e56b6f"/>
+<text x="724.5" y="452.7" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2d293d">0.29</text>
+<text x="704.5" y="552" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#2d293d">SisFall</text>
+<text x="704.5" y="571" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#69627a">fall</text>
+<rect x="911.5" y="163.5" width="32" height="356.5" rx="5" fill="#5a67d8"/>
+<text x="927.5" y="156.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2d293d">1.71</text>
+<rect x="953.5" y="420.1" width="32" height="99.9" rx="5" fill="#e56b6f"/>
+<text x="969.5" y="413.1" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2d293d">0.48</text>
+<text x="949.5" y="552" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#2d293d">SisFall</text>
+<text x="949.5" y="571" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#69627a">normal</text>
+<text x="48" y="600" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#242033">LSTM suitability notes</text>
+<text x="64" y="628" font-family="Arial, sans-serif" font-size="14" fill="#3b354d">- Effect size: accel_norm -0.06, accel_delta -0.12, change_rate -0.10</text>
+<text x="64" y="654" font-family="Arial, sans-serif" font-size="14" fill="#3b354d">- Use sequence context: fall is better captured by impact + rotation + inactivity pattern than one acceleration point.</text>
+<text x="64" y="680" font-family="Arial, sans-serif" font-size="14" fill="#3b354d">- Sequence length: 50 samples; only ready groups are used for LSTM windows.</text>
+</svg>
