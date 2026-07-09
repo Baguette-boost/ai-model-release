@@ -155,6 +155,13 @@ experiments/imu_fall_cnn_lstm/._*
 !experiments/imu_filter_engineering/row_changes.csv
 experiments/imu_filter_engineering/._*
 
+!experiments/imu_filter_engineering_extended/
+!experiments/imu_filter_engineering_extended/README.md
+!experiments/imu_filter_engineering_extended/metrics.csv
+!experiments/imu_filter_engineering_extended/metrics.json
+!experiments/imu_filter_engineering_extended/row_changes.csv
+experiments/imu_filter_engineering_extended/._*
+
 !Dockerfile
 !docker-compose.yml
 !.dockerignore

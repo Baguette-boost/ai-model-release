@@ -1,0 +1,5 @@
+filter_variant,sensor_rows_before,sensor_rows_after_filter,sensor_rows_delta,sensor_rows_delta_rate,sequence_length,sequence_stride,sequence_train,sequence_validation,sequence_test,sequence_total,sequence_total_delta_vs_baseline
+baseline,349560,349560,0,0.0,50,4,55433,12628,14589,82650,0
+median3,349560,349560,0,0.0,50,4,55433,12628,14589,82650,0
+ema030,349560,349560,0,0.0,50,4,55433,12628,14589,82650,0
+median3_ema030,349560,349560,0,0.0,50,4,55433,12628,14589,82650,0

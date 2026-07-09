@@ -82,9 +82,9 @@ def apply_filter_variant(frame: pd.DataFrame, variant: str, median_window: int, 
 
 def build_model(model_name: str, args: argparse.Namespace) -> nn.Module:
     input_size = len(FEATURE_COLUMNS)
-    if model_name == "lstm":
+    if model_name in {"rnn", "gru", "lstm", "transformer"}:
         return BinarySequenceModel(
-            "lstm",
+            model_name,
             input_size,
             args.hidden_size,
             args.num_layers,
@@ -115,6 +115,8 @@ def train_model(
 
     best_state: dict[str, torch.Tensor] | None = None
     best_f1 = -1.0
+    best_epoch = 0
+    epochs_without_improvement = 0
     history: list[dict[str, float]] = []
     started = time.perf_counter()
     for epoch in range(1, args.epochs + 1):
@@ -147,7 +149,19 @@ def train_model(
         )
         if validation_metrics["f1"] > best_f1:
             best_f1 = float(validation_metrics["f1"])
+            best_epoch = epoch
+            epochs_without_improvement = 0
             best_state = {key: value.detach().cpu().clone() for key, value in model.state_dict().items()}
+        else:
+            epochs_without_improvement += 1
+
+        if epoch >= args.min_epochs and epochs_without_improvement >= args.early_stopping_patience:
+            print(
+                f"early_stop filter={filter_variant} model={model_name} epoch={epoch:03d} "
+                f"best_epoch={best_epoch:03d} best_val_f1={best_f1:.4f}",
+                flush=True,
+            )
+            break
 
     synchronize(device)
     train_seconds = time.perf_counter() - started
@@ -162,7 +176,11 @@ def train_model(
     return {
         "filter_variant": filter_variant,
         "model": model_name,
-        "epochs": args.epochs,
+        "max_epochs": args.epochs,
+        "min_epochs": args.min_epochs,
+        "epochs_trained": len(history),
+        "best_epoch": best_epoch,
+        "early_stopping_patience": args.early_stopping_patience,
         "threshold": threshold,
         "validation_metrics": validation_metrics,
         "test_metrics": test_metrics,
@@ -212,6 +230,11 @@ def write_csvs(report: dict[str, Any], out_dir: Path) -> None:
             {
                 "filter_variant": item["filter_variant"],
                 "model": item["model"],
+                "max_epochs": item["max_epochs"],
+                "min_epochs": item["min_epochs"],
+                "epochs_trained": item["epochs_trained"],
+                "best_epoch": item["best_epoch"],
+                "early_stopping_patience": item["early_stopping_patience"],
                 "accuracy": test["accuracy"],
                 "precision": test["precision"],
                 "recall": test["recall"],
@@ -253,7 +276,9 @@ def write_markdown(report: dict[str, Any], out_dir: Path) -> None:
         "",
         f"- Source: `{report['source']}`",
         f"- Device: `{report['device']}`",
-        f"- Epochs: `{report['epochs']}`",
+        f"- Max epochs: `{report['epochs']}`",
+        f"- Min epochs before early stopping: `{report['min_epochs']}`",
+        f"- Early stopping patience: `{report['early_stopping_patience']}`",
         f"- Sequence length: `{report['sequence_length']}`",
         f"- Sequence stride: `{report['sequence_stride']}`",
         f"- Median window: `{report['median_window']}`",
@@ -281,14 +306,15 @@ def write_markdown(report: dict[str, Any], out_dir: Path) -> None:
             "",
             "## Performance Metrics",
             "",
-            "| Filter | Model | Accuracy | Precision | Recall | F1-score | Threshold | Single ms | Train sec |",
-            "|---|---|---:|---:|---:|---:|---:|---:|---:|",
+            "| Filter | Model | Epochs trained | Best epoch | Accuracy | Precision | Recall | F1-score | Threshold | Single ms | Train sec |",
+            "|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
         ]
     )
     for item in results:
         test = item["test_metrics"]
         lines.append(
-            f"| {item['filter_variant']} | {item['model']} | {test['accuracy']:.4f} | "
+            f"| {item['filter_variant']} | {item['model']} | "
+            f"{item['epochs_trained']} | {item['best_epoch']} | {test['accuracy']:.4f} | "
             f"{test['precision']:.4f} | {test['recall']:.4f} | {test['f1']:.4f} | "
             f"{item['threshold']:.2f} | {item['latency']['single_sequence_ms']:.4f} | {item['train_seconds']:.1f} |"
         )
@@ -314,6 +340,8 @@ def write_markdown(report: dict[str, Any], out_dir: Path) -> None:
 
 
 def run(args: argparse.Namespace) -> dict[str, Any]:
+    if args.epochs < args.min_epochs:
+        raise SystemExit("--epochs must be greater than or equal to --min-epochs.")
     args.out_dir.mkdir(parents=True, exist_ok=True)
     device = resolve_device(args.device)
     base_frame = load_preprocessed_csv(args.source)
@@ -347,6 +375,8 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         "out_dir": str(args.out_dir),
         "device": str(device),
         "epochs": args.epochs,
+        "min_epochs": args.min_epochs,
+        "early_stopping_patience": args.early_stopping_patience,
         "sequence_length": args.sequence_length,
         "sequence_stride": args.sequence_stride,
         "median_window": args.median_window,
@@ -367,12 +397,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--source", type=Path, default=Path("../data/iccas_sensor_lstm/imu_fall_preprocessed.csv"))
     parser.add_argument("--out-dir", type=Path, default=Path("experiments/imu_filter_engineering"))
     parser.add_argument("--filters", nargs="+", default=["baseline", "median3", "ema030", "median3_ema030"])
-    parser.add_argument("--models", nargs="+", default=["lstm", "cnn1d", "cnn_lstm"])
+    parser.add_argument("--models", nargs="+", default=["rnn", "gru", "lstm", "transformer", "cnn1d", "cnn_lstm"])
     parser.add_argument("--sequence-length", type=int, default=50)
     parser.add_argument("--sequence-stride", type=int, default=4)
     parser.add_argument("--median-window", type=int, default=3)
     parser.add_argument("--ema-alpha", type=float, default=0.30)
-    parser.add_argument("--epochs", type=int, default=8)
+    parser.add_argument("--epochs", type=int, default=30)
+    parser.add_argument("--min-epochs", type=int, default=15)
+    parser.add_argument("--early-stopping-patience", type=int, default=5)
     parser.add_argument("--batch-size", type=int, default=256)
     parser.add_argument("--learning-rate", type=float, default=1e-3)
     parser.add_argument("--weight-decay", type=float, default=1e-4)
