@@ -104,6 +104,7 @@
 !scripts/compare_imu_filter_engineering.py
 !scripts/generate_imu_filter_extended_performance_svg.py
 !scripts/generate_imu_filter_extended_performance_comparison_1_svg.py
+!scripts/audit_imu_latency_and_leakage.py
 
 !models/
 !models/iccas_sensor_lstm_fall.pt
@@ -165,6 +166,8 @@ experiments/imu_filter_engineering/._*
 !experiments/imu_filter_engineering_extended/metrics.json
 !experiments/imu_filter_engineering_extended/row_changes.csv
 experiments/imu_filter_engineering_extended/._*
+
+!experiments/imu_latency_leakage_audit.json
 
 !Dockerfile
 !docker-compose.yml

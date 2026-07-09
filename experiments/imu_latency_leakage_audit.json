@@ -1,0 +1,49 @@
+{
+  "source": "../data/iccas_sensor_lstm/imu_fall_preprocessed.csv",
+  "sequence_length": 50,
+  "sequence_stride": 4,
+  "latency_note": "Latency uses randomly initialized models with identical architecture shape; it audits operation cost, not trained accuracy.",
+  "leakage_audit": {
+    "groups_total": 405,
+    "groups_with_multiple_splits": 5,
+    "groups_with_cross_split_window_overlap": 5,
+    "cross_split_overlapping_window_pairs": 780,
+    "cross_split_overlap_samples_total": 13000,
+    "exact_duplicate_window_ranges": 0,
+    "by_dataset": {
+      "ICCAS": {
+        "groups": 5,
+        "groups_with_multiple_splits": 5,
+        "sequences": 6130,
+        "cross_split_overlapping_pairs": 780,
+        "cross_split_overlap_samples": 13000,
+        "exact_duplicate_ranges": 0
+      },
+      "SisFall": {
+        "groups": 400,
+        "groups_with_multiple_splits": 0,
+        "sequences": 76520,
+        "cross_split_overlapping_pairs": 0,
+        "cross_split_overlap_samples": 0,
+        "exact_duplicate_ranges": 0
+      }
+    }
+  },
+  "latency_audit_cpu_single_thread": {
+    "rnn": {
+      "forward_only_ms": 0.2265631250338629,
+      "tensor_create_plus_forward_ms": 0.22782045899657533,
+      "parameter_count": 13505.0
+    },
+    "transformer": {
+      "forward_only_ms": 0.18972683302126825,
+      "tensor_create_plus_forward_ms": 0.19017954199807718,
+      "parameter_count": 67969.0
+    }
+  },
+  "interpretation": [
+    "Exact duplicate windows across splits were checked separately from overlapping raw samples.",
+    "SisFall uses group-level splits; ICCAS chronological windows can share boundary samples because sliding windows overlap near split boundaries.",
+    "Forward-only latency excludes sensor acquisition, scaling, API, and database time."
+  ]
+}
