@@ -30,8 +30,11 @@
 !docs/IMU_ACCELERATION_DISTRIBUTION_ANALYSIS.md
 !docs/IMU_LSTM_DATA_DISTRIBUTION_RESEARCH.md
 !docs/ICCAS_VS_SISFALL_NUMERIC_COMPARISON.md
+!docs/CONFERENCE_SVG_SECTOR_PACK.md
 
 !assets/
+!assets/conference_sectors/
+!assets/conference_sectors/*.svg
 !assets/final_model_performance_dashboard.png
 !assets/final_model_performance_dashboard.svg
 !assets/final_model_performance_summary.csv
@@ -89,6 +92,7 @@
 !scripts/train_gps_rnn_wandering.py
 !scripts/compare_gps_kalman_rnn.py
 !scripts/train_rtdm_gps_hybrid.py
+!scripts/generate_conference_sector_svgs.py
 
 !models/
 !models/iccas_sensor_lstm_fall.pt
@@ -117,6 +121,8 @@
 !models/iccas_final_sisfall_lstm_imu_fall.json
 !models/iccas_final_hybrid_lstm_imu_fall.pt
 !models/iccas_final_hybrid_lstm_imu_fall.json
+
+assets/conference_sectors/._*
 
 !Dockerfile
 !docker-compose.yml

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#667085"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="1400" height="900" fill="#F8FAFC"/>
+  <g font-family="Apple SD Gothic Neo, Noto Sans KR, Pretendard, Arial, sans-serif">
+    <text x="64" y="72" font-size="34" font-weight="800" fill="#172033" text-anchor="start">Sector 05. Final IMU Fall Performance</text>
+    <text x="64" y="108" font-size="18" font-weight="400" fill="#667085" text-anchor="start">최종 적용 모델: 전처리 feature 기반 LSTM 낙상 감지</text>
+    <line x1="64" y1="136" x2="1336" y2="136" stroke="#D8DEE9" stroke-width="2"/>
+    <g filter="url(#shadow)">
+<rect x="88" y="176" width="290" height="150" rx="8" fill="#FFFFFF" stroke="#D8DEE9" opacity="1.0"/>
+</g>
+<rect x="88" y="176" width="8" height="150" rx="4" fill="#8B5CF6" stroke="#8B5CF6" opacity="1.0"/>
+<text x="116" y="218" font-size="18" font-weight="700" fill="#172033" text-anchor="start">Final F1-score</text>
+<text x="116" y="264" font-size="32" font-weight="800" fill="#8B5CF6" text-anchor="start">0.8677</text>
+<text x="116" y="296" font-size="14" font-weight="400" fill="#667085" text-anchor="start">낙상 탐지 균형 지표</text>
+<g filter="url(#shadow)">
+<rect x="408" y="176" width="290" height="150" rx="8" fill="#FFFFFF" stroke="#D8DEE9" opacity="1.0"/>
+</g>
+<rect x="408" y="176" width="8" height="150" rx="4" fill="#F43F5E" stroke="#F43F5E" opacity="1.0"/>
+<text x="436" y="218" font-size="18" font-weight="700" fill="#172033" text-anchor="start">Recall</text>
+<text x="436" y="264" font-size="32" font-weight="800" fill="#F43F5E" text-anchor="start">0.8863</text>
+<text x="436" y="296" font-size="14" font-weight="400" fill="#667085" text-anchor="start">실제 낙상 탐지율</text>
+<g filter="url(#shadow)">
+<rect x="728" y="176" width="290" height="150" rx="8" fill="#FFFFFF" stroke="#D8DEE9" opacity="1.0"/>
+</g>
+<rect x="728" y="176" width="8" height="150" rx="4" fill="#F59E0B" stroke="#F59E0B" opacity="1.0"/>
+<text x="756" y="218" font-size="18" font-weight="700" fill="#172033" text-anchor="start">Threshold</text>
+<text x="756" y="264" font-size="32" font-weight="800" fill="#F59E0B" text-anchor="start">0.35</text>
+<text x="756" y="296" font-size="14" font-weight="400" fill="#667085" text-anchor="start">LSTM probability threshold</text>
+<g filter="url(#shadow)">
+<rect x="1048" y="176" width="290" height="150" rx="8" fill="#FFFFFF" stroke="#D8DEE9" opacity="1.0"/>
+</g>
+<rect x="1048" y="176" width="8" height="150" rx="4" fill="#10B981" stroke="#10B981" opacity="1.0"/>
+<text x="1076" y="218" font-size="18" font-weight="700" fill="#172033" text-anchor="start">Realtime p95</text>
+<text x="1076" y="264" font-size="32" font-weight="800" fill="#10B981" text-anchor="start">1.207 ms</text>
+<text x="1076" y="296" font-size="14" font-weight="400" fill="#667085" text-anchor="start">1 window tensor+forward</text>
+<rect x="78" y="370" width="600" height="390" rx="8" fill="#FFFFFF" stroke="#D8DEE9" opacity="1.0"/>
+<text x="112" y="426" font-size="22" font-weight="800" fill="#172033" text-anchor="start">Overall test metrics</text>
+<text x="112" y="468" font-size="15" font-weight="600" fill="#172033" text-anchor="start">Accuracy</text>
+<rect x="112" y="478" width="420" height="24" rx="6" fill="#EEF2F7" stroke="#EEF2F7" opacity="1.0"/>
+<rect x="112" y="478" width="369.5537409798709" height="24" rx="6" fill="#3B82F6" stroke="#3B82F6" opacity="1.0"/>
+<text x="546" y="499" font-size="15" font-weight="700" fill="#172033" text-anchor="start">0.8799</text>
+<text x="112" y="534" font-size="15" font-weight="600" fill="#172033" text-anchor="start">Precision</text>
+<rect x="112" y="544" width="420" height="24" rx="6" fill="#EEF2F7" stroke="#EEF2F7" opacity="1.0"/>
+<rect x="112" y="544" width="356.9139344262295" height="24" rx="6" fill="#10B981" stroke="#10B981" opacity="1.0"/>
+<text x="546" y="565" font-size="15" font-weight="700" fill="#172033" text-anchor="start">0.8498</text>
+<text x="112" y="600" font-size="15" font-weight="600" fill="#172033" text-anchor="start">Recall</text>
+<rect x="112" y="610" width="420" height="24" rx="6" fill="#EEF2F7" stroke="#EEF2F7" opacity="1.0"/>
+<rect x="112" y="610" width="372.2462064543706" height="24" rx="6" fill="#F43F5E" stroke="#F43F5E" opacity="1.0"/>
+<text x="546" y="631" font-size="15" font-weight="700" fill="#172033" text-anchor="start">0.8863</text>
+<text x="112" y="666" font-size="15" font-weight="600" fill="#172033" text-anchor="start">F1-score</text>
+<rect x="112" y="676" width="420" height="24" rx="6" fill="#EEF2F7" stroke="#EEF2F7" opacity="1.0"/>
+<rect x="112" y="676" width="364.41887226697355" height="24" rx="6" fill="#8B5CF6" stroke="#8B5CF6" opacity="1.0"/>
+<text x="546" y="697" font-size="15" font-weight="700" fill="#172033" text-anchor="start">0.8677</text>
+<rect x="720" y="370" width="600" height="390" rx="8" fill="#FFFFFF" stroke="#D8DEE9" opacity="1.0"/>
+<text x="760" y="426" font-size="22" font-weight="800" fill="#172033" text-anchor="start">Dataset-level test F1</text>
+<text x="760" y="476" font-size="15" font-weight="600" fill="#172033" text-anchor="start">ICCAS F1: 0.9479</text>
+<rect x="760" y="486" width="420" height="24" rx="6" fill="#EEF2F7" stroke="#EEF2F7" opacity="1.0"/>
+<rect x="760" y="486" width="398.1042654028436" height="24" rx="6" fill="#3B82F6" stroke="#3B82F6" opacity="1.0"/>
+<text x="1194" y="507" font-size="15" font-weight="700" fill="#172033" text-anchor="start">0.9479</text>
+<text x="760" y="542" font-size="15" font-weight="600" fill="#172033" text-anchor="start">SisFall F1: 0.8659</text>
+<rect x="760" y="552" width="420" height="24" rx="6" fill="#EEF2F7" stroke="#EEF2F7" opacity="1.0"/>
+<rect x="760" y="552" width="363.6585365853658" height="24" rx="6" fill="#10B981" stroke="#10B981" opacity="1.0"/>
+<text x="1194" y="573" font-size="15" font-weight="700" fill="#172033" text-anchor="start">0.8659</text>
+<text x="760" y="650" font-size="20" font-weight="800" fill="#172033" text-anchor="start">Confusion matrix</text>
+<text x="760" y="694" font-size="20" font-weight="700" fill="#172033" text-anchor="start">TP 4,147   FP 733   TN 5,120   FN 532</text>
+  </g>
+</svg>

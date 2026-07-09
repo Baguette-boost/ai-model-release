@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#667085"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="1400" height="900" fill="#F8FAFC"/>
+  <g font-family="Apple SD Gothic Neo, Noto Sans KR, Pretendard, Arial, sans-serif">
+    <text x="64" y="72" font-size="34" font-weight="800" fill="#172033" text-anchor="start">Sector 02. ICCAS vs SisFall Distribution</text>
+    <text x="64" y="108" font-size="18" font-weight="400" fill="#667085" text-anchor="start">오픈 데이터와 직접 취득 데이터의 수치적 호환성 및 차이 분석</text>
+    <line x1="64" y1="136" x2="1336" y2="136" stroke="#D8DEE9" stroke-width="2"/>
+    <rect x="78" y="180" width="1245" height="455" rx="8" fill="#FFFFFF" stroke="#D8DEE9" opacity="1.0"/>
+<text x="112" y="232" font-size="24" font-weight="800" fill="#172033" text-anchor="start">Numeric compatibility check</text>
+<text x="112" y="286" font-size="17" font-weight="800" fill="#667085" text-anchor="start">Feature</text>
+<text x="508" y="286" font-size="17" font-weight="800" fill="#667085" text-anchor="start">ICCAS</text>
+<text x="748" y="286" font-size="17" font-weight="800" fill="#667085" text-anchor="start">SisFall</text>
+<text x="998" y="286" font-size="17" font-weight="800" fill="#667085" text-anchor="start">Interpretation</text>
+<line x1="112" y1="306" x2="1270" y2="306" stroke="#D8DEE9" stroke-width="2"/>
+<text x="112" y="350" font-size="18" font-weight="600" fill="#172033" text-anchor="start">normal accel p50</text>
+<text x="508" y="350" font-size="18" font-weight="700" fill="#3B82F6" text-anchor="start">1.0029g</text>
+<text x="748" y="350" font-size="18" font-weight="700" fill="#10B981" text-anchor="start">1.0096g</text>
+<text x="998" y="350" font-size="18" font-weight="600" fill="#172033" text-anchor="start">0.0067g</text>
+<line x1="112" y1="368" x2="1270" y2="368" stroke="#D8DEE9" stroke-width="2"/>
+<text x="112" y="400" font-size="18" font-weight="600" fill="#172033" text-anchor="start">fall accel p50</text>
+<text x="508" y="400" font-size="18" font-weight="700" fill="#3B82F6" text-anchor="start">1.0041g</text>
+<text x="748" y="400" font-size="18" font-weight="700" fill="#10B981" text-anchor="start">1.0010g</text>
+<text x="998" y="400" font-size="18" font-weight="600" fill="#172033" text-anchor="start">0.0031g</text>
+<line x1="112" y1="418" x2="1270" y2="418" stroke="#D8DEE9" stroke-width="2"/>
+<text x="112" y="450" font-size="18" font-weight="600" fill="#172033" text-anchor="start">normal accel p95</text>
+<text x="508" y="450" font-size="18" font-weight="700" fill="#3B82F6" text-anchor="start">1.4684g</text>
+<text x="748" y="450" font-size="18" font-weight="700" fill="#10B981" text-anchor="start">1.7078g</text>
+<text x="998" y="450" font-size="18" font-weight="600" fill="#172033" text-anchor="start">tail 차이</text>
+<line x1="112" y1="468" x2="1270" y2="468" stroke="#D8DEE9" stroke-width="2"/>
+<text x="112" y="500" font-size="18" font-weight="600" fill="#172033" text-anchor="start">fall accel p95</text>
+<text x="508" y="500" font-size="18" font-weight="700" fill="#3B82F6" text-anchor="start">1.2840g</text>
+<text x="748" y="500" font-size="18" font-weight="700" fill="#10B981" text-anchor="start">1.3671g</text>
+<text x="998" y="500" font-size="18" font-weight="600" fill="#172033" text-anchor="start">tail 차이</text>
+<line x1="112" y1="518" x2="1270" y2="518" stroke="#D8DEE9" stroke-width="2"/>
+<text x="112" y="550" font-size="18" font-weight="600" fill="#172033" text-anchor="start">fall gyro p95</text>
+<text x="508" y="550" font-size="18" font-weight="700" fill="#3B82F6" text-anchor="start">177.9467</text>
+<text x="748" y="550" font-size="18" font-weight="700" fill="#10B981" text-anchor="start">116.6851</text>
+<text x="998" y="550" font-size="18" font-weight="600" fill="#172033" text-anchor="start">도메인 차이</text>
+<line x1="112" y1="568" x2="1270" y2="568" stroke="#D8DEE9" stroke-width="2"/>
+<text x="112" y="600" font-size="18" font-weight="600" fill="#172033" text-anchor="start">dt_s p50</text>
+<text x="508" y="600" font-size="18" font-weight="700" fill="#3B82F6" text-anchor="start">0.0400s</text>
+<text x="748" y="600" font-size="18" font-weight="700" fill="#10B981" text-anchor="start">0.0200s</text>
+<text x="998" y="600" font-size="18" font-weight="600" fill="#172033" text-anchor="start">sampling 차이</text>
+<line x1="112" y1="618" x2="1270" y2="618" stroke="#D8DEE9" stroke-width="2"/>
+<rect x="78" y="675" width="390" height="130" rx="8" fill="#FFFFFF" stroke="#D8DEE9" opacity="1.0"/>
+<text x="112" y="720" font-size="20" font-weight="800" fill="#3B82F6" text-anchor="start">결론 1</text>
+<text x="112" y="758" font-size="17" font-weight="400" fill="#667085" text-anchor="start">가속도 중심값은 두 데이터 모두 1g 근처로 유사하다.</text>
+<rect x="505" y="675" width="390" height="130" rx="8" fill="#FFFFFF" stroke="#D8DEE9" opacity="1.0"/>
+<text x="539" y="720" font-size="20" font-weight="800" fill="#F59E0B" text-anchor="start">결론 2</text>
+<text x="539" y="758" font-size="17" font-weight="400" fill="#667085" text-anchor="start">자이로와 tail 분포는 차이가 있어 robust</text>
+<text x="539" y="782" font-size="17" font-weight="400" fill="#667085" text-anchor="start">scaling이 필요하다.</text>
+<rect x="930" y="675" width="390" height="130" rx="8" fill="#FFFFFF" stroke="#D8DEE9" opacity="1.0"/>
+<text x="964" y="720" font-size="20" font-weight="800" fill="#10B981" text-anchor="start">결론 3</text>
+<text x="964" y="758" font-size="17" font-weight="400" fill="#667085" text-anchor="start">샘플링 간격 차이를 dt_s feature로 모델 입력에</text>
+<text x="964" y="782" font-size="17" font-weight="400" fill="#667085" text-anchor="start">포함했다.</text>
+  </g>
+</svg>

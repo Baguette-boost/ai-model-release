@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#667085"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="1400" height="900" fill="#F8FAFC"/>
+  <g font-family="Apple SD Gothic Neo, Noto Sans KR, Pretendard, Arial, sans-serif">
+    <text x="64" y="72" font-size="34" font-weight="800" fill="#172033" text-anchor="start">Sector 07. Realtime Inference Architecture</text>
+    <text x="64" y="108" font-size="18" font-weight="400" fill="#667085" text-anchor="start">실시간 IMU 입력부터 서버 결과 출력까지의 최종 시스템 구조</text>
+    <line x1="64" y1="136" x2="1336" y2="136" stroke="#D8DEE9" stroke-width="2"/>
+    <rect x="85" y="250" width="215" height="180" rx="8" fill="#FFFFFF" stroke="#D8DEE9" opacity="1.0"/>
+<text x="109" y="300" font-size="21" font-weight="800" fill="#3B82F6" text-anchor="start">ESP32 IMU</text>
+<text x="109" y="344" font-size="17" font-weight="600" fill="#172033" text-anchor="start">25 Hz sampling</text>
+<text x="109" y="372" font-size="17" font-weight="600" fill="#172033" text-anchor="start">ax ay az wx wy wz</text>
+<text x="109" y="400" font-size="17" font-weight="600" fill="#172033" text-anchor="start">roll pitch yaw</text>
+<line x1="307" y1="340" x2="337" y2="340" stroke="#667085" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="340" y="250" width="215" height="180" rx="8" fill="#FFFFFF" stroke="#D8DEE9" opacity="1.0"/>
+<text x="364" y="300" font-size="21" font-weight="800" fill="#10B981" text-anchor="start">Preprocessing</text>
+<text x="364" y="344" font-size="17" font-weight="600" fill="#172033" text-anchor="start">accel_norm</text>
+<text x="364" y="372" font-size="17" font-weight="600" fill="#172033" text-anchor="start">gyro_norm</text>
+<text x="364" y="400" font-size="17" font-weight="600" fill="#172033" text-anchor="start">dt_s + scaling</text>
+<line x1="562" y1="340" x2="592" y2="340" stroke="#667085" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="595" y="250" width="215" height="180" rx="8" fill="#FFFFFF" stroke="#D8DEE9" opacity="1.0"/>
+<text x="619" y="300" font-size="21" font-weight="800" fill="#8B5CF6" text-anchor="start">LSTM Window</text>
+<text x="619" y="344" font-size="17" font-weight="600" fill="#172033" text-anchor="start">50 steps = 2.0 s</text>
+<text x="619" y="372" font-size="17" font-weight="600" fill="#172033" text-anchor="start">12 features</text>
+<line x1="817" y1="340" x2="847" y2="340" stroke="#667085" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="850" y="250" width="215" height="180" rx="8" fill="#FFFFFF" stroke="#D8DEE9" opacity="1.0"/>
+<text x="874" y="300" font-size="21" font-weight="800" fill="#F59E0B" text-anchor="start">Inference</text>
+<text x="874" y="344" font-size="17" font-weight="600" fill="#172033" text-anchor="start">p95 1.207 ms</text>
+<text x="874" y="372" font-size="17" font-weight="600" fill="#172033" text-anchor="start">threshold 0.35</text>
+<line x1="1072" y1="340" x2="1102" y2="340" stroke="#667085" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="1105" y="250" width="215" height="180" rx="8" fill="#FFFFFF" stroke="#D8DEE9" opacity="1.0"/>
+<text x="1129" y="300" font-size="21" font-weight="800" fill="#F43F5E" text-anchor="start">Server Result</text>
+<text x="1129" y="344" font-size="17" font-weight="600" fill="#172033" text-anchor="start">fall / normal</text>
+<text x="1129" y="372" font-size="17" font-weight="600" fill="#172033" text-anchor="start">risk level</text>
+<text x="1129" y="400" font-size="17" font-weight="600" fill="#172033" text-anchor="start">API response</text>
+<rect x="95" y="535" width="560" height="190" rx="8" fill="#FFFFFF" stroke="#D8DEE9" opacity="1.0"/>
+<text x="130" y="585" font-size="24" font-weight="800" fill="#172033" text-anchor="start">Why LSTM?</text>
+<text x="130" y="630" font-size="18" font-weight="400" fill="#667085" text-anchor="start">낙상은 단일 peak가 아니라 충격, 회전, 자세 변화, 이후 정지 상태가 순서대로 나타나는</text>
+<text x="130" y="658" font-size="18" font-weight="400" fill="#667085" text-anchor="start">시계열 이벤트다. 따라서 window 기반 LSTM이 threshold 단독 방식보다 설명력이</text>
+<text x="130" y="686" font-size="18" font-weight="400" fill="#667085" text-anchor="start">높다.</text>
+<rect x="720" y="535" width="585" height="190" rx="8" fill="#FFFFFF" stroke="#D8DEE9" opacity="1.0"/>
+<text x="755" y="585" font-size="24" font-weight="800" fill="#172033" text-anchor="start">Final scope</text>
+<text x="755" y="630" font-size="18" font-weight="400" fill="#667085" text-anchor="start">최종 학술대회 범위는 GPS를 제외한 IMU 낙상 감지다. 표현은 &#x27;하이브리드&#x27;가 아니라</text>
+<text x="755" y="658" font-size="18" font-weight="400" fill="#667085" text-anchor="start">&#x27;전처리 feature 기반 LSTM 낙상 감지 모델&#x27;이 정확하다.</text>
+  </g>
+</svg>
