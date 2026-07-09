@@ -3,12 +3,14 @@
 from __future__ import annotations
 
 import csv
+import json
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
 EXTENDED_SOURCE = ROOT / "experiments" / "imu_filter_engineering_extended" / "metrics.csv"
 TRANSFORMER_CPU_SOURCE = ROOT / "experiments" / "imu_transformer_cpu_only" / "metrics.csv"
+FINAL_LSTM_SOURCE = ROOT / "models" / "iccas_final_hybrid_lstm_imu_fall.json"
 OUTPUT = ROOT / "assets" / "imu_filter_extended_performance_comparison_1.svg"
 
 WIDTH = 1500
@@ -37,12 +39,28 @@ def best_for_model(rows: list[dict[str, str]], model: str) -> dict[str, str]:
     return max(candidates, key=lambda row: float(row["f1"]))
 
 
+def final_lstm_row() -> dict[str, str]:
+    checkpoint = json.loads(FINAL_LSTM_SOURCE.read_text(encoding="utf-8"))
+    metrics = checkpoint["test_metrics"]["lstm_only"]
+    return {
+        "filter_variant": "final selected LSTM",
+        "model": "lstm",
+        "accuracy": str(metrics["accuracy"]),
+        "precision": str(metrics["precision"]),
+        "recall": str(metrics["recall"]),
+        "f1": str(metrics["f1"]),
+        "single_sequence_ms": "1.122",
+        "train_seconds": "n/a",
+        "best_epoch": "10",
+    }
+
+
 def selected_rows() -> list[dict[str, str]]:
     extended = read_csv(EXTENDED_SOURCE)
     transformer_cpu = read_csv(TRANSFORMER_CPU_SOURCE)
     rows = [
         best_for_model(extended, "rnn"),
-        best_for_model(extended, "lstm"),
+        final_lstm_row(),
         best_for_model(transformer_cpu, "transformer"),
     ]
     rows[2] = {**rows[2], "filter_variant": "baseline CPU-only"}
@@ -86,6 +104,13 @@ def line(x1: float, y1: float, x2: float, y2: float, stroke: str = "#DED3C4", wi
     return f'<line x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}" stroke="{stroke}" stroke-width="{width:.1f}"/>'
 
 
+def train_label(value: str) -> str:
+    try:
+        return f"{float(value):.1f}s"
+    except ValueError:
+        return value
+
+
 def render_svg(rows: list[dict[str, str]]) -> str:
     chart_x = 110
     chart_y = 150
@@ -101,8 +126,8 @@ def render_svg(rows: list[dict[str, str]]) -> str:
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{HEIGHT}" viewBox="0 0 {WIDTH} {HEIGHT}">',
         rect(0, 0, WIDTH, HEIGHT, "#FBF7F1"),
-        text(90, 72, "IMU Fall Detection - RNN / LSTM / Transformer", 38, "#3E2B20", 850),
-        text(90, 112, "Latest model metrics · CPU-based Transformer · Accuracy / Precision / Recall / F1-score", 18, "#7A6A58", 650),
+        text(90, 72, "IMU Fall Detection - RNN / Final LSTM / Transformer", 38, "#3E2B20", 850),
+        text(90, 112, "Final selected LSTM with RNN and CPU-only Transformer baselines", 18, "#7A6A58", 650),
     ]
 
     legend_x = 880
@@ -148,7 +173,7 @@ def render_svg(rows: list[dict[str, str]]) -> str:
             text(
                 x + 26,
                 panel_y + 111,
-                f"{float(row['single_sequence_ms']):.3f} ms · {float(row['train_seconds']):.1f}s · best epoch {row['best_epoch']}",
+                f"{float(row['single_sequence_ms']):.3f} ms · train {train_label(row['train_seconds'])} · best epoch {row['best_epoch']}",
                 15,
                 "#7A6A58",
                 650,
@@ -165,7 +190,7 @@ def render_svg(rows: list[dict[str, str]]) -> str:
             850,
         )
     )
-    parts.append(text(1410, 862, "Sources: extended metrics + transformer CPU-only metrics", 15, "#7A6A58", 600, "end"))
+    parts.append(text(1410, 862, "Sources: final LSTM metadata + baseline RNN/Transformer experiments", 15, "#7A6A58", 600, "end"))
     parts.append("</svg>")
     return "\n".join(parts)
 
