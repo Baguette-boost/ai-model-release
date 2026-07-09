@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 EXTENDED_SOURCE = ROOT / "experiments" / "imu_filter_engineering_extended" / "metrics.csv"
 TRANSFORMER_CPU_SOURCE = ROOT / "experiments" / "imu_transformer_cpu_only" / "metrics.csv"
 FINAL_LSTM_SOURCE = ROOT / "models" / "iccas_final_hybrid_lstm_imu_fall.json"
+LSTM_SPEED_SOURCE = ROOT.parent / "data" / "iccas_sensor_lstm" / "imu_lstm_speed_preprocessing_metrics.json"
 OUTPUT = ROOT / "assets" / "imu_filter_extended_performance_comparison_1.svg"
 
 WIDTH = 1500
@@ -41,7 +42,11 @@ def best_for_model(rows: list[dict[str, str]], model: str) -> dict[str, str]:
 
 def final_lstm_row() -> dict[str, str]:
     checkpoint = json.loads(FINAL_LSTM_SOURCE.read_text(encoding="utf-8"))
+    speed = json.loads(LSTM_SPEED_SOURCE.read_text(encoding="utf-8"))["inference_speed"]
     metrics = checkpoint["test_metrics"]["lstm_only"]
+    forward_ms = float(speed["realtime_forward_only_median_ms"])
+    window_seconds = float(speed["window_seconds"])
+    local_decision_ms = window_seconds * 1000.0 + forward_ms
     return {
         "filter_variant": "final selected LSTM",
         "model": "lstm",
@@ -49,8 +54,8 @@ def final_lstm_row() -> dict[str, str]:
         "precision": str(metrics["precision"]),
         "recall": str(metrics["recall"]),
         "f1": str(metrics["f1"]),
-        "single_sequence_ms": "1.122",
-        "train_seconds": "n/a",
+        "single_sequence_ms": str(forward_ms),
+        "processing_label": f"~{local_decision_ms / 1000.0:.3f}s incl. 2.0s window",
         "best_epoch": "10",
     }
 
@@ -111,6 +116,13 @@ def train_label(value: str) -> str:
         return value
 
 
+def processing_label(row: dict[str, str]) -> str:
+    if "processing_label" in row:
+        return row["processing_label"]
+    forward_ms = float(row["single_sequence_ms"])
+    return f"~{(2000.0 + forward_ms) / 1000.0:.3f}s incl. 2.0s window"
+
+
 def render_svg(rows: list[dict[str, str]]) -> str:
     chart_x = 110
     chart_y = 150
@@ -159,7 +171,7 @@ def render_svg(rows: list[dict[str, str]]) -> str:
     parts.append(rect(90, panel_y, 1320, 126, "#FFFFFF", "#E5D9CA", 10))
     parts.append(text(130, panel_y + 40, "Model", 18, "#3E2B20", 850))
     parts.append(text(130, panel_y + 78, "Best filter", 18, "#3E2B20", 850))
-    parts.append(text(130, panel_y + 112, "Inference / train", 18, "#3E2B20", 850))
+    parts.append(text(130, panel_y + 112, "Forward / process", 18, "#3E2B20", 850))
 
     item_x = 330
     col_w = 335
@@ -173,7 +185,7 @@ def render_svg(rows: list[dict[str, str]]) -> str:
             text(
                 x + 26,
                 panel_y + 111,
-                f"{float(row['single_sequence_ms']):.3f} ms · train {train_label(row['train_seconds'])} · best epoch {row['best_epoch']}",
+                f"{float(row['single_sequence_ms']):.3f} ms · {processing_label(row)} · epoch {row['best_epoch']}",
                 15,
                 "#7A6A58",
                 650,
@@ -190,7 +202,7 @@ def render_svg(rows: list[dict[str, str]]) -> str:
             850,
         )
     )
-    parts.append(text(1410, 862, "Sources: final LSTM metadata + baseline RNN/Transformer experiments", 15, "#7A6A58", 600, "end"))
+    parts.append(text(1410, 862, "Process time includes the 50-sample IMU window at 25 Hz", 15, "#7A6A58", 600, "end"))
     parts.append("</svg>")
     return "\n".join(parts)
 
