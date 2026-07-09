@@ -58,6 +58,7 @@
 !assets/imu_acceleration_distribution_analysis.svg
 !assets/imu_performance_improvement_cause.svg
 !assets/imu_filter_extended_performance_comparison.svg
+!assets/imu_filter_extended_performance_comparison_1.svg
 
 !scripts/
 !scripts/realtime_sensor_lstm.py
@@ -102,6 +103,7 @@
 !scripts/generate_imu_improvement_cause_svg.py
 !scripts/compare_imu_filter_engineering.py
 !scripts/generate_imu_filter_extended_performance_svg.py
+!scripts/generate_imu_filter_extended_performance_comparison_1_svg.py
 
 !models/
 !models/iccas_sensor_lstm_fall.pt
