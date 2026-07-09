@@ -18,6 +18,7 @@ from compare_preprocessed_imu_models import (
     assign_sisfall_group_splits,
     load_preprocessed_csv,
 )
+from train_sisfall_merged_imu_lstm import BinaryLSTM
 
 
 def split_position(position: float, train_ratio: float, validation_ratio: float) -> str:
@@ -148,6 +149,48 @@ def time_model(model_name: str, repeats: int, sequence_length: int, feature_coun
     }
 
 
+def time_final_lstm(checkpoint_path: Path, repeats: int) -> dict[str, float]:
+    torch.set_num_threads(1)
+    device = torch.device("cpu")
+    checkpoint = torch.load(checkpoint_path, map_location=device, weights_only=False)
+    model = BinaryLSTM(
+        len(FEATURE_COLUMNS),
+        int(checkpoint["hidden_size"]),
+        int(checkpoint["num_layers"]),
+        float(checkpoint["dropout"]),
+        bool(checkpoint["bidirectional"]),
+        str(checkpoint["pooling"]),
+    ).to(device)
+    model.load_state_dict(checkpoint["model_state"])
+    model.eval()
+    np_sample = np.random.default_rng(42).normal(
+        size=(1, int(checkpoint["sequence_length"]), len(FEATURE_COLUMNS))
+    ).astype(np.float32)
+    tensor = torch.tensor(np_sample, dtype=torch.float32, device=device)
+    with torch.no_grad():
+        for _ in range(50):
+            model(tensor)
+
+        started = time.perf_counter()
+        for _ in range(repeats):
+            model(tensor)
+        forward_ms = (time.perf_counter() - started) * 1000.0 / repeats
+
+        started = time.perf_counter()
+        for _ in range(repeats):
+            current = torch.tensor(np_sample, dtype=torch.float32, device=device)
+            model(current)
+        tensor_plus_forward_ms = (time.perf_counter() - started) * 1000.0 / repeats
+
+    return {
+        "forward_only_ms": forward_ms,
+        "tensor_create_plus_forward_ms": tensor_plus_forward_ms,
+        "parameter_count": float(sum(parameter.numel() for parameter in model.parameters())),
+        "window_seconds": int(checkpoint["sequence_length"]) * int(checkpoint["sample_ms"]) / 1000.0,
+        "architecture": "2-layer bidirectional LSTM with attention pooling",
+    }
+
+
 def run(args: argparse.Namespace) -> dict[str, Any]:
     frame = load_preprocessed_csv(args.source)
     frame = assign_sisfall_group_splits(frame, args.train_ratio, args.validation_ratio, args.seed)
@@ -155,6 +198,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     latency = {
         "rnn": time_model("rnn", args.repeats, args.sequence_length, len(FEATURE_COLUMNS), args.hidden_size, args.num_layers, args.dropout, args.transformer_heads),
         "transformer": time_model("transformer", args.repeats, args.sequence_length, len(FEATURE_COLUMNS), args.hidden_size, args.num_layers, args.dropout, args.transformer_heads),
+        "final_lstm_trained_checkpoint": time_final_lstm(args.final_lstm_model, args.repeats),
     }
     report = {
         "source": str(args.source),
@@ -177,6 +221,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", type=Path, default=Path("../data/iccas_sensor_lstm/imu_fall_preprocessed.csv"))
+    parser.add_argument("--final-lstm-model", type=Path, default=Path("models/iccas_final_hybrid_lstm_imu_fall.pt"))
     parser.add_argument("--output", type=Path, default=Path("experiments/imu_latency_leakage_audit.json"))
     parser.add_argument("--sequence-length", type=int, default=50)
     parser.add_argument("--sequence-stride", type=int, default=4)

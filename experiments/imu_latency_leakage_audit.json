@@ -31,14 +31,21 @@
   },
   "latency_audit_cpu_single_thread": {
     "rnn": {
-      "forward_only_ms": 0.2265631250338629,
-      "tensor_create_plus_forward_ms": 0.22782045899657533,
+      "forward_only_ms": 0.22657137498026714,
+      "tensor_create_plus_forward_ms": 0.2297748330165632,
       "parameter_count": 13505.0
     },
     "transformer": {
-      "forward_only_ms": 0.18972683302126825,
-      "tensor_create_plus_forward_ms": 0.19017954199807718,
+      "forward_only_ms": 0.18911554099759087,
+      "tensor_create_plus_forward_ms": 0.18957295798463747,
       "parameter_count": 67969.0
+    },
+    "final_lstm_trained_checkpoint": {
+      "forward_only_ms": 1.1204128339886665,
+      "tensor_create_plus_forward_ms": 1.110510584025178,
+      "parameter_count": 139778.0,
+      "window_seconds": 2.0,
+      "architecture": "2-layer bidirectional LSTM with attention pooling"
     }
   },
   "interpretation": [
