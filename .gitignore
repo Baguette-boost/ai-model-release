@@ -105,6 +105,7 @@
 !scripts/generate_imu_filter_extended_performance_svg.py
 !scripts/generate_imu_filter_extended_performance_comparison_1_svg.py
 !scripts/audit_imu_latency_and_leakage.py
+!scripts/train_final_sequence_baselines.py
 
 !models/
 !models/iccas_sensor_lstm_fall.pt
@@ -168,6 +169,16 @@ experiments/imu_filter_engineering/._*
 experiments/imu_filter_engineering_extended/._*
 
 !experiments/imu_latency_leakage_audit.json
+
+!experiments/final_sequence_baselines/
+!experiments/final_sequence_baselines/README.md
+!experiments/final_sequence_baselines/metrics.csv
+!experiments/final_sequence_baselines/metrics.json
+!experiments/final_sequence_baselines/final_rnn_imu_fall.pt
+!experiments/final_sequence_baselines/final_rnn_imu_fall.json
+!experiments/final_sequence_baselines/final_transformer_imu_fall.pt
+!experiments/final_sequence_baselines/final_transformer_imu_fall.json
+experiments/final_sequence_baselines/._*
 
 !Dockerfile
 !docker-compose.yml

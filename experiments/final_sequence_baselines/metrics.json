@@ -1,0 +1,139 @@
+{
+  "source": "../data/iccas_sensor_lstm/final_iccas_sisfall_imu_merged.csv",
+  "device": "cpu",
+  "sequence_length": 50,
+  "sequence_stride": 4,
+  "train_ratio": 0.7,
+  "validation_ratio": 0.15,
+  "seed": 42,
+  "results": [
+    {
+      "architecture": "rnn",
+      "model_path": "experiments/final_sequence_baselines/final_rnn_imu_fall.pt",
+      "metadata_path": "experiments/final_sequence_baselines/final_rnn_imu_fall.json",
+      "best_epoch": 14,
+      "epochs_trained": 19,
+      "train_seconds": 41.875363792001735,
+      "threshold": 0.5299999999999999,
+      "validation_metrics": {
+        "accuracy": 0.8352843503528435,
+        "precision": 0.7602392171076477,
+        "recall": 0.8638797364085667,
+        "f1": 0.808752650857914,
+        "tp": 4195,
+        "fp": 1323,
+        "tn": 5866,
+        "fn": 661,
+        "threshold": 0.5299999999999999
+      },
+      "test_metrics": {
+        "accuracy": 0.8028864413216863,
+        "precision": 0.797078292627254,
+        "recall": 0.746313314810857,
+        "f1": 0.7708609271523179,
+        "tp": 3492,
+        "fp": 889,
+        "tn": 4964,
+        "fn": 1187,
+        "threshold": 0.5299999999999999
+      },
+      "test_metrics_by_dataset": {
+        "ICCAS": {
+          "accuracy": 0.947198275862069,
+          "precision": 0.9821428571428571,
+          "recall": 0.5339805825242718,
+          "f1": 0.6918238993710691,
+          "tp": 55,
+          "fp": 1,
+          "tn": 824,
+          "fn": 48,
+          "threshold": 0.5299999999999999
+        },
+        "SisFall": {
+          "accuracy": 0.788942107455227,
+          "precision": 0.7946820809248555,
+          "recall": 0.7510926573426573,
+          "f1": 0.7722727783395125,
+          "tp": 3437,
+          "fp": 888,
+          "tn": 4140,
+          "fn": 1139,
+          "threshold": 0.5299999999999999
+        }
+      },
+      "latency": {
+        "forward_only_ms": 0.23636654095025733,
+        "tensor_create_plus_forward_ms": 0.23837499995715916,
+        "batch_size": 1024.0,
+        "batch_ms": 16.65901170799043,
+        "batch_per_sequence_ms": 0.016268566121084405,
+        "window_seconds": 2.0
+      },
+      "parameter_count": 13505
+    },
+    {
+      "architecture": "transformer",
+      "model_path": "experiments/final_sequence_baselines/final_transformer_imu_fall.pt",
+      "metadata_path": "experiments/final_sequence_baselines/final_transformer_imu_fall.json",
+      "best_epoch": 9,
+      "epochs_trained": 15,
+      "train_seconds": 265.1389687079936,
+      "threshold": 0.8099999999999999,
+      "validation_metrics": {
+        "accuracy": 0.873972602739726,
+        "precision": 0.8081610044313147,
+        "recall": 0.9013591433278418,
+        "f1": 0.8522196261682243,
+        "tp": 4377,
+        "fp": 1039,
+        "tn": 6150,
+        "fn": 479,
+        "threshold": 0.8099999999999999
+      },
+      "test_metrics": {
+        "accuracy": 0.8828332700341815,
+        "precision": 0.9224920284522934,
+        "recall": 0.8038042316734345,
+        "f1": 0.8590680676107811,
+        "tp": 3761,
+        "fp": 316,
+        "tn": 5537,
+        "fn": 918,
+        "threshold": 0.8099999999999999
+      },
+      "test_metrics_by_dataset": {
+        "ICCAS": {
+          "accuracy": 0.9795258620689655,
+          "precision": 0.9772727272727273,
+          "recall": 0.8349514563106796,
+          "f1": 0.9005235602094241,
+          "tp": 86,
+          "fp": 2,
+          "tn": 823,
+          "fn": 17,
+          "threshold": 0.8099999999999999
+        },
+        "SisFall": {
+          "accuracy": 0.8734902124114952,
+          "precision": 0.9212835297066934,
+          "recall": 0.8031031468531469,
+          "f1": 0.8581436077057795,
+          "tp": 3675,
+          "fp": 314,
+          "tn": 4714,
+          "fn": 901,
+          "threshold": 0.8099999999999999
+        }
+      },
+      "latency": {
+        "forward_only_ms": 0.18747562501812354,
+        "tensor_create_plus_forward_ms": 0.1893676249892451,
+        "batch_size": 1024.0,
+        "batch_ms": 71.25834875000874,
+        "batch_per_sequence_ms": 0.0695882312011804,
+        "window_seconds": 2.0
+      },
+      "parameter_count": 67969
+    }
+  ]
+}
