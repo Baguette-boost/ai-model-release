@@ -1,0 +1,1017 @@
+{
+  "source": "../data/iccas_sensor_lstm/imu_fall_preprocessed.csv",
+  "out_dir": "experiments/imu_filter_engineering",
+  "device": "cpu",
+  "epochs": 8,
+  "sequence_length": 50,
+  "sequence_stride": 4,
+  "median_window": 3,
+  "ema_alpha": 0.3,
+  "filters": [
+    "baseline",
+    "median3",
+    "ema030",
+    "median3_ema030"
+  ],
+  "models": [
+    "lstm",
+    "cnn1d",
+    "cnn_lstm"
+  ],
+  "row_changes": [
+    {
+      "filter_variant": "baseline",
+      "sensor_rows_before": 349560,
+      "sensor_rows_after_filter": 349560,
+      "sensor_rows_delta": 0,
+      "sensor_rows_delta_rate": 0.0,
+      "sequence_length": 50,
+      "sequence_stride": 4,
+      "sequence_train": 55433,
+      "sequence_validation": 12628,
+      "sequence_test": 14589,
+      "sequence_total": 82650,
+      "sequence_total_delta_vs_baseline": 0
+    },
+    {
+      "filter_variant": "median3",
+      "sensor_rows_before": 349560,
+      "sensor_rows_after_filter": 349560,
+      "sensor_rows_delta": 0,
+      "sensor_rows_delta_rate": 0.0,
+      "sequence_length": 50,
+      "sequence_stride": 4,
+      "sequence_train": 55433,
+      "sequence_validation": 12628,
+      "sequence_test": 14589,
+      "sequence_total": 82650,
+      "sequence_total_delta_vs_baseline": 0
+    },
+    {
+      "filter_variant": "ema030",
+      "sensor_rows_before": 349560,
+      "sensor_rows_after_filter": 349560,
+      "sensor_rows_delta": 0,
+      "sensor_rows_delta_rate": 0.0,
+      "sequence_length": 50,
+      "sequence_stride": 4,
+      "sequence_train": 55433,
+      "sequence_validation": 12628,
+      "sequence_test": 14589,
+      "sequence_total": 82650,
+      "sequence_total_delta_vs_baseline": 0
+    },
+    {
+      "filter_variant": "median3_ema030",
+      "sensor_rows_before": 349560,
+      "sensor_rows_after_filter": 349560,
+      "sensor_rows_delta": 0,
+      "sensor_rows_delta_rate": 0.0,
+      "sequence_length": 50,
+      "sequence_stride": 4,
+      "sequence_train": 55433,
+      "sequence_validation": 12628,
+      "sequence_test": 14589,
+      "sequence_total": 82650,
+      "sequence_total_delta_vs_baseline": 0
+    }
+  ],
+  "results": [
+    {
+      "filter_variant": "baseline",
+      "model": "lstm",
+      "epochs": 8,
+      "threshold": 0.72,
+      "validation_metrics": {
+        "accuracy": 0.8808995882166614,
+        "precision": 0.8159879336349924,
+        "recall": 0.8912685337726524,
+        "f1": 0.851968503937008,
+        "tp": 4328,
+        "fp": 976,
+        "tn": 6796,
+        "fn": 528,
+        "threshold": 0.72
+      },
+      "test_metrics": {
+        "accuracy": 0.7300706011378436,
+        "precision": 0.5836078534721307,
+        "recall": 0.8505857499519877,
+        "f1": 0.6922475773679275,
+        "tp": 4429,
+        "fp": 3160,
+        "tn": 6222,
+        "fn": 778,
+        "threshold": 0.72
+      },
+      "latency": {
+        "single_sequence_ms": 0.5709300003945827,
+        "batch_size": 1024.0,
+        "batch_ms": 44.30873416014947,
+        "batch_per_sequence_ms": 0.04327024820327097
+      },
+      "train_seconds": 65.74479212495498,
+      "parameter_count": 53441,
+      "history": [
+        {
+          "epoch": 1,
+          "loss": 0.45233521086512923,
+          "validation_f1": 0.7548209366391185
+        },
+        {
+          "epoch": 2,
+          "loss": 0.2964278928677601,
+          "validation_f1": 0.7951088003081072
+        },
+        {
+          "epoch": 3,
+          "loss": 0.23016170616587145,
+          "validation_f1": 0.8371712209599836
+        },
+        {
+          "epoch": 4,
+          "loss": 0.19278809255313922,
+          "validation_f1": 0.8358445678033306
+        },
+        {
+          "epoch": 5,
+          "loss": 0.17170407701264004,
+          "validation_f1": 0.8348577746507188
+        },
+        {
+          "epoch": 6,
+          "loss": 0.14655152432300772,
+          "validation_f1": 0.851968503937008
+        },
+        {
+          "epoch": 7,
+          "loss": 0.12959800992245912,
+          "validation_f1": 0.837376985286953
+        },
+        {
+          "epoch": 8,
+          "loss": 0.11342413849098959,
+          "validation_f1": 0.8462523392100857
+        }
+      ]
+    },
+    {
+      "filter_variant": "baseline",
+      "model": "cnn1d",
+      "epochs": 8,
+      "threshold": 0.8999999999999999,
+      "validation_metrics": {
+        "accuracy": 0.9118625277161863,
+        "precision": 0.8934202228295144,
+        "recall": 0.8752059308072487,
+        "f1": 0.884219286383023,
+        "tp": 4250,
+        "fp": 507,
+        "tn": 7265,
+        "fn": 606,
+        "threshold": 0.8999999999999999
+      },
+      "test_metrics": {
+        "accuracy": 0.831242717115635,
+        "precision": 0.7261492832427089,
+        "recall": 0.8463606683310928,
+        "f1": 0.7816601631784321,
+        "tp": 4407,
+        "fp": 1662,
+        "tn": 7720,
+        "fn": 800,
+        "threshold": 0.8999999999999999
+      },
+      "latency": {
+        "single_sequence_ms": 0.31005667988210917,
+        "batch_size": 1024.0,
+        "batch_ms": 212.4607108393684,
+        "batch_per_sequence_ms": 0.2074811629290707
+      },
+      "train_seconds": 180.77118754200637,
+      "parameter_count": 107777,
+      "history": [
+        {
+          "epoch": 1,
+          "loss": 0.3553034041987573,
+          "validation_f1": 0.7877745167493169
+        },
+        {
+          "epoch": 2,
+          "loss": 0.22944897424086985,
+          "validation_f1": 0.8212792642140468
+        },
+        {
+          "epoch": 3,
+          "loss": 0.19546613595087972,
+          "validation_f1": 0.835103640301124
+        },
+        {
+          "epoch": 4,
+          "loss": 0.16356875523238007,
+          "validation_f1": 0.8601261242634135
+        },
+        {
+          "epoch": 5,
+          "loss": 0.1478760998795617,
+          "validation_f1": 0.8595658758202929
+        },
+        {
+          "epoch": 6,
+          "loss": 0.1327907645363979,
+          "validation_f1": 0.860219151977132
+        },
+        {
+          "epoch": 7,
+          "loss": 0.12410260868970241,
+          "validation_f1": 0.8373817188566969
+        },
+        {
+          "epoch": 8,
+          "loss": 0.11470132592930489,
+          "validation_f1": 0.884219286383023
+        }
+      ]
+    },
+    {
+      "filter_variant": "baseline",
+      "model": "cnn_lstm",
+      "epochs": 8,
+      "threshold": 0.4099999999999999,
+      "validation_metrics": {
+        "accuracy": 0.8938074121000951,
+        "precision": 0.8350810295519543,
+        "recall": 0.9019769357495881,
+        "f1": 0.8672408672408674,
+        "tp": 4380,
+        "fp": 865,
+        "tn": 6907,
+        "fn": 476,
+        "threshold": 0.4099999999999999
+      },
+      "test_metrics": {
+        "accuracy": 0.8276783878264445,
+        "precision": 0.7051028179741051,
+        "recall": 0.8889955828692145,
+        "f1": 0.7864424057084608,
+        "tp": 4629,
+        "fp": 1936,
+        "tn": 7446,
+        "fn": 578,
+        "threshold": 0.4099999999999999
+      },
+      "latency": {
+        "single_sequence_ms": 0.7022449991200119,
+        "batch_size": 1024.0,
+        "batch_ms": 91.45257250056602,
+        "batch_per_sequence_ms": 0.089309152832584
+      },
+      "train_seconds": 119.07827949995408,
+      "parameter_count": 77025,
+      "history": [
+        {
+          "epoch": 1,
+          "loss": 0.472714835036322,
+          "validation_f1": 0.7398174501913829
+        },
+        {
+          "epoch": 2,
+          "loss": 0.33127136236586957,
+          "validation_f1": 0.8173812058453499
+        },
+        {
+          "epoch": 3,
+          "loss": 0.28177638161032514,
+          "validation_f1": 0.8121695760598504
+        },
+        {
+          "epoch": 4,
+          "loss": 0.2483560478945563,
+          "validation_f1": 0.8460361187633915
+        },
+        {
+          "epoch": 5,
+          "loss": 0.22677725853723943,
+          "validation_f1": 0.8122854561878953
+        },
+        {
+          "epoch": 6,
+          "loss": 0.20609665415695744,
+          "validation_f1": 0.8521221432686769
+        },
+        {
+          "epoch": 7,
+          "loss": 0.1942723637711442,
+          "validation_f1": 0.8411991688928466
+        },
+        {
+          "epoch": 8,
+          "loss": 0.1799182211808351,
+          "validation_f1": 0.8672408672408674
+        }
+      ]
+    },
+    {
+      "filter_variant": "median3",
+      "model": "lstm",
+      "epochs": 8,
+      "threshold": 0.8099999999999999,
+      "validation_metrics": {
+        "accuracy": 0.8717136522014571,
+        "precision": 0.7984138694208779,
+        "recall": 0.8914744645799012,
+        "f1": 0.8423817863397548,
+        "tp": 4329,
+        "fp": 1093,
+        "tn": 6679,
+        "fn": 527,
+        "threshold": 0.8099999999999999
+      },
+      "test_metrics": {
+        "accuracy": 0.7539927342518336,
+        "precision": 0.6095908967759415,
+        "recall": 0.8642212406376032,
+        "f1": 0.7149098419254906,
+        "tp": 4500,
+        "fp": 2882,
+        "tn": 6500,
+        "fn": 707,
+        "threshold": 0.8099999999999999
+      },
+      "latency": {
+        "single_sequence_ms": 0.5614841601345688,
+        "batch_size": 1024.0,
+        "batch_ms": 43.848044159822166,
+        "batch_per_sequence_ms": 0.042820355624826334
+      },
+      "train_seconds": 63.39943749998929,
+      "parameter_count": 53441,
+      "history": [
+        {
+          "epoch": 1,
+          "loss": 0.45625016926147094,
+          "validation_f1": 0.7478427612655801
+        },
+        {
+          "epoch": 2,
+          "loss": 0.297603456177706,
+          "validation_f1": 0.7946420323325635
+        },
+        {
+          "epoch": 3,
+          "loss": 0.22985904837575943,
+          "validation_f1": 0.825330132052821
+        },
+        {
+          "epoch": 4,
+          "loss": 0.18818117305132379,
+          "validation_f1": 0.8215192345245069
+        },
+        {
+          "epoch": 5,
+          "loss": 0.16163128199511398,
+          "validation_f1": 0.8328854384393352
+        },
+        {
+          "epoch": 6,
+          "loss": 0.1346357932396164,
+          "validation_f1": 0.8280266920877025
+        },
+        {
+          "epoch": 7,
+          "loss": 0.12460933241401731,
+          "validation_f1": 0.8414358974358974
+        },
+        {
+          "epoch": 8,
+          "loss": 0.11227971789282665,
+          "validation_f1": 0.8423817863397548
+        }
+      ]
+    },
+    {
+      "filter_variant": "median3",
+      "model": "cnn1d",
+      "epochs": 8,
+      "threshold": 0.5099999999999999,
+      "validation_metrics": {
+        "accuracy": 0.8904814697497624,
+        "precision": 0.8259808522620612,
+        "recall": 0.9060955518945635,
+        "f1": 0.8641854070509672,
+        "tp": 4400,
+        "fp": 927,
+        "tn": 6845,
+        "fn": 456,
+        "threshold": 0.5099999999999999
+      },
+      "test_metrics": {
+        "accuracy": 0.8013571869216533,
+        "precision": 0.666907618909932,
+        "recall": 0.8859227962358364,
+        "f1": 0.7609699769053117,
+        "tp": 4613,
+        "fp": 2304,
+        "tn": 7078,
+        "fn": 594,
+        "threshold": 0.5099999999999999
+      },
+      "latency": {
+        "single_sequence_ms": 0.29948500101454556,
+        "batch_size": 1024.0,
+        "batch_ms": 215.06382583989762,
+        "batch_per_sequence_ms": 0.21002326742177502
+      },
+      "train_seconds": 182.42040345899295,
+      "parameter_count": 107777,
+      "history": [
+        {
+          "epoch": 1,
+          "loss": 0.35810431032507833,
+          "validation_f1": 0.7866889172474723
+        },
+        {
+          "epoch": 2,
+          "loss": 0.2305910271153381,
+          "validation_f1": 0.8381010346926355
+        },
+        {
+          "epoch": 3,
+          "loss": 0.1976973391636415,
+          "validation_f1": 0.8383331626906931
+        },
+        {
+          "epoch": 4,
+          "loss": 0.1661286280248643,
+          "validation_f1": 0.8487726032932619
+        },
+        {
+          "epoch": 5,
+          "loss": 0.1499635275192109,
+          "validation_f1": 0.8641854070509672
+        },
+        {
+          "epoch": 6,
+          "loss": 0.13846538869241262,
+          "validation_f1": 0.8579420579420579
+        },
+        {
+          "epoch": 7,
+          "loss": 0.12437726501072685,
+          "validation_f1": 0.8473652331920047
+        },
+        {
+          "epoch": 8,
+          "loss": 0.11299703551806362,
+          "validation_f1": 0.8535183349851339
+        }
+      ]
+    },
+    {
+      "filter_variant": "median3",
+      "model": "cnn_lstm",
+      "epochs": 8,
+      "threshold": 0.43999999999999995,
+      "validation_metrics": {
+        "accuracy": 0.8788406715235983,
+        "precision": 0.8094529214737626,
+        "recall": 0.8957990115321252,
+        "f1": 0.8504398826979471,
+        "tp": 4350,
+        "fp": 1024,
+        "tn": 6748,
+        "fn": 506,
+        "threshold": 0.43999999999999995
+      },
+      "test_metrics": {
+        "accuracy": 0.7872369593529371,
+        "precision": 0.6562639322336157,
+        "recall": 0.8480891108123679,
+        "f1": 0.7399463806970509,
+        "tp": 4416,
+        "fp": 2313,
+        "tn": 7069,
+        "fn": 791,
+        "threshold": 0.43999999999999995
+      },
+      "latency": {
+        "single_sequence_ms": 0.7197424990590662,
+        "batch_size": 1024.0,
+        "batch_ms": 93.50765499984846,
+        "batch_per_sequence_ms": 0.09131606933578951
+      },
+      "train_seconds": 118.48447308305185,
+      "parameter_count": 77025,
+      "history": [
+        {
+          "epoch": 1,
+          "loss": 0.4751604863068006,
+          "validation_f1": 0.7484699508377647
+        },
+        {
+          "epoch": 2,
+          "loss": 0.32993300131023484,
+          "validation_f1": 0.8005738880918222
+        },
+        {
+          "epoch": 3,
+          "loss": 0.279991624571249,
+          "validation_f1": 0.8079180344175867
+        },
+        {
+          "epoch": 4,
+          "loss": 0.25413558746394743,
+          "validation_f1": 0.8287492471391287
+        },
+        {
+          "epoch": 5,
+          "loss": 0.22396869113828374,
+          "validation_f1": 0.8309495431068731
+        },
+        {
+          "epoch": 6,
+          "loss": 0.20987091224902768,
+          "validation_f1": 0.8504398826979471
+        },
+        {
+          "epoch": 7,
+          "loss": 0.1958364035703097,
+          "validation_f1": 0.8390459009821607
+        },
+        {
+          "epoch": 8,
+          "loss": 0.17699952562119226,
+          "validation_f1": 0.846562930864684
+        }
+      ]
+    },
+    {
+      "filter_variant": "ema030",
+      "model": "lstm",
+      "epochs": 8,
+      "threshold": 0.74,
+      "validation_metrics": {
+        "accuracy": 0.882404181184669,
+        "precision": 0.8374374374374375,
+        "recall": 0.8614085667215815,
+        "f1": 0.8492538828545325,
+        "tp": 4183,
+        "fp": 812,
+        "tn": 6960,
+        "fn": 673,
+        "threshold": 0.74
+      },
+      "test_metrics": {
+        "accuracy": 0.7613270272122832,
+        "precision": 0.6288274831964152,
+        "recall": 0.8085269829076244,
+        "f1": 0.7074441270374726,
+        "tp": 4210,
+        "fp": 2485,
+        "tn": 6897,
+        "fn": 997,
+        "threshold": 0.74
+      },
+      "latency": {
+        "single_sequence_ms": 0.5591891601216048,
+        "batch_size": 1024.0,
+        "batch_ms": 42.99657084047794,
+        "batch_per_sequence_ms": 0.04198883871140424
+      },
+      "train_seconds": 64.21094412496313,
+      "parameter_count": 53441,
+      "history": [
+        {
+          "epoch": 1,
+          "loss": 0.44836047764384285,
+          "validation_f1": 0.7452698294342437
+        },
+        {
+          "epoch": 2,
+          "loss": 0.2960929834812897,
+          "validation_f1": 0.8199604743083004
+        },
+        {
+          "epoch": 3,
+          "loss": 0.2335853795474675,
+          "validation_f1": 0.8380168606985148
+        },
+        {
+          "epoch": 4,
+          "loss": 0.19349590602237937,
+          "validation_f1": 0.8294637353605918
+        },
+        {
+          "epoch": 5,
+          "loss": 0.16581321181634512,
+          "validation_f1": 0.8492538828545325
+        },
+        {
+          "epoch": 6,
+          "loss": 0.14211099037230784,
+          "validation_f1": 0.8424074440704812
+        },
+        {
+          "epoch": 7,
+          "loss": 0.12773092673401648,
+          "validation_f1": 0.8280838615309606
+        },
+        {
+          "epoch": 8,
+          "loss": 0.11626069961524349,
+          "validation_f1": 0.845786069185338
+        }
+      ]
+    },
+    {
+      "filter_variant": "ema030",
+      "model": "cnn1d",
+      "epochs": 8,
+      "threshold": 0.6699999999999999,
+      "validation_metrics": {
+        "accuracy": 0.8964206525182135,
+        "precision": 0.8477067816542533,
+        "recall": 0.890650741350906,
+        "f1": 0.8686483229564169,
+        "tp": 4325,
+        "fp": 777,
+        "tn": 6995,
+        "fn": 531,
+        "threshold": 0.6699999999999999
+      },
+      "test_metrics": {
+        "accuracy": 0.8059496881211872,
+        "precision": 0.6738366988586479,
+        "recall": 0.8843864029191473,
+        "f1": 0.7648866373224814,
+        "tp": 4605,
+        "fp": 2229,
+        "tn": 7153,
+        "fn": 602,
+        "threshold": 0.6699999999999999
+      },
+      "latency": {
+        "single_sequence_ms": 0.3225266805384308,
+        "batch_size": 1024.0,
+        "batch_ms": 208.14933417947032,
+        "batch_per_sequence_ms": 0.20327083415963898
+      },
+      "train_seconds": 181.43728283402743,
+      "parameter_count": 107777,
+      "history": [
+        {
+          "epoch": 1,
+          "loss": 0.363056513888448,
+          "validation_f1": 0.7556990881458968
+        },
+        {
+          "epoch": 2,
+          "loss": 0.2368175180538272,
+          "validation_f1": 0.8157087743594817
+        },
+        {
+          "epoch": 3,
+          "loss": 0.19813334569368585,
+          "validation_f1": 0.834770811125109
+        },
+        {
+          "epoch": 4,
+          "loss": 0.16494122671935404,
+          "validation_f1": 0.8648818238862163
+        },
+        {
+          "epoch": 5,
+          "loss": 0.14585693073761302,
+          "validation_f1": 0.8544571841751885
+        },
+        {
+          "epoch": 6,
+          "loss": 0.12983594295805775,
+          "validation_f1": 0.8633857038809697
+        },
+        {
+          "epoch": 7,
+          "loss": 0.1203745104318873,
+          "validation_f1": 0.8686483229564169
+        },
+        {
+          "epoch": 8,
+          "loss": 0.11333856608979988,
+          "validation_f1": 0.863101709993081
+        }
+      ]
+    },
+    {
+      "filter_variant": "ema030",
+      "model": "cnn_lstm",
+      "epochs": 8,
+      "threshold": 0.6499999999999999,
+      "validation_metrics": {
+        "accuracy": 0.8704466265441875,
+        "precision": 0.8005974607916355,
+        "recall": 0.8830313014827018,
+        "f1": 0.8397963180571876,
+        "tp": 4288,
+        "fp": 1068,
+        "tn": 6704,
+        "fn": 568,
+        "threshold": 0.6499999999999999
+      },
+      "test_metrics": {
+        "accuracy": 0.7794228528343272,
+        "precision": 0.6444444444444445,
+        "recall": 0.8521221432686767,
+        "f1": 0.7338736354614621,
+        "tp": 4437,
+        "fp": 2448,
+        "tn": 6934,
+        "fn": 770,
+        "threshold": 0.6499999999999999
+      },
+      "latency": {
+        "single_sequence_ms": 0.6979366601444781,
+        "batch_size": 1024.0,
+        "batch_ms": 91.96129084099084,
+        "batch_per_sequence_ms": 0.08980594808690512
+      },
+      "train_seconds": 120.96529591595754,
+      "parameter_count": 77025,
+      "history": [
+        {
+          "epoch": 1,
+          "loss": 0.4675850503122052,
+          "validation_f1": 0.7509384193973826
+        },
+        {
+          "epoch": 2,
+          "loss": 0.3243130377809134,
+          "validation_f1": 0.7905587668593449
+        },
+        {
+          "epoch": 3,
+          "loss": 0.269898525606153,
+          "validation_f1": 0.8310030395136777
+        },
+        {
+          "epoch": 4,
+          "loss": 0.23562437943755207,
+          "validation_f1": 0.832233277509605
+        },
+        {
+          "epoch": 5,
+          "loss": 0.215036581519268,
+          "validation_f1": 0.8065749235474007
+        },
+        {
+          "epoch": 6,
+          "loss": 0.20160430167908985,
+          "validation_f1": 0.8340773809523809
+        },
+        {
+          "epoch": 7,
+          "loss": 0.18758929513950337,
+          "validation_f1": 0.8397963180571876
+        },
+        {
+          "epoch": 8,
+          "loss": 0.17045315682410617,
+          "validation_f1": 0.8352071305580877
+        }
+      ]
+    },
+    {
+      "filter_variant": "median3_ema030",
+      "model": "lstm",
+      "epochs": 8,
+      "threshold": 0.8099999999999999,
+      "validation_metrics": {
+        "accuracy": 0.8867595818815331,
+        "precision": 0.8601766190075694,
+        "recall": 0.8424629324546952,
+        "f1": 0.8512276321265084,
+        "tp": 4091,
+        "fp": 665,
+        "tn": 7107,
+        "fn": 765,
+        "threshold": 0.8099999999999999
+      },
+      "test_metrics": {
+        "accuracy": 0.7296593323737062,
+        "precision": 0.5957253296953161,
+        "recall": 0.7547532168235068,
+        "f1": 0.6658759742460183,
+        "tp": 3930,
+        "fp": 2667,
+        "tn": 6715,
+        "fn": 1277,
+        "threshold": 0.8099999999999999
+      },
+      "latency": {
+        "single_sequence_ms": 0.5678033200092614,
+        "batch_size": 1024.0,
+        "batch_ms": 42.09030915983021,
+        "batch_per_sequence_ms": 0.04110381753889669
+      },
+      "train_seconds": 64.1424431669875,
+      "parameter_count": 53441,
+      "history": [
+        {
+          "epoch": 1,
+          "loss": 0.448544230706795,
+          "validation_f1": 0.7538687645889168
+        },
+        {
+          "epoch": 2,
+          "loss": 0.29944090934957623,
+          "validation_f1": 0.8163950617283949
+        },
+        {
+          "epoch": 3,
+          "loss": 0.22815407970899876,
+          "validation_f1": 0.8512276321265084
+        },
+        {
+          "epoch": 4,
+          "loss": 0.19519954068992174,
+          "validation_f1": 0.8149038461538463
+        },
+        {
+          "epoch": 5,
+          "loss": 0.16617467328471924,
+          "validation_f1": 0.8232129131437356
+        },
+        {
+          "epoch": 6,
+          "loss": 0.14325582152342908,
+          "validation_f1": 0.8385105945278748
+        },
+        {
+          "epoch": 7,
+          "loss": 0.12582974111131381,
+          "validation_f1": 0.8326720216781186
+        },
+        {
+          "epoch": 8,
+          "loss": 0.11481083006673709,
+          "validation_f1": 0.8374776208474239
+        }
+      ]
+    },
+    {
+      "filter_variant": "median3_ema030",
+      "model": "cnn1d",
+      "epochs": 8,
+      "threshold": 0.74,
+      "validation_metrics": {
+        "accuracy": 0.9075863161229015,
+        "precision": 0.8900401776274054,
+        "recall": 0.8667627677100495,
+        "f1": 0.8782472613458528,
+        "tp": 4209,
+        "fp": 520,
+        "tn": 7252,
+        "fn": 647,
+        "threshold": 0.74
+      },
+      "test_metrics": {
+        "accuracy": 0.7888134896154637,
+        "precision": 0.6580434136187927,
+        "recall": 0.8500096024582293,
+        "f1": 0.7418084304030838,
+        "tp": 4426,
+        "fp": 2300,
+        "tn": 7082,
+        "fn": 781,
+        "threshold": 0.74
+      },
+      "latency": {
+        "single_sequence_ms": 0.3190283407457173,
+        "batch_size": 1024.0,
+        "batch_ms": 211.30519916070625,
+        "batch_per_sequence_ms": 0.2063527335553772
+      },
+      "train_seconds": 178.08932199998526,
+      "parameter_count": 107777,
+      "history": [
+        {
+          "epoch": 1,
+          "loss": 0.36270717470247155,
+          "validation_f1": 0.76004498517534
+        },
+        {
+          "epoch": 2,
+          "loss": 0.23534131808622058,
+          "validation_f1": 0.8226894089646966
+        },
+        {
+          "epoch": 3,
+          "loss": 0.19305308955710082,
+          "validation_f1": 0.845827997241651
+        },
+        {
+          "epoch": 4,
+          "loss": 0.1643700696231053,
+          "validation_f1": 0.8651903255434228
+        },
+        {
+          "epoch": 5,
+          "loss": 0.14557227714991017,
+          "validation_f1": 0.8782472613458528
+        },
+        {
+          "epoch": 6,
+          "loss": 0.13263274904464764,
+          "validation_f1": 0.8553157474020784
+        },
+        {
+          "epoch": 7,
+          "loss": 0.12173433382396559,
+          "validation_f1": 0.850752256770311
+        },
+        {
+          "epoch": 8,
+          "loss": 0.11102983440695842,
+          "validation_f1": 0.8716865155589704
+        }
+      ]
+    },
+    {
+      "filter_variant": "median3_ema030",
+      "model": "cnn_lstm",
+      "epochs": 8,
+      "threshold": 0.3999999999999999,
+      "validation_metrics": {
+        "accuracy": 0.8660912258473235,
+        "precision": 0.7721410146173688,
+        "recall": 0.9246293245469522,
+        "f1": 0.8415331271670884,
+        "tp": 4490,
+        "fp": 1325,
+        "tn": 6447,
+        "fn": 366,
+        "threshold": 0.3999999999999999
+      },
+      "test_metrics": {
+        "accuracy": 0.7766810610734115,
+        "precision": 0.6289191692022754,
+        "recall": 0.9130017284424813,
+        "f1": 0.7447908506971643,
+        "tp": 4754,
+        "fp": 2805,
+        "tn": 6577,
+        "fn": 453,
+        "threshold": 0.3999999999999999
+      },
+      "latency": {
+        "single_sequence_ms": 0.7045341597404331,
+        "batch_size": 1024.0,
+        "batch_ms": 91.52695417986251,
+        "batch_per_sequence_ms": 0.08938179119127199
+      },
+      "train_seconds": 117.5983858749969,
+      "parameter_count": 77025,
+      "history": [
+        {
+          "epoch": 1,
+          "loss": 0.4686924150374249,
+          "validation_f1": 0.7352845879684632
+        },
+        {
+          "epoch": 2,
+          "loss": 0.32277260819841513,
+          "validation_f1": 0.787010506208214
+        },
+        {
+          "epoch": 3,
+          "loss": 0.2715661458544347,
+          "validation_f1": 0.8244259500651759
+        },
+        {
+          "epoch": 4,
+          "loss": 0.23862644557446822,
+          "validation_f1": 0.817799043062201
+        },
+        {
+          "epoch": 5,
+          "loss": 0.21232946641114026,
+          "validation_f1": 0.8224852071005917
+        },
+        {
+          "epoch": 6,
+          "loss": 0.19891748009876745,
+          "validation_f1": 0.8273212779911927
+        },
+        {
+          "epoch": 7,
+          "loss": 0.1864699568596304,
+          "validation_f1": 0.830893682588598
+        },
+        {
+          "epoch": 8,
+          "loss": 0.17377750939032613,
+          "validation_f1": 0.8415331271670884
+        }
+      ]
+    }
+  ]
+}
