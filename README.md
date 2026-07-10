@@ -64,11 +64,6 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-가상환경에서 나가려면 아래 명령어를 사용합니다.
-
-```bash
-deactivate
-```
 
 ## 엑셀/CSV 데이터 형식
 
