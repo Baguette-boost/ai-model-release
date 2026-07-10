@@ -187,3 +187,16 @@ experiments/final_sequence_baselines/._*
 !.dockerignore
 !models/iccas_final_rnn_gps_wandering.pt
 !models/iccas_final_rnn_gps_wandering.json
+
+!final-tcn-server/
+!final-tcn-server/README.md
+!final-tcn-server/requirements.txt
+!final-tcn-server/run_server.sh
+!final-tcn-server/app.py
+!final-tcn-server/models/
+!final-tcn-server/models/v3_tcn_imu_fall.pt
+!final-tcn-server/scripts/
+!final-tcn-server/scripts/send_demo_window.py
+final-tcn-server/._*
+final-tcn-server/models/._*
+final-tcn-server/scripts/._*
